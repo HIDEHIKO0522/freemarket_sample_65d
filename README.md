@@ -55,8 +55,7 @@ Things you may want to cover:
 |postal_code|integer|null: false|
 |address|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|type_address|integer|null: false|
-
+|type|integer|null: false|
 ### Association
 - belongs_to :user, optional: true
 
@@ -77,9 +76,9 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |comment|text|null: false|
-|large_category|string|null: false|
-|middle_category|string|null: false|
-|small_category|string|null: false|
+|large_category|integer|null: false, foreign_key: true|
+|middle_category|integer|null: false, foreign_key: true|
+|small_category|integer|null: false, foreign_key: true|
 |condition|integer|null: false|
 |brand|integer|null: false|
 |complete_day|integer|null: false|
@@ -91,15 +90,17 @@ Things you may want to cover:
 |charge|integer|null: false|
 |location|string|null: false|
 |status|integer|null: false|
+|delivery|integer|null: false|
+
 ### Association
 - belongs_to:user
 - has_many :likes
 - has_many:dms
 - has_many:item_images
 - has_many:item_comments
-- has_many :large_categories
-- has_many :middle_categories
-- has_many :small_categories
+- belongs_to :large_category
+- belongs_to :middle_category
+- belongs_to :small_category
 
 
 ## item_commentsテーブル
@@ -131,7 +132,7 @@ Things you may want to cover:
 - has_many :large_categories_middle_categories
 - has_many :large_categories, through: :large_categories_middle_categories
 - has_many :middle_categories
-- belongs_to :item
+- has_many :items
 
 
 ## large_categories_middle_categoriesテーブル
@@ -156,7 +157,7 @@ Things you may want to cover:
 - has_many :large_categories_middle_categories
 - has_many :large_categories, through: :large_categories_middle_categories 
 - has_many :large_categories
-- belongs_to :item
+- has_many :items
 
 
 ## middle_categories_small_categoriesテーブル
@@ -178,7 +179,7 @@ Things you may want to cover:
 - has_many :middle_categories_small_categories
 - has_many :middle_categories, through: :middle_categories_small_categories 
 - has_many :middle_categories
-- belongs_to :item
+- has_many :items
 
 
 ## dmsテーブル
