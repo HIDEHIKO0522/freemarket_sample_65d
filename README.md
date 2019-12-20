@@ -76,9 +76,7 @@ Things you may want to cover:
 |------|----|-------|
 |name|string|null: false|
 |comment|text|null: false|
-|large_category|integer|null: false, foreign_key: true|
-|middle_category|integer|null: false, foreign_key: true|
-|small_category|integer|null: false, foreign_key: true|
+|category_id|integer|null: false, foreign_key: true|
 |condition|integer|null: false|
 |brand|integer|null: false|
 |complete_day|integer|null: false|
@@ -91,16 +89,13 @@ Things you may want to cover:
 |location|string|null: false|
 |status|integer|null: false|
 |delivery|integer|null: false|
-
 ### Association
 - belongs_to:user
 - has_many :likes
 - has_many:dms
 - has_many:item_images
 - has_many:item_comments
-- belongs_to :large_category
-- belongs_to :middle_category
-- belongs_to :small_category
+- belongs_to :category
 
 
 ## item_commentsテーブル
@@ -123,63 +118,17 @@ Things you may want to cover:
 - belongs_to:item
 
 
-## large_categoriesテーブル
+## categoriesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|null: false|
 |name|string|null: false|
+|ancestry|string|
 ### Association
-- has_many :large_categories_middle_categories
-- has_many :large_categories, through: :large_categories_middle_categories
-- has_many :middle_categories
 - has_many :items
+- has_ancestry
 
 
-## large_categories_middle_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|large_categories_id|integer|null: false, foreign_key: true|
-|middle_categories_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :large_category
-- belongs_to :middle_category
 
-
-## middle_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_id|integer|null: false|
-|name|string|null: false|
-### Association
-- has_many :middle_categories_small_categories
-- has_many :middle_categories, through: :middle_categories_small_categories 
-- has_many :small_categories
-- has_many :large_categories_middle_categories
-- has_many :large_categories, through: :large_categories_middle_categories 
-- has_many :large_categories
-- has_many :items
-
-
-## middle_categories_small_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|middle_categories_id|integer|null: false, foreign_key: true|
-|small_categories_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_ to :middle_category
-- belongs_ to :small_category
-
-
-## small_categoriesテーブル
-|Column|Type|Options|
-|------|----|-------|
-|item_id|integer|null: false|
-|name|string|null: false|
-### Association
-- has_many :middle_categories_small_categories
-- has_many :middle_categories, through: :middle_categories_small_categories 
-- has_many :middle_categories
-- has_many :items
 
 
 ## dmsテーブル
