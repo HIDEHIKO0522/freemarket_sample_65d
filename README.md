@@ -33,7 +33,6 @@ Things you may want to cover:
 |password|string|null: false|
 |tel|integer|null: false|
 |identification|string|null: false|
-|card|string|null: false|
 |image|string|null: false|
 |point|integer|
 |sales|integer|
@@ -53,11 +52,27 @@ Things you may want to cover:
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|integer|null: false|
-|address|string|null: false|
+|prefectures|string|null: false|
+|city|string|null: false|
+|house_number|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |type|integer|null: false|
 ### Association
 - belongs_to :user, optional: true
+
+
+## cardテーブル
+|Column|Type|Options|
+|------|----|-------|
+|type|integer|null: false|
+|number|string|null: false|
+|city|string|null: false|
+|security_code|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|expiration_date|string|null: false|
+### Association
+- belongs_to :user, optional: true
+
 
 
 ## likesテーブル
