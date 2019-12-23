@@ -9,7 +9,7 @@ set :application, 'freemarket_sample_65d'
 set :repo_url,  'git@github.com:BoyTak/freemarket_sample_65d.git'
 
 # どのブランチからアプリをpullするかを指定する
-set :branch, 'Automatic-deployment-function' || "master"
+# set :branch, 'Automatic-deployment-function' || "master"
 
 # バージョンが変わっても共通で参照するディレクトリを指定
 set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
