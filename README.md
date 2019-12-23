@@ -46,7 +46,7 @@ Things you may want to cover:
 - has_many: commnets
 - has_many: sns_credentials
 - has_one :address
-
+- has_one :card
 
 ## addressesテーブル
 |Column|Type|Options|
