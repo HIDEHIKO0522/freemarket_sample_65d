@@ -36,7 +36,6 @@ Things you may want to cover:
 |image|string|null: false|
 |point|integer|
 |sales|integer|
-|to_do|integer|
 |certification|string|null: false|
 ### Association
 - has_many :likes

@@ -1,0 +1,364 @@
+// 共通クラス
+
+
+
+//全てに適用
+* {
+  box-sizing: border-box;
+}
+
+
+
+
+.header {
+  background-color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  position: relative;
+  z-index: 3;
+  font-family: Arial;
+
+  &__flame {
+
+    width: 700px;
+    margin: 0px auto;
+    padding: 8px 0px 0px;
+
+    &__upper {
+      
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+
+      &__logo {
+
+        -webkit-box-align: center;
+        align-items: center;
+        display: flex;
+        height: 40px;
+        margin-right: 45px;
+
+      }
+      
+      &__search {
+        position: relative;
+        width: 100%;
+
+        &__form-textbox {
+          background-color: rgb(245, 245, 245);
+          font-size: 16px;
+          height: 40px;
+          line-height: 1.4em;
+          position: relative;
+          width: 100%;
+          -webkit-appearance: none;
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(204, 204, 204);
+          border-image: initial;
+          border-radius: 4px;
+          outline: none;
+          padding: 0px 50px 0px 10px;
+          transition: all 0.3s ease-out 0s;
+        }
+        &__form-button {
+          background-color: transparent;
+          cursor: pointer;
+          height: 40px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          width: 40px;
+          -webkit-appearance: none;
+          border-width: initial;
+          border-top-width: initial;
+          border-right-width: initial;
+          border-bottom-width: initial;
+          border-left-width: initial;
+          border-style: none;
+          border-color: initial;
+          border-image: initial;
+          border-radius: 0px 4px 4px 0px;
+          padding: 0px;
+        }
+      }
+    }
+
+    &__lower {
+
+      display: flex;
+      -webkit-box-pack: justify;
+      justify-content: space-between;
+      margin-top: 8px;
+
+      &__left-block {
+
+        display: flex;
+        margin-left: -3px;
+
+      }
+      
+      &__right-block  {
+        display: flex;
+        position: relative;
+      }
+
+
+    }
+  }
+
+}
+
+
+
+
+// // #region
+
+// .sample{
+//   color: #ffffff;
+// }
+
+// ::-webkit-scrollbar {
+//   display: none;
+// }
+
+// p{
+//   color: #ffffff;
+  
+// }
+// b{
+  
+// }
+
+// * {
+//   box-sizing: border-box;
+//   text-decoration: none;
+// }
+
+
+// a{
+//   color: #38aef0;
+// }
+
+// // #endregion
+
+// //wrapper
+
+// .wrapper{
+
+//   display: flex;
+// }
+
+// // main
+
+// .chat-main{
+
+//   width: calc(100vw - 300px);
+//   float: left;
+// }
+
+// .main-header{
+
+//   height: 100px;
+//   padding: 0 40px;
+//   display: flex;
+//   justify-content: space-between;
+//   border-bottom: solid 1px #eee;
+//   overflow: scroll;
+
+//   &__left-box {
+
+//     margin-top: 35px;
+    
+//     &__current-group {
+//       font-size: 20px;
+//       color: #333;
+//       margin-bottom: 15px;
+//       }
+
+//     &__member-list{
+//       display: flex;
+//       font-size: 12px;
+//       color: #999999;
+//     }
+
+//   }
+
+//   &__edit-btn{
+//     height: 40px;
+//     line-height: 40px;
+//     padding: 0 20px;
+//     margin-top: 30px;
+//     color: #38aef0;
+//     border: solid 1px #38aef0;
+//     position: absolute;
+//     right: 40px;
+
+//   }
+
+// }
+
+// .messages{
+
+//   height: calc(100vh - 190px);
+//   padding: 46px 40px;
+//   background-color: #fafafa;
+//   overflow: scroll; //今は使用しない
+
+// }
+
+// .message{
+
+//   padding-bottom: 40px;
+
+//   &__upper-info{
+
+//     display: flex;
+//     margin-bottom: 10px;
+
+//   }
+//   &__upper-info__talker{
+
+//     color: #434a54;
+//     font-size: 16px;
+//     font-weight: bold;
+
+//   }
+
+//   &__upper-info__date{
+
+//     color: #999999;
+//     font-size: 12px;
+//     margin-left: 10px;
+
+//   }
+
+//   &__text{
+
+//     color: #434a54;
+//     font-size: 14px;
+//     margin-bottom: 10px;
+
+//   }
+
+// }
+
+// .formBar{
+
+//   height: 90px;
+//   padding: 20px 40px;
+//   background-color: #ddd;
+
+// }
+
+// formBar{
+//   display: flex;
+// }
+
+// .input-box{
+
+//   position: relative;
+//   width: 100%;
+
+//   &__text{
+//     height: 50px;
+//     width: 100%;
+//     padding: 0 40px 0 10px;
+//     color: #434a54;
+//     border-style: none;
+//   }
+
+//   &__image{
+
+//     font-size: 1.3rem;
+//     position: absolute;
+//     top: 10px;
+//     right: 10px;
+//     cursor: pointer;
+
+//     &__file{
+//       display: none;
+//     }
+//   }
+// }
+
+
+// .submit-btn {
+//   width: 100px;
+//   height: 50px;
+//   padding: 0 30px;
+//   margin-left: 15px;
+//   background-color: #38aef0;
+//   color: white;
+//   cursor: pointer;
+// }
+
+
+
+
+
+
+// // side
+
+
+// //side側の大元
+// .chat-side{
+//   width: 300px;
+//   color: white;
+//   float: left;
+  
+
+// }
+
+// .side-header {
+  
+//   background-color: #253141;
+//   height: 100px;
+//   display: flex;
+//   align-items: center;
+//   padding: 0 20px;
+
+//   &__box{
+//     display: flex;
+//     justify-content: space-between;
+//     width: 100%;
+//     font-weight: bold;
+
+//     &__menu{
+//       display: flex;
+//     }
+
+//   }
+
+
+  
+// }
+
+// .new_message{
+
+//   display: flex;
+// }
+
+// .groups {
+//   width: 300px;
+//   height: calc(100vh - 100px);
+//   background-color: #2f3e51;//背景色
+//   color: #ffffff;
+//   padding: 20px 20px 0;
+
+// }
+
+// .group {
+  
+//   width: 260px;
+//   // height: 35px;//高さ
+//   margin-bottom: 40px;
+  
+//   &__group-name{
+//     font-size: 15px;
+//     margin-bottom: 5px;
+    
+//   }
+//   &__latest-message{
+//     font-size: 11px;
+//   }
+// }
