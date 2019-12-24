@@ -1,0 +1,36 @@
+= form_for @item do |f|
+  .form
+    = f.label :name, "商品名"
+    = f.text_field :name
+  .form
+    = f.label :comment, "説明文"
+    = f.text_field :comment
+  .form
+    = f.label :category_id, "カテゴリー"
+    = f.text_field :category_id
+  .form
+    = f.label :size, "サイズ"
+    = f.text_field :size
+  .form
+    = f.label :brand, "ブランド"
+    = f.text_field :brand
+  .form
+    = f.label :condition, "状態"
+    = f.text_field :condition
+  .form
+    = f.label :charge, "配送料負担"
+    = f.text_field :charge
+  .form
+    = f.label :delivery, "配送形式"
+    = f.text_field :delivery
+  .form
+    = f.label :location, "地域"
+    = f.text_field :location
+  .form
+    = f.label :arrival_date, "日数"
+    = f.text_field :arrival_date
+  .form
+    = f.label :price, "価格"
+    = f.text_field :price
+  .form
+    = f.submit "登録する"
