@@ -1,0 +1,27 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title FreemarketSample65d
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    .header
+      .header__flame
+        .header__flame__upper
+          .header__flame__upper__logo
+            = link_to image_tag("fmarket_logo_red.svg", width: '130'), ""      
+          .header__flame__upper__search
+            = form_tag('/search', method: :get, class: 'search-form') do
+              %input.header__flame__upper__search__form-textbox{name: "keyword", placeholder: "何かお探しですか？", type: "text", value: ""}
+              %button.header__flame__upper__search__form-button{title: "検索", type: "submit"}
+                = image_tag("虫眼鏡の無料アイコン8.svg", width: '16')
+          .header__flame__lower
+            .header__flame__lower__left-block
+            .header__flame__lower__right-block
+    = yield
+    .footer
+
+   
