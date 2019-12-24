@@ -1,3 +1,153 @@
-// Place all the styles related to the items controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.single-container{
+  background-color: #f5f5f5;
+  padding: 0 0 220px;
+}
+
+.single-header{
+  height: 128px;
+  text-align: center;
+  padding: 40px 0 0 ;
+}
+
+.fmarket-logo{
+  width: 185px;
+  height: 49px;
+  line-height: 49px;
+}
+
+.single-main{
+  display: block;
+  &__buy-item-container{
+    background-color: white;
+    width: 700px;
+    margin: 0 auto;
+  }
+  .sell-container__inner{
+    background-color: white;
+    h2{
+      padding: 32px 16px;
+      font-size: 22px;
+      text-align: center;
+      font-weight: bold;
+      }
+      .sell-form{
+        border-top: 1px solid #eee;
+        &__upload{
+          width: 620px;
+          padding: 40px 40px 0 40px;
+          display: flex;
+          h3{
+            font-size: 16px;
+            font-weight: bold;
+          }
+          h6{
+            background-color: #ea352d;
+            margin: 0 0 0 8px;
+            padding: 2px 4px;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 12px;
+            vertical-align: top;
+            width: 32px;
+            text-align: center;
+            font-weight: bold;
+          }
+        }
+        &__box{
+          width: 620px;
+          padding: 0 40px;
+          p{
+            margin: 8px 0 0;
+            font-size: 14px;
+          }
+        }
+        &__content{
+          padding: 40px;
+          border-top: 1px solid #eee;
+          &__name{
+            width: 100%;
+            display: flex;
+            }
+            h3{
+              font-weight: 600;
+            }
+            h6{
+              background-color: #ea352d;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+              width: 32px;
+              text-align: center;
+              font-weight: bold;
+            }
+            .input-default{
+              width: 100%;
+              margin: 8px 0 0;
+              height: 48px;
+              padding: 10px 16px 8px;
+              border-radius: 4px;
+              border: 1px solid #eee;
+              line-height: 1.5;
+              font-size: 16px;
+          }
+          &__explain{
+            margin-top: 40px;
+            display: flex;
+            }
+            .textarea-default{
+              width: 100%;
+              margin: 8px 0 0;
+              display: block;
+              max-width: 100%;
+              height: 140px;
+              padding: 10px;
+              border: 1px solid #eee;
+              font-size: 16px;
+              line-height: 1.5;
+          }
+        }
+        &__detail{
+          padding: 40px;
+          border-top: 1px solid #eee;
+          }
+          h3{
+            color: #888;
+            font-size: 14px;
+          &__selection{
+            float: right;
+          }
+        }
+        &__btn-box{
+          padding: 40px;
+          border-top: 1px solid #eee;
+          p{
+            font-size: 14px;
+          }
+          .submit-btn{
+            background-color: #ea352d;
+            width: 100%;
+            margin: 40px 0 0;
+            border: 1px solid #ea352d;
+            color: white;
+            display: block;
+            font-size: 14px;
+            height: 48px;
+          }
+          .return-btn{
+            background-color: #aaa;
+            width: 45%;
+            color: white;
+            display: block;
+            height: 48px;
+            font-size: 14px;
+            cursor: pointer;
+            text-align: center;
+            margin: 24px auto 0;
+          }
+        }
+      }
+    }
+  }

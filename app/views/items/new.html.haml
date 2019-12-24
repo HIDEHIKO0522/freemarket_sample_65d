@@ -1,0 +1,63 @@
+.single-container
+  .single-header
+    = link_to image_tag("fmarket_logo_red.svg", class: "fmarket-logo")
+    
+  .single-main
+    .single-main__buy-item-container
+      .sell-container
+        .sell-container__inner
+          %h2 商品の情報を入力
+          .sell-form
+            .sell-form__upload
+              %h3 出品画像
+              %h6 必須
+            .sell-form__box
+              %p  最大10枚までアップロードできます
+            .sell-form__content
+              .sell-form__content__name
+                %h4 商品名
+                %h6 必須
+              .sell-form__content__input
+                %input{name: "keyword", placeholder: "商品名  (必須 40文字まで)", type: "text", value: "", class: "input-default"}
+              .sell-form__content__explain
+                %h4 商品の説明
+                %h6 必須
+              .sell-form__content__textarea
+                %textarea{name: "keyword", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type: "text", value: "", class: "textarea-default"}
+            .sell-form__detail
+              %h3 商品の詳細
+              .sell-form__detail__selection
+                .sell-form__detail__selection__status
+                  %h4 カテゴリー
+                  %h6 必須
+                .sell-form__detail__selection__status
+                  %h4 商品の状態
+                  %h6 必須
+            .sell-form__detail
+              %h3 配送について
+              .sell-form__detail__status
+              %h5 配送料の負担
+              %h6 必須 
+              .sell-form__detail__status
+                %h5 発送元の地域
+                %h6 必須
+              .sell-form__detail__status
+                %h5 発送までの日数
+                %h6 必須
+            .sell-form__detail
+              %h3 販売価格(300〜9,999,999)
+              .sell-content__form-box
+                %ul.sell-group
+                  %li.form-price
+                    %h4 価格
+                    %h6 必須
+                  %li.form-commission
+                    %p 販売手数料
+                  %li.form-profit
+                    %p 販売利益
+            .sell-form__btn-box
+              %p 禁止されている出品、行為を必ずご確認下さい。
+              %p またブランド品でシリアルナンバー等がある場合はご記載下さい。偽ブランドの販売は犯罪であり処罰される可能性があります。
+              %p また、出品をもちまして加盟店規約に同意したことになります。
+              %input{:type => "submit", :value => "出品する", class: "submit-btn"}
+              %input{:type => "submit", :value => "もどる", class: "return-btn"}
