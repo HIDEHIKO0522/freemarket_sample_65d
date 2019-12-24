@@ -10,11 +10,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_031656) do
+ActiveRecord::Schema.define(version: 2019_12_24_055729) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "postal_code", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
+    t.string "house_number", null: false
+    t.integer "user_id", null: false
+    t.integer "type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "type", null: false
+    t.string "number", null: false
+    t.string "security_code", null: false
+    t.integer "user_id", null: false
+    t.string "expiration_date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "nickname", null: false
+    t.integer "sex", null: false
+    t.integer "birthday", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "tel", null: false
+    t.string "image", null: false
+    t.integer "point", null: false
+    t.integer "sales", null: false
+    t.string "certification", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
