@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     end
   end
   get 'users/identification(/:id)', to: 'users#identification', as: :user_identification
+  get 'items/category', to: 'items#category'
   resources :items
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
   resources :cards

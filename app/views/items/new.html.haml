@@ -8,9 +8,12 @@
   .form
     = f.label :comment, "説明文"
     = f.text_field :comment
-  .form
-    = f.label :category_id, "カテゴリー"
-    = f.text_field :category_id
+  .form.category
+    .category__large
+      = f.label :category_id, "カテゴリー"
+      = f.select :category_id, options_for_select(@categorys.map{|c|[c[:name], c[:id]]}), prompt: "---"
+    .category__middle
+    .category__small
   .form
     = f.label :size, "サイズ"
     = f.text_field :size

@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
   def new
     @item = Item.new
-    @item.item_images << ItemImage.new
+    @categorys = Category.where(ancestry: nil)
   end
 
   def create
@@ -19,6 +19,14 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+  end
+
+  def category
+    @category = Category.find(params[:id])
+    @categorys = @category.children
+    respond_to do |format|
+      format.json
+    end
   end
 
 
