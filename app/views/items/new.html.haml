@@ -13,48 +13,98 @@
               %h6 必須
             .sell-form__box
               %p  最大10枚までアップロードできます
+            .sell-form__drop
+              %p ドラッグアンドドロップまたはクリックしてファイルをアップロード
             .sell-form__content
               .sell-form__content__name
-                %h4 商品名
+                %label 商品名
                 %h6 必須
               .sell-form__content__input
                 %input{name: "keyword", placeholder: "商品名  (必須 40文字まで)", type: "text", value: "", class: "input-default"}
               .sell-form__content__explain
-                %h4 商品の説明
+                %label 商品の説明
                 %h6 必須
               .sell-form__content__textarea
                 %textarea{name: "keyword", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", type: "text", value: "", class: "textarea-default"}
             .sell-form__detail
-              %h3 商品の詳細
+              .sell-form__detail__section
+                %h3 商品の詳細
               .sell-form__detail__selection
-                .sell-form__detail__selection__status
-                  %h4 カテゴリー
+                .sell-form__detail__selection__category
+                  %label カテゴリー
                   %h6 必須
+                .sell-form__detail__selection__select
+                  %select{:name => "budget_d"}
+                    %option{:value => "0"}  ---
+                    %option{:value => "1"} レディース
+                    %option{:value => "2"} メンズ
+                    %option{:value => "3"} ベビー・キッズ
+                    %option{:value => "4"} インテリア・住まい・小物
+                    %option{:value => "5"} 本・音楽・ゲーム
+                    %option{:value => "6"} おもちゃ・ホビー・グッズ
+                    %option{:value => "7"} コスメ・香水・美容
+                    %option{:value => "8"} 家電・スマホ・カメラ
+                    %option{:value => "9"} スポーツ・レジャー
+                    %option{:value => "10"} ハンドメイド
+                    %option{:value => "11"} チケット
+                    %option{:value => "12"} 自動車・オートバイ
+                    %option{:value => "13"} その他
                 .sell-form__detail__selection__status
-                  %h4 商品の状態
+                  %label 商品の状態
                   %h6 必須
+                .sell-form__detail__selection__select
+                  %select{:name => "budget_d"}
+                    %option{:value => "0"}  ---
+                    %option{:value => "1"} 新品、未使用
+                    %option{:value => "2"} 未使用に近い
+                    %option{:value => "3"} 目立った傷や汚れなし
+                    %option{:value => "4"} やや傷や汚れあり
+                    %option{:value => "5"} 傷や汚れあり
+                    %option{:value => "6"} 全体的に状態が悪い
             .sell-form__detail
-              %h3 配送について
-              .sell-form__detail__status
-              %h5 配送料の負担
-              %h6 必須 
-              .sell-form__detail__status
-                %h5 発送元の地域
-                %h6 必須
-              .sell-form__detail__status
-                %h5 発送までの日数
-                %h6 必須
-            .sell-form__detail
-              %h3 販売価格(300〜9,999,999)
-              .sell-content__form-box
-                %ul.sell-group
-                  %li.form-price
-                    %h4 価格
+              .sell-form__detail__section
+                %h3 配送について
+              .sell-form__detail__selection
+                .sell-form__detail__selection__category
+                  %label 配送料の負担
+                  %h6 必須
+                .sell-form__detail__selection__select
+                  %select{:name => "budget_d"}
+                    %option{:value => "0"}  ---
+                    %option{:value => "1"} 送料込み(出品者負担)
+                    %option{:value => "2"} 着払い(購入者負担)
+                .sell-form__detail__selection__status
+                  %label 発送元の地域
+                  %h6 必須
+                .sell-form__detail__selection__select
+                  %select{:name => "budget_d"}
+                    %option{:value => "0"}  ---
+                    %option{:value => "1"} 北海道
+                    %option{:value => "2"} 沖縄
+                .sell-form__detail__selection__status
+                  %label 発送までの日数
+                  %h6 必須
+                .sell-form__detail__selection__select
+                  %select{:name => "budget_d"}
+                    %option{:value => "0"}  ---
+                    %option{:value => "1"} 1~2日で発送
+                    %option{:value => "2"} 2~3日で発送
+                    %option{:value => "3"} 4~7日で発送
+            .sell-form__price
+              .sell-form__price__price
+                %h3 販売価格(300〜9,999,999)
+              .sell-form__price__group
+                .sell-form__price__group__one
+                  .sell-form__price__group__one__left
+                    %label 価格
                     %h6 必須
-                  %li.form-commission
-                    %p 販売手数料
-                  %li.form-profit
-                    %p 販売利益
+                  .sell-form__price__group__one__right
+                    ¥
+                    %input{name: "keyword", placeholder: "例）300", type: "text", value: "", class: "input-default"}
+                .sell-form__price__group__two
+                  %p 販売手数料(10%)
+                .sell-form__price__group__three
+                  %p 販売利益
             .sell-form__btn-box
               %p 禁止されている出品、行為を必ずご確認下さい。
               %p またブランド品でシリアルナンバー等がある場合はご記載下さい。偽ブランドの販売は犯罪であり処罰される可能性があります。
