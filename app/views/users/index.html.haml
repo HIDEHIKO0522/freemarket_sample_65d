@@ -1,0 +1,39 @@
+.sign-up
+  .header
+    = link_to '/' do
+      = image_tag 'fmarket_logo_red.svg', alt: 'mercari', class: 'header__logo'
+  .main
+    .main__text
+      新規会員登録
+    .main__login
+      .main__login__mail
+        = link_to '#' do
+          .main__login__mail--btn
+            = icon 'far', 'envelope'
+            = "メールアドレスで登録する"
+      .main__login__facebook
+        = link_to '#' do
+          .main__login__facebook--btn
+            = icon 'fab', 'facebook-square'
+            = "Facebookで登録する"
+      .main__login__google
+        = link_to '#' do
+          .main__login__google--btn
+            = "Googleで登録する"
+            = icon 'fab', 'google'
+  .footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to '#' do
+            プライバシーポリシー
+        %li
+          = link_to '#' do
+            メルカリ利用規約
+        %li
+          = link_to '#' do
+            特定商取引に関する表記
+    .fotter__logo
+      = image_tag 'logo_gray.svg', alt: 'mercari', class: 'footer__logo--gray'
+    %p.footer__text
+      ©️ 2019 Mercari
