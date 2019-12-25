@@ -1,31 +1,37 @@
 = form_for @item do |f|
   .form
+    = f.label :item_images, "商品名"
+    = f.file_field :item_images, multiple: true
+  .form
     = f.label :name, "商品名"
     = f.text_field :name
   .form
     = f.label :comment, "説明文"
     = f.text_field :comment
   .form
+    = f.label :category_id, "カテゴリー"
+    = f.text_field :category_id
+  .form
     = f.label :size, "サイズ"
-    = f.number_field :size
+    = f.text_field :size
   .form
     = f.label :brand, "ブランド"
     = f.text_field :brand
   .form
     = f.label :condition, "状態"
-    = f.number_field :condition
+    = f.text_field :condition
   .form
     = f.label :charge, "配送料負担"
-    = f.number_field :charge
+    = f.text_field :charge
   .form
     = f.label :delivery, "配送形式"
-    = f.number_field :delivery
+    = f.text_field :delivery
   .form
     = f.label :location, "地域"
     = f.text_field :location
   .form
     = f.label :arrival_date, "日数"
-    = f.number_field :arrival_date
+    = f.text_field :arrival_date
   .form
     = f.label :price, "価格"
     = f.number_field :price
