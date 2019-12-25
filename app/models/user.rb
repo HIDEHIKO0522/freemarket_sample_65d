@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :birth_year
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
@@ -19,8 +21,8 @@ class User < ApplicationRecord
   validates :first_name,              presence: true, length: {maximum: 10}
   validates :family_name_kana,        presence: true, length: {maximum: 10}
   validates :first_name_kana,         presence: true, length: {maximum: 10}
-  validates :birthyear,               presence: true
-  validates :birthmonth,              presence: true
-  validates :birthday,                presence: true
-  validates :tel,                     presence: true
+  validates :birthyear,               presence: true, length: {maximum: 10}
+  validates :birthmonth,              presence: true, length: {maximum: 10}
+  validates :birthday,                presence: true, length: {maximum: 10}
+  validates :tel,                     presence: true, length: {maximum: 10}
 end
