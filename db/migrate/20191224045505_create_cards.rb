@@ -5,7 +5,8 @@ class CreateCards < ActiveRecord::Migration[5.2]
       t.string  :number,              null: false
       t.string  :security_code,       null: false
       t.integer :user_id,             null: false, foreign_key: true
-      t.string  :expiration_date,     null: false
+      t.string  :expiration_month,    null: false
+      t.string  :expiration_year,     null: false
       t.timestamps
     end
   end

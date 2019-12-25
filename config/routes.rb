@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
+  #'registration' ,'sms_authentication' ,'address' ,'card' ,'done' のみルーティングをする
   devise_for :users,skip: :all
-  # , controllers: {
-  #   registrations:      'users/registrations',
-  #   sessions:           'users/sessions'
-  #   # omniauth_callbacks: 'users/omniauth_callbacks'
-  # }
- #ファイル名は未定（12/24 白岩）
+  
   devise_scope :user do
     delete 'destroy' => 'devise/sessions#destroy',as: :current_user_destroy
   end
@@ -19,12 +15,13 @@ Rails.application.routes.draw do
       get 'registration'                               
       post 'registration' => 'signup#profile_validation' 
       get 'sms_authentication' 
-      post 'sms_authentication' => 'signup#sms_post' 
-      get 'sms_confirmation' 
-      post 'sms_confirmation' => 'signup#sms_check'
+      post 'sms_authentication' => 'signup#sms_validation' 
+      # get 'sms_confirmation' 
+      # post 'sms_confirmation' => 'signup#sms_check'
       get 'address' 
       post 'address' => 'signup#address_validation' 
       get 'card' 
+      post 'card' => 'signup#card_validation' 
       get 'done' 
     end
   end  

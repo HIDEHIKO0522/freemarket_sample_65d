@@ -2,15 +2,8 @@ class SignupController < ApplicationController
 
   layout 'form_layout'
 
-
-  # before_action :validates_profile, only: :tel 
-  # before_action :validates_tel,     only: :address
-  # before_action :validates_address, only: :card
-
   def registration
-    @user = User.new
-    @address = Address.new
-    @card = Card.new
+    @user = User.new(user_params)
   end
 
 
@@ -26,17 +19,8 @@ class SignupController < ApplicationController
     session[:birthdyear] = user_params[:birthyear]
     session[:birthmonth] = user_params[:birthmonth]
     session[:birthday] = user_params[:birthday]
+    session[:tel] = user_params[:tel]
  
-    # post_family_name: "仮登録",
-    # post_personal_name: "仮登録",
-    # post_family_name_kana: "カリ",
-    # post_personal_name_kana: "トウロク",
-    # prefecture: '沖縄',
-    # city: '那覇市',
-    # address: 'テスト',
-    # postal_code: '888-8888'
-
-
     @user = User.new(
       nickname: session[:nickname], 
       email: session[:email],
@@ -57,25 +41,38 @@ class SignupController < ApplicationController
     unless verify_recaptcha(model: @user) && check_user_valid
       render 'signup/registration' 
     else
-      # 問題がなければsession[:through_first_valid]を宣言して次のページへリダイレクト
+      # 問題がなければsession[:through_profile_validation]を宣言して次のページへリダイレクト
       session[:through_profile_validation] = "through_profile_validation"
       redirect_to sms_authentication_signup_index_path
     end
   end
   
+
   def sms_authentication
-    @address = Address.new
+   @sms = User.new(sms_params)
   end
 
+  def sms_validation
+    session[:tel] = user_params[:tel]
 
+    @sms = user.new(tel: session[:tel])
 
-  # postal_code: session[:postal_code], 
-      # prefectures: session[:prefectures],
-      # city: session[:city],
-      # house_number: session[:house_number],
-      # tel: session[:tel], 
-      # type: session[:type]
-   
+       # バリデーションエラーを事前に取得させる（下のunlessでは全て取得できない場合があるため）
+       check_sms_valid = @sms.valid?
+       #reCAPTCHA（私はロボットではありませんのアレ）とユーザー、プロフィールのバリデーション判定
+       unless verify_recaptcha(model: @sms) && check_sms_valid
+         render 'signup/sms_authentication' 
+       else
+         # 問題がなければsession[:through_sms_validation]を宣言して次のページへリダイレクト
+         session[:through_sms_validation] = "through_sms_validation"
+         redirect_to address_signup_index_path
+       end
+  end
+
+  def address
+    @address = Address.new
+  end  
+  
   def address_validation
     session[:postal_code] = address_params[:postal_code]
     session[:prefectures] = address_params[:prefectures]
@@ -83,15 +80,6 @@ class SignupController < ApplicationController
     session[:house_number] = address_params[:house_number]
     session[:user_id] = address_params[:house_number]
     session[:type] = address_params[:type]
-    # post_family_name: "仮登録",
-    # post_personal_name: "仮登録",
-    # post_family_name_kana: "カリ",
-    # post_personal_name_kana: "トウロク",
-    # prefecture: '沖縄',
-    # city: '那覇市',
-    # address: 'テスト',
-    # postal_code: '888-8888'
-  end  
     
     @address = Address.new(
       postal_code: session[:postal_code], 
@@ -114,7 +102,37 @@ class SignupController < ApplicationController
     end
   end
 
-  #ここにカードの記述
+  def card
+    @card = Card.new
+  end  
+
+  def card_validation
+    session[:user_id] = card_params[:user_id]
+    session[:type] = card_params[:type]
+    session[:number] = card_params[:number]
+    session[:security_code] = card_params[:security_code]
+    session[:expiration_month] = card_params[:expiration_month]
+    session[:expiration_year] = card_params[:expiration_year]
+  
+    @card = Card.new(
+      user_id: session[:user_id], 
+      # type: session[:type],
+      number: session[:number],
+      security_code: session[:security_code],
+      expiration_month: session[:expiration_month],
+      expiration_year: session[:expiration_year]
+    )
+    # バリデーションエラーを事前に取得させる（下のunlessでは全て取得できない場合があるため）
+    check_address_valid = @address.valid?
+    #reCAPTCHA（私はロボットではありませんのアレ）とユーザー、プロフィールのバリデーション判定
+    unless verify_recaptcha(model: @card) && check_card_valid
+      render 'signup/card' 
+      else
+      # 問題がなければsession[:through_card_validation]を宣言して次のページへリダイレクト
+      session[:through_card_validation] = "through_card_validation"
+      redirect_to done_signup_index_path
+    end
+  end
 
 
   def create
@@ -127,15 +145,14 @@ class SignupController < ApplicationController
       birthmonth: session[:birthmonth],
       birthyear: session[:birthyear],
       birthmonth: session[:birthmonth],
+      birthyear: session[:birthyear],
+      birthmonth: session[:birthmonth],
       birthday: session[:birthday],
       family_name: session[:family_name],
       first_name: session[:first_name],
       family_name_kana: session[:family_name_kana],
       first_name_kana: session[:first_name_kana]
-    #   post_family_name: session[:post_family_name],
-    #   post_first_name: session[:post_first_name],
-    #   post_family_name_kana: session[:post_family_name_kana],
-    #   post_first_name_kana: session[:post_first_name_kana],
+      tel: session[:tel],
     )
     # 万一ユーザーがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
     unless @user.save
@@ -143,31 +160,36 @@ class SignupController < ApplicationController
       redirect_to signup_index_path
       return
     end
-    # userが作れたらuserに紐づけてprofileを作ります
+
     @address = Address.create(
-      user: @user,
       postal_code: session[:postal_code],
       prefectures: session[:prefectures],
       city: session[:city],
-      house_number: session[:house_number],
-      tel: session[:tel],
-
+      house_number: session[:house_number]
     )
-    # 最後のフォームでクレジット認証を行なっているため、ここでカードの顧客情報を作り、userと紐づけてDBに保存する処理を行なっています
-    customer = Payjp::Customer.create(card: params[:payjp_token])
-    @card = Creditcard.new(user: @user,customer_id: customer.id,card_id: customer.default_card)
-    # カード情報まで保存に成功したら全sessionをリセットしてユーザーidのみsessionに預け、完了画面へリダイレクト
-    if @card.save
-      reset_session
-      session[:id] = @user.id
-      redirect_to done_signup_index_path
-      return 
-    else
-      #失敗したらsessionを切って登録ページトップへリダイレクト
+    # 万一ユーザーがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
+    unless @address.save
       reset_session
       redirect_to signup_index_path
+      return
     end
-  end
+
+    @card = Card.new(
+      user_id: session[:user_id], 
+      # type: session[:type],
+      number: session[:number],
+      security_code: session[:security_code],
+      expiration_month: session[:expiration_month],
+      expiration_year: session[:expiration_year]
+    )
+    # 万一ユーザーがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
+    unless @card.save
+      reset_session
+      redirect_to signup_index_path
+      return
+    end  
+end
+
 
   def done
     # session[id]がなければ登録ページトップへリダイレクト
@@ -194,7 +216,11 @@ class SignupController < ApplicationController
       :birthyear,
       :birthmonth,
       :birthday
- )
+    )
+  end
+
+  def sms_params
+    params.require(:user).permit(:tel )
   end
 
   def address_params
@@ -203,22 +229,23 @@ class SignupController < ApplicationController
       :prefectures, 
       :city, 
       :house_number, 
-      :type, 
- )
+      :type
+    )
   end
 
   def card_params
     params.require(:card).permit(
-      :type, 
+      # :type, 
       :number, 
       :security_code, 
       :user_id, 
-      :expiration_date, 
- )
+      :expiration_month, 
+      :expiration_year, 
+    )
   end
-  # 前のpostアクションで定義されたsessionがなかった場合登録ページトップへリダイレクト
-  def redirect_to_index_from_sms
-    redirect_to signup_index_path unless session[:through_profile_validation].present? && session[:through_profile_validation] == "through_profile_validation"
-  end
+  # # 前のpostアクションで定義されたsessionがなかった場合登録ページトップへリダイレクト
+  # def redirect_to_index_from_sms
+  #   redirect_to signup_index_path unless session[:through_profile_validation].present? && session[:through_profile_validation] == "through_profile_validation"
+  # end
 
 end

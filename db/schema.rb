@@ -28,7 +28,8 @@ ActiveRecord::Schema.define(version: 2019_12_24_064738) do
     t.string "number", null: false
     t.string "security_code", null: false
     t.integer "user_id", null: false
-    t.string "expiration_date", null: false
+    t.string "expiration_month", null: false
+    t.string "expiration_year", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,9 +49,9 @@ ActiveRecord::Schema.define(version: 2019_12_24_064738) do
     t.string "family_name_kana", null: false
     t.string "first_name_kana", null: false
     t.string "nickname", null: false
-    t.integer "birthyear", null: false
-    t.integer "birthmonth", null: false
-    t.integer "birthday", null: false
+    t.string "birthyear", null: false
+    t.string "birthmonth", null: false
+    t.string "birthday", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.integer "tel", null: false

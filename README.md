@@ -29,7 +29,9 @@ Things you may want to cover:
 |family_name_kana|string|null: false|  12/24追記（白岩）
 |first_name_kana|string|null: false|   12/24追記（白岩）
 |nickname|string|null: false|
-|birthday|integer|null: false|
+|birthyear|integer|null: false|  12/25追記（白岩）
+|birthmonth|integer|null: false|  12/25追記（白岩）
+|birthday|integer|null: false|  12/25追記（白岩）
 |email|string|null: false|
 |password|string|null: false|
 |tel|integer|null: false|
@@ -69,7 +71,8 @@ Things you may want to cover:
 |city|string|null: false|
 |security_code|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|expiration_date|string|null: false|
+|expiration_month|string|null: false|  12/25追記（白岩）
+|expiration_year|string|null: false|  12/25追記（白岩）
 ### Association
 - belongs_to :user, optional: true
 
