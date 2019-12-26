@@ -1,4 +1,5 @@
 $(function() {
+  // カテゴリー選択機能
   function buildHTML(params){
     var category_option = ''
     params.forEach(function (category) {
@@ -50,6 +51,19 @@ $(function() {
       .fail(function() {
         alert('error');
       });
+    }
+  });
+
+  //販売手数料、販売利益
+  $('.price input').on('keyup', function() {
+    var tax = Math.floor($(this).val() * 0.1);
+    var profit = Math.floor($(this).val() - tax);
+    if ($(this).val() < 300 || $(this).val() > 9999999) {
+      $('.tax').text('-');
+      $('.profit').text('-');
+    } else {
+      $('.tax').text(tax);
+      $('.profit').text(profit);
     }
   });
 });

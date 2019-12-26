@@ -35,8 +35,10 @@
   .form
     = f.label :arrival_date, "日数"
     = f.text_field :arrival_date
-  .form
+  .form.price
     = f.label :price, "価格"
     = f.number_field :price
+    %p.tax -
+    %p.profit -
   .form
     = f.submit "登録する"
