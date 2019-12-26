@@ -2,4 +2,12 @@
   .container__side
     = render "shared/side_bar"
   .container__main
-    %p メイン
+    %h2 プロフィール
+    .container__main__setting
+      .container__main__setting__icon
+        = icon("fas","user-circle", class: "user-circle-icon")
+      .container__main__setting__input
+        %input{name: "keyword", placeholder: "例)AYA☆セール中", type: "text", value: "", class: "profile-input"}
+    .container__main__content
+      %textarea{name: "keyword", placeholder: "例）こんにちは☆ ご覧いただきありがとうございます！かわいいものやきれいめオフィスカジュアル中心に出品しています。服のサイズは主に9号です。気持ちよくお取引できるよう心がけていますので、商品や発送方法などご質問がありましたらお気軽にどうぞ♪", type: "text", value: "", class: "profile-textarea"}
+      %input{type: "submit", value: "変更する", class: "profile-btn"}
