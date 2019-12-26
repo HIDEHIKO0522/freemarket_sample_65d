@@ -10,42 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_25_083158) do
+ActiveRecord::Schema.define(version: 2019_12_24_064738) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.integer "postal_code", null: false
     t.string "prefectures", null: false
     t.string "city", null: false
     t.string "house_number", null: false
-    t.integer "user_id", null: false
+    t.string "building", null: false
+    t.integer "phone_number", null: false
     t.integer "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
   end
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.integer "type", null: false
     t.string "number", null: false
     t.string "security_code", null: false
-    t.integer "user_id", null: false
     t.string "expiration_month", null: false
     t.string "expiration_year", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "prefecture_selects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "uid", null: false
     t.string "provider", null: false
     t.string "token", null: false
-    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -73,4 +73,7 @@ ActiveRecord::Schema.define(version: 2019_12_25_083158) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
+  add_foreign_key "sns_credentials", "users"
 end

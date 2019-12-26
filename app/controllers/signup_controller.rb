@@ -16,7 +16,7 @@ class SignupController < ApplicationController
     session[:first_name] = user_params[:first_name]
     session[:family_name_kana] = user_params[:family_name_kana]
     session[:first_name_kana] = user_params[:first_name_kana]
-    session[:birthdyear] = user_params[:birthyear]
+    session[:birthyear] = user_params[:birthyear]
     session[:birthmonth] = user_params[:birthmonth]
     session[:birthday] = user_params[:birthday]
     session[:tel] = user_params[:tel]
@@ -81,13 +81,16 @@ class SignupController < ApplicationController
     session[:user_id] = address_params[:house_number]
     session[:type] = address_params[:type]
     
+    
     @address = Address.new(
       postal_code: session[:postal_code], 
       prefectures: session[:prefectures],
       city: session[:city],
       house_number: session[:house_number],
       user_id: session[:user_id],
-      type: session[:type]
+      type: session[:type],
+      building: "田中ビル",
+      phone_number: "08088888888"
     )
 
     # バリデーションエラーを事前に取得させる（下のunlessでは全て取得できない場合があるため）
@@ -240,7 +243,7 @@ end
       :security_code, 
       :user_id, 
       :expiration_month, 
-      :expiration_year, 
+      :expiration_year
     )
   end
   # # 前のpostアクションで定義されたsessionがなかった場合登録ページトップへリダイレクト

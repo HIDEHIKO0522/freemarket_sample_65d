@@ -58,7 +58,10 @@ Things you may want to cover:
 |city|string|null: false|
 |house_number|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|type|integer|null: false|
+|building|string||
+|phone_number|integer|null: false, uniqueness: true|　12/26追記　白岩
+|type|integer|null: false|　12/26追記　白岩
+
 ### Association
 - belongs_to :user, optional: true
 
