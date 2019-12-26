@@ -23,7 +23,7 @@
                   %label 商品の説明
                   %h6 必須
                 .sell-form__content__textarea
-                  = f.text_field :comment, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "textarea-default"
+                  = f.text_area :comment, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "textarea-default"
               .sell-form__detail
                 .sell-form__detail__section
                   %h3 商品の詳細
@@ -32,16 +32,20 @@
                     %label カテゴリー
                     %h6 必須
                   .sell-form__detail__selection__select
-                    = f.select :category_id, options_for_select(@categorys.map{|c|[c[:name], c[:id]]}), prompt: "---"
-                  .sell-form__detail__selection__size
+                    .categorys
+                      #large-category.categorys-select
+                        = f.select :category_id, options_for_select(@categorys.map{|c|[c[:name], c[:id]]}), prompt: "---"
+                      #middle-category.categorys-select
+                      #small-category.categorys-select
+                  .sell-form__detail__selection__category
                     %label サイズ
                     %h6 必須
                   .sell-form__detail__selection__select
                     = f.select :size, ["S", "M", "L"], prompt: "---"
-                  .sell-form__detail__selection__brand
+                  .sell-form__detail__selection__category
                     %label ブランド
                     %h6 任意
-                  .sell-form__detail__selection__select
+                  .sell-form__detail__selection__input
                     = f.text_field :brand, placeholder: "例）シャネル"
                   .sell-form__detail__selection__status
                     %label 商品の状態
@@ -82,16 +86,21 @@
                       %h6 必須
                     .sell-form__price__group__one__right
                       ¥
-                      = f.text_field :price, placeholder: "例）300"
+                      #price-input
+                        = f.text_field :price, placeholder: "例）300"
                   .sell-form__price__group__two
-                    %p 販売手数料(10%)
-                    %p.tax -
+                    .price-title
+                      %p 販売手数料(10%)
+                    .price-amount
+                      %p#tax -
                   .sell-form__price__group__three
-                    %p 販売利益
-                    %p.profit -
+                    .price-title
+                      %p 販売利益
+                    .price-amount
+                      %p#profit -
               .sell-form__btn-box
                 %p 禁止されている出品、行為を必ずご確認下さい。
                 %p またブランド品でシリアルナンバー等がある場合はご記載下さい。偽ブランドの販売は犯罪であり処罰される可能性があります。
                 %p また、出品をもちまして加盟店規約に同意したことになります。
-                = f.submit "登録する"
+                = f.submit "登録する", class: "submit-btn"
                 %input{:type => "submit", :value => "もどる", class: "return-btn"}

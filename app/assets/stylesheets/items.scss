@@ -108,6 +108,7 @@
           &__explain{
             margin-top: 40px;
             display: flex;
+            vertical-align: top;
             }
             .textarea-default{
               width: 100%;
@@ -126,9 +127,9 @@
           border-top: 1px solid #eee;
           position: relative;
           display: flex;
-          height: 250px;
+          // height: 250px;
           &__section{
-            height: 92px;
+            // height: 92px;
             margin: 0;
             width: calc(100% - 400px);
             }
@@ -139,7 +140,7 @@
               font-weight: bold;
             }
           &__selection{
-            height: 92px;
+            // height: 92px;
             margin: 0;
             float: right;
             &__category{
@@ -153,6 +154,7 @@
             &__select{
               margin-top: 8px;
               width: 400px;
+              margin-bottom: 40px;
               select{
                 width: 400px;
                 height: 45px;
@@ -167,6 +169,19 @@
               label{
                 font-size: 14px;
                 font-weight: bold;
+              }
+            }
+            &__input {
+              margin-bottom: 40px;
+              input{
+                width: 100%;
+                margin: 8px 0 0;
+                height: 48px;
+                padding: 10px 16px 8px;
+                border-radius: 4px;
+                border: 1px solid #ccc;
+                line-height: 1.5;
+                font-size: 16px;
               }
             }
           }
@@ -191,7 +206,7 @@
             }
         }
         &__price{
-          margin: 105px 0 0 0;
+          // margin: 105px 0 0 0;
           border-top: 1px solid #eee;
           padding: 40px;
           display: flex;
@@ -238,7 +253,9 @@
               &__right{
                 width: 50%;
                 text-align: right;
-                .input-default{
+                display: flex;
+                align-items: center;
+                input{
                   width: 150px;
                   margin: 8px 0 0 6px;
                   height: 48px;
@@ -255,8 +272,10 @@
               border-top: 1px solid #eee;
               margin-top: 20px;
               padding-top: 10px;
-              height: 80px;
+              // height: 80px;
               line-height: 60px;
+              display: flex;
+              justify-content: space-between;
               p{
                 font-size: 14px;
               }
@@ -265,6 +284,8 @@
               border-top: 1px solid #eee;
               padding-top: 25px;
               font-weight: bold;
+              display: flex;
+              justify-content: space-between;
             }
           }
         }
@@ -299,3 +320,7 @@
       }
     }
   }
+
+.categorys-select {
+  margin-bottom: 8px;
+}

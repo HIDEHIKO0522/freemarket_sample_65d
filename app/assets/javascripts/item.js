@@ -11,12 +11,11 @@ $(function() {
                 </select>`
     return html;
   };
-  $('.category__large').change(function() {
-    var category_id = $('.category__large option:selected').val();
-    if (category_id == "") {
-      $('.category__middle').empty();
-      $('.category__small').empty();
-    } else {
+  $('#large-category').change(function() {
+    var category_id = $('#large-category option:selected').val();
+    $('#middle-category').empty();
+    $('#small-category').empty();
+    if (category_id != "") {
       $.ajax({
         type: 'GET',
         url: '/items/category',
@@ -25,7 +24,7 @@ $(function() {
       })
       .done(function(params) {
         var html = buildHTML(params);
-        $('.category__middle').append(html);
+        $('#middle-category').append(html);
       })
       .fail(function() {
         alert('error');
@@ -33,11 +32,10 @@ $(function() {
     }
   });
 
-  $('.category__middle').change(function() {
-    var category_id = $('.category__middle option:selected').val();
-    if (category_id == "") {
-      $('.category__small').empty();
-    } else {
+  $('#middle-category').change(function() {
+    var category_id = $('#middle-category option:selected').val();
+    $('#small-category').empty();
+    if (category_id != "") {
       $.ajax({
         type: 'GET',
         url: '/items/category',
@@ -46,7 +44,7 @@ $(function() {
       })
       .done(function(params) {
         var html = buildHTML(params);
-        $('.category__small').append(html);
+        $('#small-category').append(html);
       })
       .fail(function() {
         alert('error');
@@ -55,15 +53,18 @@ $(function() {
   });
 
   //販売手数料、販売利益
-  $('.price input').on('keyup', function() {
+  function separate(num){
+    return String(num).replace( /(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
+  };
+  $('#price-input input').on('keyup', function() {
     var tax = Math.floor($(this).val() * 0.1);
     var profit = Math.floor($(this).val() - tax);
-    if ($(this).val() < 300 || $(this).val() > 9999999) {
-      $('.tax').text('-');
-      $('.profit').text('-');
+    if ($(this).val() >= 300 && $(this).val() <= 9999999) {
+      $('#tax').text(separate(tax));
+      $('#profit').text(separate(profit));
     } else {
-      $('.tax').text(tax);
-      $('.profit').text(profit);
+      $('#tax').text('-');
+      $('#profit').text('-');
     }
   });
 });
