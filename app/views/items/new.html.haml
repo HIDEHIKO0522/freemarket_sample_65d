@@ -10,9 +10,15 @@
           .sell-form
             = form_for @item do |f|
               .sell-form__upload
-                %h3 出品画像
-                %h6 必須
-                = f.file_field :item_images, multiple: true
+                .sell-form__upload__title
+                  %h3 出品画像
+                  %h6 必須
+                .sell-form__upload__comment
+                  %p 最大10枚までアップロードできます
+                = f.label :item_images, class: "sell-form__upload__label" do
+                  .sell-form__upload__label__files
+                    %p クリックしてファイルをアップロード
+                    = f.file_field :item_images, multiple: true
               .sell-form__content
                 .sell-form__content__name
                   %label 商品名

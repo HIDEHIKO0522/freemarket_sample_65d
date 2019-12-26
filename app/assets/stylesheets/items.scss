@@ -33,24 +33,46 @@
       .sell-form{
         border-top: 1px solid #eee;
         &__upload{
-          width: 620px;
-          padding: 40px 40px 0 40px;
-          display: flex;
-          h3{
-            font-size: 16px;
-            font-weight: bold;
+          // width: 620px;
+          padding: 40px;
+          &__title {
+            display: flex;
+            h3{
+              font-size: 16px;
+              font-weight: bold;
+            }
+            h6{
+              background-color: #ea352d;
+              margin: 0 0 0 8px;
+              padding: 2px 4px;
+              border-radius: 2px;
+              color: #fff;
+              font-size: 12px;
+              vertical-align: top;
+              width: 32px;
+              text-align: center;
+              font-weight: bold;
+            }
           }
-          h6{
-            background-color: #ea352d;
-            margin: 0 0 0 8px;
-            padding: 2px 4px;
-            border-radius: 2px;
-            color: #fff;
-            font-size: 12px;
-            vertical-align: top;
-            width: 32px;
-            text-align: center;
-            font-weight: bold;
+          &__comment {
+            margin-top: 8px;
+            font-size: 14px;
+            color: rgb(51, 51, 51);
+          }
+          &__label {
+            display: block;
+            height: 160px;
+            width: 100%;
+            background-color: rgb(245, 245, 245);
+            border: 1px dashed #ccc;
+            position: relative;
+            &__files {
+              text-align: center;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+            }
           }
         }
         &__box{
