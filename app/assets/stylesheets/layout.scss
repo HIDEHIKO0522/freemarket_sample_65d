@@ -353,12 +353,24 @@ iconconnfig{
         display: flex;
         margin: -10px;
         flex-wrap: wrap;
-        
+      
+
         &__eachdetails{
 
-          width: 20%;
-          padding: 10px;
 
+          @media screen and (min-width:0px){
+
+            width: 33.3333%;
+            padding: 3px;
+            
+          }
+
+          @media screen and (min-width:768px){
+            
+              width: 20%;
+              padding: 10px;
+            
+          }
         }
 
       }
@@ -444,82 +456,161 @@ footer{
   padding: 0px 20px 10px;
 
   &__flame{
-    width: 1020px;
-    margin: 0px auto;
+    
+    
+    @media screen and (max-width:1068px){
 
+      width: 700px;
+      margin: 0px auto;
 
-    &__style-heading
-    {
-
-      font-weight: 600;
-      line-height: 1.4em;
-      margin: 0;
-      padding: 0;
-      display: flex;
-   
-      &__upperleft-block
+      &__style-heading
       {
-        display: inline-block;
-        margin-top: 18px;
-        vertical-align: top;
-        // width: 50%;
-        padding-right: 10px;
-       
-      }
-  
-      &__upperright-block
-      {
-        display: inline-block;
-        margin-top: 18px;
-        vertical-align: top;
-        // width: 50%;
-        padding: 0px 10px;
-        
-      }
-  
-  
-      &__lower-block
-      {
-        margin-top: 18px;
-        padding-right: 40px;
-        width: 43%;
-
-
-        &__left-block{
-
+        flex-wrap: wrap;
+        display: flex;
+        &__upperleft-block
+        {
           display: inline-block;
+          margin-top: 18px;
+          vertical-align: top;
+          width: 50%;
+          padding: 0px 10px;
+         
+        }
+    
+        &__upperright-block
+        {
+          display: inline-block;
+          margin-top: 18px;
+          vertical-align: top;
+          width: 50%;
+          padding: 0px 10px;
+          
+        }
+    
+    
+        &__lower-block
+        {
+          margin-top: 18px;
+          padding-right: 40px;
+          width: 100%;
+  
+  
+          &__left-block{
+  
+            display: inline-block;
+            padding-right: 10px;
+            vertical-align: top;
+            width: 50%;
+            float: left;
+          }
+  
+          &__right-block{
+            display: inline-block;
+            padding-left: 10px;
+            vertical-align: top;
+            width: 50%;
+            float: right;
+          }
+  
+  
+  
+        }
+  
+        &__country{
+          margin-top: 18px;
+          width: 100%;
+        }
+  
+  
+      }
+  
+    }
+    
+
+    @media screen and (min-width:1068px){
+            
+      width: 1020px;
+      // margin: 0px auto;
+    
+      &__style-heading
+      {
+  
+        font-weight: 600;
+        line-height: 1.4em;
+        margin: 0;
+        padding: 0;
+        display: flex;
+     
+        &__upperleft-block
+        {
+          display: inline-block;
+          margin-top: 18px;
+          vertical-align: top;
+          // width: 50%;
           padding-right: 10px;
-          vertical-align: top;
-          width: 50%;
-          float: left;
+         
         }
-
-        &__right-block{
+    
+        &__upperright-block
+        {
           display: inline-block;
-          padding-left: 10px;
+          margin-top: 18px;
           vertical-align: top;
-          width: 50%;
-          float: right;
+          // width: 50%;
+          padding: 0px 10px;
+          
         }
-
-
-
+    
+    
+        &__lower-block
+        {
+          margin-top: 18px;
+          padding-right: 40px;
+          width: 43%;
+  
+  
+          &__left-block{
+  
+            display: inline-block;
+            padding-right: 10px;
+            vertical-align: top;
+            width: 50%;
+            float: left;
+          }
+  
+          &__right-block{
+            display: inline-block;
+            padding-left: 10px;
+            vertical-align: top;
+            width: 50%;
+            float: right;
+          }
+  
+  
+  
+        }
+  
+        &__country{
+          margin-top: 18px;
+          width: auto;
+        }
+  
+  
       }
+  
+  
 
-      &__country{
-        margin-top: 18px;
-        width: auto;
-      }
 
 
     }
 
 
     &__logo{
-
+  
       margin: 30px auto 20px;
 
     }
+
 
   }
 
