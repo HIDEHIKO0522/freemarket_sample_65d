@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @item.status = "出品中"
     if @item.valid? && item_images[:item_images] != nil
       @item.save
       item_images[:item_images].each do |image|
@@ -13,6 +14,7 @@ class ItemsController < ApplicationController
       end
       redirect_to item_path @item
     else
+      @categorys = Category.where(ancestry: nil)
       render :new
     end
   end
@@ -32,7 +34,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:name, :comment, :category_id, :condition, :brand, :size, :price, :arrival_date, :charge, :location, :delivery).merge(seller_id: current_user.id, status: "出品中")
+    params.require(:item).permit(:name, :comment, :category_id, :condition, :brand, :size, :price, :arrival_date, :charge, :location, :delivery).merge(seller_id: current_user.id)
   end
 
   def item_images
