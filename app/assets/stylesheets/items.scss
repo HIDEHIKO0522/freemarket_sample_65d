@@ -33,7 +33,6 @@
       .sell-form{
         border-top: 1px solid #eee;
         &__upload{
-          // width: 620px;
           padding: 40px;
           &__title {
             display: flex;
@@ -149,9 +148,7 @@
           border-top: 1px solid #eee;
           position: relative;
           display: flex;
-          // height: 250px;
           &__section{
-            // height: 92px;
             margin: 0;
             width: calc(100% - 400px);
             }
@@ -162,7 +159,6 @@
               font-weight: bold;
             }
           &__selection{
-            // height: 92px;
             margin: 0;
             float: right;
             &__category{
@@ -228,7 +224,6 @@
             }
         }
         &__price{
-          // margin: 105px 0 0 0;
           border-top: 1px solid #eee;
           padding: 40px;
           display: flex;
@@ -294,7 +289,6 @@
               border-top: 1px solid #eee;
               margin-top: 20px;
               padding-top: 10px;
-              // height: 80px;
               line-height: 60px;
               display: flex;
               justify-content: space-between;

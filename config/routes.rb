@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     collection do
       get 'logout'
+      get 'profile'
     end
   end
   get 'users/identification(/:id)', to: 'users#identification', as: :user_identification
