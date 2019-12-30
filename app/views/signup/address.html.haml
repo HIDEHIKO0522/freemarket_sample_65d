@@ -1,0 +1,36 @@
+.signup-container
+  %h2.signup-header 会員情報入力
+  .registration-form
+
+    = form_for @address, url: address_signup_index_path,method: :post do |f|
+      .signup-form-container.registration-form__first-container
+        .signup-form-container__title
+          = label :postal_code, '郵便番号', class: 'signup-label'
+          = f.text_field :postal_code, placeholder: '例）123-4567'
+      .signup-form-container
+        .signup-form-container__title
+          = label :prefectures, '都道府県', class: 'signup-label'
+          = f.text_field :prefectures, placeholder: '岩手県'
+      .signup-form-container
+        .signup-form-container__title
+          = label :city, '市町村', class: 'signup-label'
+          = f.text_field :city,placeholder: '盛岡市青山'  
+      .signup-form-container
+        .signup-form-container__title
+          = label :house_number, '番地', class: 'signup-label'
+          = f.text_field :house_number,placeholder: '1-11-1'  
+      .signup-form-container
+        .signup-form-container__title
+          = label :building, '建物名', class: 'signup-label'
+          = f.text_field :building,placeholder: '大野ビル3F'  
+      .signup-form-container
+        .signup-form-container__title
+          = label :phone_number, '電話番号', class: 'signup-label'
+          = f.text_field :phone_number,placeholder: '08011112222'   
+      .signup-form-container
+        .signup-form-container__title
+          = label :type, '住所区分', class: 'signup-label'
+          = f.text_field :type,placeholder: '登録先が送付先：1、送付先は別：2'          
+
+     
+        = link_to "次へ進む", card_signup_index_path   

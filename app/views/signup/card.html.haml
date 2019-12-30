@@ -1,0 +1,29 @@
+- content_for(:html_title) {'会員情報入力'}
+-# = render partial: 'signup-header1'
+.signup-container
+  %h2.signup-header 会員情報入力
+  .registration-form
+
+    = form_for @card, url: card_signup_index_path,method: :post do |f|
+      .signup-form-container.registration-form__first-container
+        .signup-form-container__title
+          = label :type, 'カード区分', class: 'signup-label'
+          = f.text_field :type, placeholder: '例）VISA:1, master:2, JCB:3'
+        .signup-form-container__title
+          = label :number, 'カード番号', class: 'signup-label'
+          = f.text_field :number, placeholder: '例）123456789123456'
+      .signup-form-container
+        .signup-form-container__title
+          = label :expiration_month, '有効期限（月）', class: 'signup-label'
+          = f.text_field :expiration_month, placeholder: '01'
+      .signup-form-container
+        .signup-form-container__title
+          = label :expiration_year, '有効期限（年）', class: 'signup-label'
+          = f.text_field :expiration_year, placeholder: '19'
+      .signup-form-container
+        .signup-form-container__title
+          = label :security_code, 'セキュリティコード', class: 'signup-label'
+          = f.text_field :security_code, placeholder: 'カード背面4桁もしくは3桁の番号'
+        
+      -# = f.submit '次へ進む'   
+      = link_to "次へ進む", done_signup_index_path 

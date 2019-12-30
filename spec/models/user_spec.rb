@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe User do
   describe '#create' do
-    # nicknameとemail、passwordとpassword_confirmationが存在すれば登録できること
-    it "is valid with a nickname, email, password, password_confirmation" do
+    # nickname, email, password, password_confirmation, family_name, first_name, family_name_kana, first_name_kana, birthyear, birthmonth, birthdayが存在すれば登録できること
+    it "is valid with a nickname, email, password, password_confirmation, family_name, first_name, family_name_kana, first_name_kana, birthyear, birthmonth, birthday," do
       user = build(:user)
       expect(user).to be_valid
     end
@@ -100,11 +100,12 @@ describe User do
       user.valid?
       expect(user.errors[:tel]).to include("can't be blank")
     end
-
-    it "is valid with a nickname, email, password, password_confirmation" do
-      user = build(:user)
-      expect(user).to be_valid
+    #passwordが存在してもpassword_confirmationが空では登録できないこと
+    it "is invalid without a password_confirmation although with a password" do
+      user = build(:user, password_confirmation: "")
+      user.valid?
+      expect(user.errors[:password_confirmation]).to include("doesn't match Password")
     end
-
   end
+
 end

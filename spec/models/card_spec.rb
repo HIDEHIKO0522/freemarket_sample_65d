@@ -32,5 +32,6 @@ describe Card do
       card.valid?
       expect(card.errors[:expiration_year]).to include("can't be blank")
     end
+
   end
 end

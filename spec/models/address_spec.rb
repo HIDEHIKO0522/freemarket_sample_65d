@@ -28,7 +28,7 @@ describe Address do
     end
     # typeが空では登録できないこと
     it "is invalid without a type" do
-      address = build(:user, type: "")
+      address = build(:address, type: "")
       address.valid?
       expect(address.errors[:type]).to include("can't be blank")
     end
