@@ -9,6 +9,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def new
+    @user = User.new
+    render layout: false
+  end
+
   # POST /resource
   # def create
   #   super
