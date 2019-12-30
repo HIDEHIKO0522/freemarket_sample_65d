@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @categorys = Category.where(ancestry: nil)
+    @prefectures = Prefecture.all
   end
 
   def create
@@ -15,6 +16,7 @@ class ItemsController < ApplicationController
       redirect_to item_path @item
     else
       @categorys = Category.where(ancestry: nil)
+      @prefectures = Prefecture.all
       render :new
     end
   end

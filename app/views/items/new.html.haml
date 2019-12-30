@@ -76,7 +76,7 @@
                     %label 発送元の地域
                     %h6 必須
                   .sell-form__detail__selection__select
-                    = f.select :location, ["北海道", "沖縄"], prompt: "---"
+                    = f.select :location, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), prompt: "---"
                   .sell-form__detail__selection__status
                     %label 発送までの日数
                     %h6 必須

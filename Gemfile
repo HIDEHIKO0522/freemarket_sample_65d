@@ -84,3 +84,4 @@ gem 'erb2haml'
 
 gem 'ancestry'
 gem 'jquery-rails'
+gem 'active_hash'
