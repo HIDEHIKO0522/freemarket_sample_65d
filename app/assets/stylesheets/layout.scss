@@ -1,18 +1,50 @@
-// 共通クラス
+//@共通クラス
 
 
 
-//全てに適用
+//@全てに適用
 * {
   box-sizing: border-box;
 }
+
+img:hover {
+  // opacity: 0.5; /* 25％ほど透明にする */
+  
+}
+
 
 .disablelinklinecolor{
   text-decoration: none;
   color: black;
 }
 
+.disablelinklinecolor:hover{
+  color: #10e0fc;
+}
 
+.listspace{
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  line-height: 1.4em;
+  margin: 16px 0px 0px;
+}
+
+
+.iconspace{
+  display: inline-block;
+  margin-top: 30px;
+}
+
+iconspace-rightslide{
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+  width: 30px;
+  margin-right: 20px;
+}
+
+
+//@ヘッダー
 .header {
   background-color: rgb(255, 255, 255);
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
@@ -22,7 +54,7 @@
 
   &__flame {
 
-    width: 700px;
+   width: 1020px;
     margin: 0px auto;
     padding: 8px 0px 0px;
 
@@ -108,11 +140,8 @@
           padding-right:10px;
 
           &_icon {
-            max-width: 100%;
-            max-height: 100%;
-            color: rgb(234, 53, 45);
-            height: 12px;
-            margin-right: 4px;
+            
+            
             }
 
 
@@ -127,7 +156,7 @@
             cursor: pointer;
             height: 44px;
             position: relative;
-            z-index: 3;
+            // z-index: 3;
             display: flex;
             padding-left:10px;
 
@@ -145,275 +174,370 @@
         display: flex;
         position: relative;
 
-        &__notification  {
-           
+       
+        &__eachblock{
+          padding: 0px 14px;
+          height: 44px;
+          display: flex;
+          
+          &__category{
+            -webkit-box-align: center;
+            align-items: center;
+            display: flex;
+            font-size: 14px;
+            height: 32px;
+            // transform: scale(1);
+            // transition: all 0.3s ease-out 0s;
+          
+          }
         }
-        &__task  {
-           
-        }
-        &__mypage  {
-           
-        }
+      }
+    }
+  }
+}
+
+
+iconconnfig{
+
+  max-width: 100%;
+  max-height: 100%;
+  color: rgb(234, 53, 45);
+  height: 12px;
+  margin-right: 4px;
+
+}
+
+//@アプリ紹介
+.applicationintroduction{
+  width: 100%;
+  height: 390px;
+  margin: 0px auto;
+  background-color: rgb(120, 131, 114);
+  
+  &__image{
+    height: 390px;
+    width: 440px;
+    background-color: burlywood;
+    float: right;
+  }
+
+  &__flame
+  {
+    
+    -webkit-box-align: center;
+    align-items: center;
+    max-width: 860px;
+    position: relative;
+    padding: 20px 40px;
+    // display: flex;
+    &__block
+    {
+      
+      width: 100%;
+      padding: 20px 40px;
+
+      &__top{
+        font-size: 60px;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-bottom: 16px;
+      }
+      &__middle{
+        font-size: 18px;
+        line-height: 1.77777;
+        margin-bottom: 24px;
+      }
+      &__under{
 
       }
 
 
     }
+
+
   }
+
+}
+
+//@カテゴリー紹介
+.categoryonintroduction{
+  
+  padding: 56px 0px 30px;
+  background-color: rgb(255, 255, 255);
+  position: relative;
+  top: 0px;
+  width: 100vw;
+  text-align: center;
+
+  &__title{
+    margin-bottom: 16px;
+    font-size: 28px;
+   
+  }
+
+  &__details{
+
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+
+    &__block{
+
+      display: block;
+      text-align: center;
+      width: 100%;
+      margin: -10px 0px 0px -10px;
+
+      &__listgoods{
+        margin: 10px 0px 0px 10px;
+        background-color: rgb(239, 239, 239);
+        cursor: pointer;
+        display: inline-block;
+        font-size: 14px;
+        font-weight: 600;
+        border-radius: 15px;
+        padding: 8px 16px;
+
+
+
+
+
+      }
+        
+    }
+   
+  }
+ 
+
 
 }
 
 
 
 
-// // #region
+//@商品実装(仮想)
+.imagebody{
+  width: 100%;
+  // height: 300px;
+  margin: 0px auto;
+  background-color: rgb(211, 50, 58);
 
-// .sample{
-//   color: #ffffff;
-// }
+  &__flame{
+    padding: 42px 0px 100px;
+    &__block{
 
-// ::-webkit-scrollbar {
-//   display: none;
-// }
+      &__sample{
+        margin-bottom: 16px;
+        align-items: flex-end;
+        display: flex;
+        -webkit-box-pack: justify;
+        justify-content: space-between;
+        padding: 0 100px;
 
-// p{
-//   color: #ffffff;
-  
-// }
-// b{
-  
-// }
+        &__text{
+          font-size: 24px;
+        }
+        &__details{
+          
+        }
+      }
+    }
 
-// * {
-//   box-sizing: border-box;
-//   text-decoration: none;
-// }
+    &__itemslists{
+      // display: flex;
+      flex-wrap: wrap;
+      padding: 0 100px;
 
+      &__block{
 
-// a{
-//   color: #38aef0;
-// }
+        display: flex;
+        margin: -10px;
+        flex-wrap: wrap;
+        
+        &__eachdetails{
 
-// // #endregion
+          width: 20%;
+          padding: 10px;
 
-// //wrapper
+        }
 
-// .wrapper{
-
-//   display: flex;
-// }
-
-// // main
-
-// .chat-main{
-
-//   width: calc(100vw - 300px);
-//   float: left;
-// }
-
-// .main-header{
-
-//   height: 100px;
-//   padding: 0 40px;
-//   display: flex;
-//   justify-content: space-between;
-//   border-bottom: solid 1px #eee;
-//   overflow: scroll;
-
-//   &__left-box {
-
-//     margin-top: 35px;
+      }
     
-//     &__current-group {
-//       font-size: 20px;
-//       color: #333;
-//       margin-bottom: 15px;
-//       }
+    }
 
-//     &__member-list{
-//       display: flex;
-//       font-size: 12px;
-//       color: #999999;
-//     }
-
-//   }
-
-//   &__edit-btn{
-//     height: 40px;
-//     line-height: 40px;
-//     padding: 0 20px;
-//     margin-top: 30px;
-//     color: #38aef0;
-//     border: solid 1px #38aef0;
-//     position: absolute;
-//     right: 40px;
-
-//   }
-
-// }
-
-// .messages{
-
-//   height: calc(100vh - 190px);
-//   padding: 46px 40px;
-//   background-color: #fafafa;
-//   overflow: scroll; //今は使用しない
-
-// }
-
-// .message{
-
-//   padding-bottom: 40px;
-
-//   &__upper-info{
-
-//     display: flex;
-//     margin-bottom: 10px;
-
-//   }
-//   &__upper-info__talker{
-
-//     color: #434a54;
-//     font-size: 16px;
-//     font-weight: bold;
-
-//   }
-
-//   &__upper-info__date{
-
-//     color: #999999;
-//     font-size: 12px;
-//     margin-left: 10px;
-
-//   }
-
-//   &__text{
-
-//     color: #434a54;
-//     font-size: 14px;
-//     margin-bottom: 10px;
-
-//   }
-
-// }
-
-// .formBar{
-
-//   height: 90px;
-//   padding: 20px 40px;
-//   background-color: #ddd;
-
-// }
-
-// formBar{
-//   display: flex;
-// }
-
-// .input-box{
-
-//   position: relative;
-//   width: 100%;
-
-//   &__text{
-//     height: 50px;
-//     width: 100%;
-//     padding: 0 40px 0 10px;
-//     color: #434a54;
-//     border-style: none;
-//   }
-
-//   &__image{
-
-//     font-size: 1.3rem;
-//     position: absolute;
-//     top: 10px;
-//     right: 10px;
-//     cursor: pointer;
-
-//     &__file{
-//       display: none;
-//     }
-//   }
-// }
-
-
-// .submit-btn {
-//   width: 100px;
-//   height: 50px;
-//   padding: 0 30px;
-//   margin-left: 15px;
-//   background-color: #38aef0;
-//   color: white;
-//   cursor: pointer;
-// }
-
-
-
-
-
-
-// // side
-
-
-// //side側の大元
-// .chat-side{
-//   width: 300px;
-//   color: white;
-//   float: left;
-  
-
-// }
-
-// .side-header {
-  
-//   background-color: #253141;
-//   height: 100px;
-//   display: flex;
-//   align-items: center;
-//   padding: 0 20px;
-
-//   &__box{
-//     display: flex;
-//     justify-content: space-between;
-//     width: 100%;
-//     font-weight: bold;
-
-//     &__menu{
-//       display: flex;
-//     }
-
-//   }
-
-
-  
-// }
-
-// .new_message{
-
-//   display: flex;
-// }
-
-// .groups {
-//   width: 300px;
-//   height: calc(100vh - 100px);
-//   background-color: #2f3e51;//背景色
-//   color: #ffffff;
-//   padding: 20px 20px 0;
-
-// }
-
-// .group {
-  
-//   width: 260px;
-//   // height: 35px;//高さ
-//   margin-bottom: 40px;
-  
-//   &__group-name{
-//     font-size: 15px;
-//     margin-bottom: 5px;
     
-//   }
-//   &__latest-message{
-//     font-size: 11px;
-//   }
-// }
+  }
+  
+
+}
+
+
+
+//紹介
+aside{
+  width: 100%;
+  height: 260px;
+  margin: 0px auto;
+  background-color: blue;
+  
+
+}
+
+.aside__flame{
+
+  display: flex;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  width: 750px;
+  margin: 0px auto;
+
+  &__left-block{
+
+    display: flex;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    justify-content: center;
+    
+    &__upper-row{
+
+      color: rgb(255, 255, 255);
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 15px;
+
+    }
+
+    &__middle-row{
+      
+      color: rgb(255, 255, 255);
+      font-size: 35px;
+      margin-bottom: 20px;
+      
+    }
+
+    &__under-row{
+
+      
+    }
+  }
+
+  &__right-block{
+
+    height: 260px;
+    width: 300px;
+    background-color: rgb(49, 207, 160);
+  }
+
+
+}
+
+//@フッター
+footer{
+
+}
+
+.footersetting{
+
+  background-color: rgb(34, 34, 34);
+  color: rgb(255, 255, 255);
+  font-size: 12px;
+  padding: 0px 20px 10px;
+
+  &__flame{
+    width: 1020px;
+    margin: 0px auto;
+
+
+    &__style-heading
+    {
+
+      font-weight: 600;
+      line-height: 1.4em;
+      margin: 0;
+      padding: 0;
+      display: flex;
+   
+      &__upperleft-block
+      {
+        display: inline-block;
+        margin-top: 18px;
+        vertical-align: top;
+        // width: 50%;
+        padding-right: 10px;
+       
+      }
+  
+      &__upperright-block
+      {
+        display: inline-block;
+        margin-top: 18px;
+        vertical-align: top;
+        // width: 50%;
+        padding: 0px 10px;
+        
+      }
+  
+  
+      &__lower-block
+      {
+        margin-top: 18px;
+        padding-right: 40px;
+        width: 43%;
+
+
+        &__left-block{
+
+          display: inline-block;
+          padding-right: 10px;
+          vertical-align: top;
+          width: 50%;
+          float: left;
+        }
+
+        &__right-block{
+          display: inline-block;
+          padding-left: 10px;
+          vertical-align: top;
+          width: 50%;
+          float: right;
+        }
+
+
+
+      }
+
+      &__country{
+        margin-top: 18px;
+        width: auto;
+      }
+
+
+    }
+
+
+    &__logo{
+
+      margin: 30px auto 20px;
+
+    }
+
+  }
+
+
+}
+
+//@カメラ
+.exhibitioncamera
+{
+  
+  bottom: 32px;
+  font-size: 22px;
+  height: 160px;
+  right: 32px;
+  width: 160px;
+
+  position: fixed;
+  right: 0;
+}
+
+
