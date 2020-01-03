@@ -40,7 +40,7 @@
 
     .main
       .main__text
-        新規会員登録
+        会員情報入力
       .main__form
         = form_for @user, url: registration_signup_index_path, meghod: :post do |f|
           .main__form__group
@@ -60,7 +60,7 @@
                 = f.check_box :password, {id: 'reveal-password', class: 'checkbox'}, true, false
                 = f.label :password, 'パスワードを表示する', for: "reveal-password"
           .main__form__group
-            %h3(style="font-weight: bold") 本人確認
+            %h3 本人確認
             %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
           .main__form__group
             = f.label 'お名前（全角）', class: 'main__form__group__label', for: "user_family_name"
