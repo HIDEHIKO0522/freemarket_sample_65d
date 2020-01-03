@@ -1,7 +1,7 @@
 商品ページ
 %p #{@item.name}
 - @item.item_images.each do |item_image|
-  %img(src="#{item_image.image.url}" width="100")
+  = image_tag item_image.image.url, width: "100"
 %p #{@item.price}円
 %p #{@item.seller.email}
 %p #{@item.category.name}
