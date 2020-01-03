@@ -3,12 +3,12 @@ class SignupController < ApplicationController
   # layout 'form_layout'
 
   def index
-    render :layout => false
+    render layout: false
   end
   
   def registration
     @user = User.new
-    render :layout => false
+    render layout: false
   end
 
 
@@ -57,7 +57,7 @@ class SignupController < ApplicationController
 
   def sms_authentication
    @sms = User.new
-   render :layout => false
+   render layout: false
   end
 
   def sms_validation
@@ -81,7 +81,7 @@ class SignupController < ApplicationController
 
   def address
     @address = Address.new
-    render :layout => false
+    render layout: false
   end  
   
   def address_validation
@@ -120,7 +120,7 @@ class SignupController < ApplicationController
 
   def card
     @card = Card.new
-    render :layout => false
+    render layout: false
   end  
 
   def card_validation
@@ -221,7 +221,7 @@ end
     # end
     # # deviseのメソッドを使ってログイン
     # sign_in User.find(session[:id])
-    render :layout => false
+    render layout: false
   end
 
 
