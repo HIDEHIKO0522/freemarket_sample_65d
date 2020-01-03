@@ -1,16 +1,78 @@
-商品ページ
-%p #{@item.name}
-- @item.item_images.each do |item_image|
-  = image_tag item_image.image.url, width: "100"
-%p #{@item.price}円
-%p #{@item.seller.email}
-%p #{@item.category.name}
-%p #{@item.brand}
-%p #{@item.condition}
-%p #{@item.charge}
-%p #{@item.delivery}
-%p #{@item.location}
-%p #{@item.arrival_date}
-%p #{@item.price}円
-%p #{@item.comment}
-%p #{@item.status}
+.item-show-wrapper
+  .item-show-container
+    .item-show-container__item
+      .item-show-container__item__head
+        %p #{@item.name}
+      .item-show-container__item__info
+        .item-show-container__item__info__images
+          - @item.item_images.each do |item_image|
+            = image_tag item_image.image.url, width: "100"
+        %table.item-show-container__item__info__table
+          %tr
+            %th 出品者
+            %td
+              .item-show-container__item__info__table__seller-name
+                = link_to "ユーザー名", "#"
+              .item-show-container__item__info__table__seller-evaluation
+                評価
+          %tr
+            %th カテゴリー
+            %td
+              = link_to @item.category.parent.parent.name, "#"
+              = link_to "> #{@item.category.parent.name}", "#"
+              = link_to "> #{@item.category.name}", "#"
+          %tr
+            %th ブランド
+            %td
+              = link_to @item.brand, "#"
+          %tr
+            %th 商品のサイズ
+            %td #{@item.size}
+          %tr
+            %th 商品の状態
+            %td #{@item.condition}
+          %tr
+            %th 配送料の負担
+            %td #{@item.charge}
+          %tr
+            %th 配送の方法
+            %td #{@item.delivery}
+          %tr
+            %th 配送元地域
+            %td
+              = link_to @item.location, "#"
+          %tr
+            %th 発送日の目安
+            %td #{@item.arrival_date}
+      .item-show-container__item__price
+        %span.item-show-container__item__price__price> ¥#{@item.price}
+        %span.item-show-container__item__price__tax> （税込）
+        %span.item-show-container__item__price__charge> 送料込み
+      .item-show-container__item__buy
+        =link_to "購入画面に進む", "#"
+      .item-show-container__item__comment
+        = simple_format(@item.comment)
+      .item-show-container__item__button
+        .item-show-container__item__button__left
+          .item-show-container__item__button__left__icon-btn
+            %i.far.fa-heart
+            %span.item-show-container__item__button__left__icon-btn__span> いいね!
+            %span.item-show-container__item__button__left__icon-btn__span> 5
+            = link_to "", "#", class: "item-show-container__item__button__left__icon-btn__link"
+          .item-show-container__item__button__left__icon-btn
+            %i.far.fa-flag
+            %span.item-show-container__item__button__left__icon-btn__span> 不適切な商品の報告
+            = link_to "", "#", class: "item-show-container__item__button__left__icon-btn__link"
+        .item-show-container__item__button__right
+          .item-show-container__item__button__right__icon-btn
+            %i.fas.fa-unlock-alt
+            %span.item-show-container__item__button__right__icon-btn__span> あんしん・あんぜんへの取り組み
+            = link_to "", "#", class: "item-show-container__item__button__right__icon-btn__link"
+  .item-show-container
+    .item-show-container__comment
+      .item-show-container__comment__comments
+      .item-show-container__comment__notice
+        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+      %textarea.item-show-container__comment__text
+      .item-show-container__comment__submit
+        = link_to "コメントする", "#"
