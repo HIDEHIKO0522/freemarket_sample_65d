@@ -109,4 +109,4 @@
                 %p またブランド品でシリアルナンバー等がある場合はご記載下さい。偽ブランドの販売は犯罪であり処罰される可能性があります。
                 %p また、出品をもちまして加盟店規約に同意したことになります。
                 = f.submit "登録する", class: "submit-btn"
-                %input{:type => "submit", :value => "もどる", class: "return-btn"}
+                = link_to "もどる", :back, class: "return-btn"
