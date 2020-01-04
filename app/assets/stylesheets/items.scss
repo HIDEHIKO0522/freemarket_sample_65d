@@ -482,5 +482,35 @@
         }
       }
     }
+    &__comment {
+      &__comments {
+
+      }
+      &__notice {
+        background-color: #fff6de;
+        padding: 8px;
+        font-size: 14px;
+        color: rgb(51, 51, 51);
+        line-height: 14px;
+      }
+      &__text {
+        padding: 10px;
+        margin-top: 8px;
+        width: 100%;
+        border: 1px solid rgb(204, 204, 204);
+      }
+      &__submit {
+        height: 50px;
+        width: 100%;
+        line-height: 50px;
+        text-align: center;
+        font-size: 14px;
+        background-color: #aaa;
+        margin-top: 8px;
+        a {color: white;
+          text-decoration: none;
+        }
+      }
+    }
   }
 }
