@@ -76,3 +76,17 @@
       %textarea{rows: 3, class: "item-show-container__comment__text"}
       .item-show-container__comment__submit
         = link_to "コメントする", "#"
+  .item-show-link
+    .item-show-link__left
+      = link_to "< 前の商品", "#"
+    .item-show-link__right
+      = link_to "次の商品 >", "#"
+  .item-show-container
+    .item-show-container__media
+      .item-show-container__media__icons
+        = link_to "#" do
+          %i.fab.fa-facebook-square.fa-3x.icon-facebook.item-show-container__media__icons__icon
+        = link_to "#" do
+          %i.fab.fa-twitter-square.fa-3x.icon-twitter.item-show-container__media__icons__icon
+        = link_to "#" do
+          %i.fab.fa-line.fa-3x.icon-line.item-show-container__media__icons__icon
