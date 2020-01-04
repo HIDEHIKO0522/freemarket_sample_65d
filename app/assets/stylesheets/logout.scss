@@ -1,0 +1,16 @@
+.container__logout{
+  padding: 64px;
+  background-color: white;
+  float: right;
+  width: 700px;
+  .logout-btn{
+    background-color: #ea352d;
+    width: 350px;
+    border: 1px splid #ea352d;
+    color: white;
+    display: block;
+    font-size: 14px;
+    height: 48px;
+    margin: 0 auto;
+  }
+}

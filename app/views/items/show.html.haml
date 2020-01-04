@@ -1,0 +1,16 @@
+商品ページ
+%p #{@item.name}
+- @item.item_images.each do |item_image|
+  = image_tag item_image.image.url, width: "100"
+%p #{@item.price}円
+%p #{@item.seller.email}
+%p #{@item.category.name}
+%p #{@item.brand}
+%p #{@item.condition}
+%p #{@item.charge}
+%p #{@item.delivery}
+%p #{@item.location}
+%p #{@item.arrival_date}
+%p #{@item.price}円
+%p #{@item.comment}
+%p #{@item.status}
