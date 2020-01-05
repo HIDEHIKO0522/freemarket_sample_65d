@@ -2,7 +2,7 @@
   %h2.signup-header 会員情報入力
   .registration-form
 
-    = form_for @address, url: address_signup_index_path,method: :post do |f|
+    = form_for @address, url: "/signup/address",method: :post do |f|
       .signup-form-container.registration-form__first-container
         .signup-form-container__title
           = label :postal_code, '郵便番号', class: 'signup-label'
@@ -26,11 +26,6 @@
       .signup-form-container
         .signup-form-container__title
           = label :phone_number, '電話番号', class: 'signup-label'
-          = f.text_field :phone_number,placeholder: '08011112222'   
-      .signup-form-container
-        .signup-form-container__title
-          = label :type, '住所区分', class: 'signup-label'
-          = f.text_field :type,placeholder: '登録先が送付先：1、送付先は別：2'          
+          = f.text_field :phone_number,placeholder: '08011112222'       
 
-     
-        = link_to "次へ進む", card_signup_index_path   
+      = f.submit '次へ進む' 

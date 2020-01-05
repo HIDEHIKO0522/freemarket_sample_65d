@@ -2,11 +2,10 @@
   %h2.signup-header 会員情報入力
   .registration-form
 
-    = form_for @sms, url: sms_authentication_signup_index_path,method: :post do |f|
-      .signup-form-container.registration-form__first-container
+    = form_for @user, url: "/signup/sms_authentication",method: :post do |f|
+      .signup-form-container
         .signup-form-container__title
-        = label :tel, '携帯電話の番号', class: 'signup-label'
-        = f.text_field :tel, placeholder: '携帯電話の番号を入力'
+          = label :tel, '携帯番号', class: 'signup-label'
+          = f.text_field :tel,placeholder: '例）08011112222'   
         
-   
-    = link_to "次へ進む", address_signup_index_path
+      = f.submit '次へ進む' 

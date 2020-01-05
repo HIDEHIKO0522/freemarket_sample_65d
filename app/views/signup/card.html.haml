@@ -4,11 +4,8 @@
   %h2.signup-header 会員情報入力
   .registration-form
 
-    = form_for @card, url: card_signup_index_path,method: :post do |f|
+    = form_for @card, url: "/signup",method: :post do |f|
       .signup-form-container.registration-form__first-container
-        .signup-form-container__title
-          = label :type, 'カード区分', class: 'signup-label'
-          = f.text_field :type, placeholder: '例）VISA:1, master:2, JCB:3'
         .signup-form-container__title
           = label :number, 'カード番号', class: 'signup-label'
           = f.text_field :number, placeholder: '例）123456789123456'
@@ -25,5 +22,5 @@
           = label :security_code, 'セキュリティコード', class: 'signup-label'
           = f.text_field :security_code, placeholder: 'カード背面4桁もしくは3桁の番号'
         
-      -# = f.submit '次へ進む'   
-      = link_to "次へ進む", done_signup_index_path 
+      = f.submit '次へ進む'   
+

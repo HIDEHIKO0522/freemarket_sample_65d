@@ -1,7 +1,11 @@
 %h1 トップページ
 
-= link_to signup_index_path do
-            %button.btn-default.btn-mail
+
+= link_to "新規登録", signup_index_path, class: 'default_btn'
+
+%h1 ログイン
+= link_to "ログイン", new_user_session_path, class: 'default_btn'
+
 
 
 

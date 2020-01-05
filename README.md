@@ -24,22 +24,19 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|family_name|string|null: false|   12/24追記（白岩）
-|first_name|string|null: false|    12/24追記（白岩）
-|family_name_kana|string|null: false|  12/24追記（白岩）
-|first_name_kana|string|null: false|   12/24追記（白岩）
+|name|string|null: false|
+|name_kana|string|null: false|
 |nickname|string|null: false|
 |birthyear|integer|null: false|  12/25追記（白岩）
 |birthmonth|integer|null: false|  12/25追記（白岩）
 |birthday|integer|null: false|  12/25追記（白岩）
-|email|string|null: false|
-|password|string|null: false|
-|tel|integer|null: false|
-|identification|string|null: false|
-|image|string|null: false|
-|point|integer|
-|sales|integer|
-|certification|string|null: false|
+|email|string|null: false, default: ""| 12/30追記（白岩）
+|password|string|null: false, default: ""| 12/30追記（白岩）
+|tel|string|null: false|
+|image|string|default: ""| 12/30修正（白岩）
+|point|integer|default: ""| 12/30修正（白岩）
+|sales|integer|default: ""| 12/30修正（白岩）
+|certification|string|default: ""| 12/30修正（白岩）
 ### Association
 - has_many :likes
 - has_many: evaluations
@@ -59,8 +56,8 @@ Things you may want to cover:
 |house_number|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |building|string||
-|phone_number|integer|null: false, uniqueness: true|　12/26追記　白岩
-|type|integer|null: false|　12/26追記　白岩
+|phone_number|string|null: false, uniqueness: true| 12/26追記 白岩
+|address_div|integer|default: ""| 12/30修正 白岩
 
 ### Association
 - belongs_to :user, optional: true
@@ -69,13 +66,12 @@ Things you may want to cover:
 ## cardテーブル
 |Column|Type|Options|
 |------|----|-------|
-|type|integer|null: false|
+|card_company|integer|default: ""| 12/30修正（白岩）
 |number|string|null: false|
 |city|string|null: false|
 |security_code|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|expiration_month|string|null: false|  12/25追記（白岩）
-|expiration_year|string|null: false|  12/25追記（白岩）
+|expiration_date|string|null: false|
 ### Association
 - belongs_to :user, optional: true
 

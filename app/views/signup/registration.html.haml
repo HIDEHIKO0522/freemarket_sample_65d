@@ -4,7 +4,7 @@
   %h2.signup-header 会員情報入力
   .registration-form
 
-    = form_for @user, url: registration_signup_index_path,method: :post do |f|
+    = form_for @user, url: "/signup/registration",method: :post do |f|
       .signup-form-container.registration-form__first-container
         .signup-form-container__title
         = label :nickname, 'ニックネーム', class: 'signup-label'
@@ -22,27 +22,26 @@
         = label :password_confirmation, 'パスワード（確認）'
         = f.password_field :password_confirmation, placeholder: '7文字以上'
         
-    = fields_for @profile,url: registration_signup_index_path,method: :post do |o|
-      .signup-form-container
+      = fields_for @user do |o|
+        .signup-form-container
+          .signup-form-container__title
+          = label :name, 'お名前(全角)', class: 'signup-label'
+          .signup-form-container__name
+          = o.text_field :family_name, placeholder: '例）山田'
+          = o.text_field :first_name, placeholder: '例）彩'
         .signup-form-container__title
-        = label :name, 'お名前(全角)', class: 'signup-label'
-        .signup-form-container__name
-        = o.text_field :family_name, placeholder: '例）山田'
-        = o.text_field :first_name, placeholder: '例）彩'
-      .signup-form-container__title
-        = label :name, 'お名前(全角カナ)', class: 'signup-label'
-        .signup-form-container__name
-        = o.text_field :family_name_kana, placeholder: '例）ヤマダ'
-        = o.text_field :first_name_kana, placeholder: '例）アヤ'
-      .signup-form-container
-        .signup-form-container__title
-        = label :n, '生年月日', class: 'signup-label'
-        .signup-form-container__name
-        = o.text_field :birthyear, placeholder:'例）2000'
-        = o.text_field :birthmonth, placeholder: '例）10'
-        = o.text_field :birthday, placeholder: '例）10'          
+          = label :name, 'お名前(全角カナ)', class: 'signup-label'
+          .signup-form-container__name
+          = o.text_field :family_name_kana, placeholder: '例）ヤマダ'
+          = o.text_field :first_name_kana, placeholder: '例）アヤ'
+        .signup-form-container
+          .signup-form-container__title
+          = label :n, '生年月日', class: 'signup-label'
+          .signup-form-container__name
+          = o.text_field :birthyear, placeholder:'例）2000'
+          = o.text_field :birthmonth, placeholder: '例）10'
+          = o.text_field :birthday, placeholder: '例）10'          
 
  
 
-      -# = f.submit '次へ進む'   
-      = link_to "次へ進む", sms_authentication_signup_index_path
+      = f.submit '次へ進む' 
