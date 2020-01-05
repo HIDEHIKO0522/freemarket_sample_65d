@@ -14,12 +14,6 @@ describe Card do
       card.valid?
       expect(card.errors[:security_code]).to include("can't be blank")
     end
-    # user_idが空では登録できないこと
-    it "is invalid without a user_id" do
-      card = build(:card, user_id: "")
-      card.valid?
-      expect(card.errors[:user_id]).to include("can't be blank")
-    end
     # expiration_monthが空では登録できないこと
     it "is invalid without a expiration_month" do
       card = build(:card, expiration_month: "")

@@ -81,7 +81,6 @@ class SignupController < ApplicationController
       building: "田中ビル",
       phone_number: "08088888888"
     )
-
     # バリデーションエラーを事前に取得させる（下のunlessでは全て取得できない場合があるため）
     check_address_valid = @address.valid?
     #アドレスのバリデーション判定
@@ -115,7 +114,6 @@ class SignupController < ApplicationController
       first_name_kana: session[:first_name_kana],
       tel: session[:tel]
     )
-
     #万一ユーザーがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
     unless @user.save
       reset_session
@@ -133,7 +131,6 @@ class SignupController < ApplicationController
       building: session[:building],
       phone_number: session[:phone_number]
     )
-
     #万一アドレスがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
     unless @address.save
       reset_session
@@ -152,7 +149,6 @@ class SignupController < ApplicationController
       expiration_month: session[:expiration_month],
       expiration_year: session[:expiration_year]
     )
-
    #万一カードがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
     unless @card.save 
       reset_session
@@ -163,7 +159,6 @@ class SignupController < ApplicationController
       session[:id] = @user.id
       redirect_to done_signup_index_path
   end
-
 
   def done
     # session[id]がなければ登録ページトップへリダイレクト
