@@ -596,13 +596,14 @@
     }
   }
   .item-show-items-container {
-    width: 700px;
+    width: 720px;
     margin: 0 auto;
     &__head {
       font-size: 22px;
       font-weight: bold;
       margin-top: 24px;
       margin-bottom: 8px;
+      margin-left: 10px;
       a {
         text-decoration: none;
         color: #0099e8;
@@ -610,10 +611,11 @@
     }
     &__items {
       display: flex;
-      flex-wrap: wrap; 
-      justify-content: space-between;
+      flex-wrap: wrap;
       &__item {
         margin-bottom: 20px;
+        margin-left: 10px;
+        margin-right: 10px;
         position: relative;
         a {
           display: block;
