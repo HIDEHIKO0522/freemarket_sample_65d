@@ -83,3 +83,4 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'active_hash'
 gem 'pry-rails'
+gem "font-awesome-sass"

@@ -44,17 +44,17 @@
     .main
       .main__text 住所入力
       .main__form
-        = form_for @address, url: address_signup_index_path, meghod: :post do |f|
-          .main__form__group
-            = f.label 'お名前', class: 'main__form__group__label', for: "user_family_name"
-            %span.main__form__group__require 必須
-            = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）山田", required: 'required'
-            = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）太郎", required: 'required'
-          .main__form__group
-            = f.label 'お名前カナ', class: 'main__form__group__label', for: "user_family_name_kana"
-            %span.main__form__group__require 必須
-            = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）ヤマダ", required: 'required'
-            = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）タロウ", required: 'required'
+        = form_for @address,  url: "/signup/address", meghod: :post do |f|
+          -# .main__form__group
+          -#   = f.label 'お名前', class: 'main__form__group__label', for: "user_family_name"
+          -#   %span.main__form__group__require 必須
+          -#   = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）山田", required: 'required'
+          -#   = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）太郎", required: 'required'
+          -# .main__form__group
+          -#   = f.label 'お名前カナ', class: 'main__form__group__label', for: "user_family_name_kana"
+          -#   %span.main__form__group__require 必須
+          -#   = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）ヤマダ", required: 'required'
+          -#   = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）タロウ", required: 'required'
           .main__form__group
             = f.label '郵便番号', class: 'main__form__group__label', for: "address_postal_code"
             %span.main__form__group__require 必須
@@ -79,7 +79,7 @@
           .main__form__group
             = f.label '電話', class: 'main__form__group__label', for: "address_building"
             %span.main__form__group__optional 任意
-            = f.text_field :building, class: "main__form__group__input-box", placeholder: "例）09012345678"
+            = f.text_field :phone_number, class: "main__form__group__input-box", placeholder: "例）09012345678"
           = f.submit '次へ進む', class: 'main__form__submit-btn'
 
     .footer

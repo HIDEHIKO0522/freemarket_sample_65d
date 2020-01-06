@@ -1,17 +1,19 @@
 class SignupController < ApplicationController
 
   def index
+    render layout: false
   end
   
   def registration
     @user = User.new
+    render layout: false
   end
 
   def profile_validation
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
-    session[:password_confirmation] = user_params[:password_confirmation]
+    # session[:password_confirmation] = user_params[:password_confirmation]
     session[:family_name] = user_params[:family_name]
     session[:first_name] = user_params[:first_name]
     session[:family_name_kana] = user_params[:family_name_kana]
@@ -24,7 +26,7 @@ class SignupController < ApplicationController
       nickname: session[:nickname], 
       email: session[:email],
       password: session[:password],
-      password_confirmation: session[:password_confirmation],
+      # password_confirmation: session[:password_confirmation],
       family_name: session[:family_name], 
       first_name: session[:first_name], 
       family_name_kana: session[:family_name_kana], 
@@ -50,6 +52,7 @@ class SignupController < ApplicationController
   
   def sms_authentication
    @user = User.new
+   render layout: false
   end
 #下記はsms認証するため、仮置き
   def sms_validation
@@ -61,6 +64,7 @@ class SignupController < ApplicationController
 
   def address
     @address = Address.new
+    render layout: false
   end  
   
   def address_validation
@@ -81,6 +85,7 @@ class SignupController < ApplicationController
       building: "田中ビル",
       phone_number: "08088888888"
     )
+    binding.pry
     # バリデーションエラーを事前に取得させる（下のunlessでは全て取得できない場合があるため）
     check_address_valid = @address.valid?
     #アドレスのバリデーション判定
@@ -96,7 +101,8 @@ class SignupController < ApplicationController
   end
 
   def card
-    @card = Card.new 
+    @card = Card.new
+    render layout: false 
   end
 
   def create
@@ -161,6 +167,7 @@ class SignupController < ApplicationController
   end
 
   def done
+    render layout: false
     # session[id]がなければ登録ページトップへリダイレクト
     unless session[:id]
       redirect_to signup_index_path 
@@ -168,6 +175,7 @@ class SignupController < ApplicationController
     end
     # deviseのメソッドを使ってログイン
     sign_in User.find(session[:id])
+
   end
 
 
