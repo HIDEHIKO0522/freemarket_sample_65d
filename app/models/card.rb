@@ -1,7 +1,7 @@
 class Card < ApplicationRecord
-  # extend ActiveHash::Associations::ActiveRecordExtensions
-  # belongs_to_active_hash :expiration_year, :expiration_month  
-
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to_active_hash :year
+  belongs_to_active_hash :month 
 
   belongs_to :user, optional: true
   

@@ -60,6 +60,11 @@
                 = f.check_box :password, {id: 'reveal-password', class: 'checkbox'}, true, false
                 = f.label :password, 'パスワードを表示する', for: "reveal-password"
           .main__form__group
+            = f.label 'パスワード（確認）', class: 'main__form__group__label', for: "user_password_confirmation"
+            %span.main__form__group__require 必須
+            = f.password_field :password_confirmation, class: "main__form__group__input-box", placeholder: "7文字以上の半角英数字", autocomplete: "current-password", required: 'required', maxlength: "７"      
+          
+          .main__form__group
             %h3 本人確認
             %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
           .main__form__group

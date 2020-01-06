@@ -13,7 +13,7 @@ class SignupController < ApplicationController
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
-    # session[:password_confirmation] = user_params[:password_confirmation]
+    session[:password_confirmation] = user_params[:password_confirmation]
     session[:family_name] = user_params[:family_name]
     session[:first_name] = user_params[:first_name]
     session[:family_name_kana] = user_params[:family_name_kana]
@@ -26,7 +26,7 @@ class SignupController < ApplicationController
       nickname: session[:nickname], 
       email: session[:email],
       password: session[:password],
-      # password_confirmation: session[:password_confirmation],
+      password_confirmation: session[:password_confirmation],
       family_name: session[:family_name], 
       first_name: session[:first_name], 
       family_name_kana: session[:family_name_kana], 
@@ -54,13 +54,55 @@ class SignupController < ApplicationController
    @user = User.new
    render layout: false
   end
-#下記はsms認証するため、仮置き
-  def sms_validation
-    session[:tel] = user_params[:tel]
 
-    @user = User.new(tel: session[:tel])
-         redirect_to address_signup_index_path
+  def sms_post
+    @user = User.new
+    #パラメータが飛んでなかった場合ここでrender
+    render sms_authentication_signup_index_path unless  user_params[:tel].present?
+    #電話番号を+81~の国際書式に書き換え（そうしないと送れない）
+    send_number = user_params[:tel].sub(/\A./,'+81')
+    #ランダムに6桁の整数を生成
+    sms_number = rand(100000..999999)
+    #後の認証用にsessionに預ける
+    session[:sms_number] = sms_number
+    #環境変数を使ってsms送信準備 
+    client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
+    #送信失敗した場合必ずエラーが出るので、例外処理で挙動を分岐
+    begin 
+      #生成した整数を文章にしたsms送信
+      client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: send_number, body: sms_number)
+    rescue
+      #失敗した場合ここが動く
+      render "signup/sms_authentication"
+      return false
+    end
+    #成功した場合、以下のコードが動き、smsの照合画面へと変遷する
+    redirect_to sms_confirmation_signup_index_path
   end
+
+  def sms_confirmation
+    @user = User.new
+    render layout: false
+  end
+
+  def sms_check
+    @user = User.new
+    render layout: false
+    #送信された値を代入
+    sms_number = user_params[:tel]
+    #比較し、一致したら次の登録フォームへ
+    if sms_number.to_i == session[:sms_number]
+      redirect_to address_signup_index_path
+    else
+      render "signup/sms_confirmation"
+    end
+  end
+  # def sms_validation
+  #   session[:tel] = user_params[:tel]
+
+  #   @user = User.new(tel: session[:tel])
+  #        redirect_to address_signup_index_path
+  # end
 
   def address
     @address = Address.new
@@ -85,7 +127,6 @@ class SignupController < ApplicationController
       building: "田中ビル",
       phone_number: "08088888888"
     )
-    binding.pry
     # バリデーションエラーを事前に取得させる（下のunlessでは全て取得できない場合があるため）
     check_address_valid = @address.valid?
     #アドレスのバリデーション判定
@@ -167,7 +208,6 @@ class SignupController < ApplicationController
   end
 
   def done
-    render layout: false
     # session[id]がなければ登録ページトップへリダイレクト
     unless session[:id]
       redirect_to signup_index_path 

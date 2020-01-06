@@ -41,31 +41,41 @@
         ＿＿＿＿
 
 
-  - content_for(:html_title) {'会員情報入力'}
--# = render partial: 'signup-header1'
-.signup-container
-  %h2.signup-header 会員情報入力
-  .registration-form
 
-    = form_for @card, url: "/signup",method: :post do |f|
-      .signup-form-container.registration-form__first-container
-        .signup-form-container__title
-          = label :number, 'カード番号', class: 'signup-label'
-          = f.text_field :number, placeholder: '例）123456789123456'
-      .signup-form-container
-        .signup-form-container__title
-          = label :expiration_month, '有効期限（月）', class: 'signup-label'
-          = f.text_field :expiration_month, placeholder: '01'
-      .signup-form-container
-        .signup-form-container__title
-          = label :expiration_year, '有効期限（年）', class: 'signup-label'
-          = f.text_field :expiration_year, placeholder: '19'
-      .signup-form-container
-        .signup-form-container__title
-          = label :security_code, 'セキュリティコード', class: 'signup-label'
-          = f.text_field :security_code, placeholder: 'カード背面4桁もしくは3桁の番号'
-        
-      = f.submit '次へ進む'   
+    .main
+      .main__text 支払い方法
+      .main__form
+        = form_for @card, url: "/signup",method: :post do |f|
+          .main__form__group
+            %label.main__form__group__label(for="card_number") カード番号
+            %span.main__form__group__require 必須   
+            -# = label :number, 'カード番号', class: 'signup-label'
+            = f.text_field :number, placeholder: '半角数字のみ',class: 'main__form__group__input-box'
+            = image_tag 'creditcard_logos.png', class: 'main__form__group__logos'
+            %br
+          .main__form__group
+            %label.main__form__group__label 有効期限
+            %span.main__form__group__require 必須
+            .main__form__group__card
+              .main__form__group__card__select-box
+                .main__form__group__card__select-box--month
+                  = f.collection_select :expiration_month, Month.all, :id, :name, {prompt: "---"}, { required: 'required' }
+                  %span.main__form__group__card__text 月
+              .main__form__group__card__select-box
+                .main__form__group__card__select-box--year         
+                  = f.collection_select :expiration_year, Year.all, :id, :name, {prompt: "---"}, { required: 'required' }
+                  %span.main__form__group__card__text 年
+
+          .main__form__group
+            %label.main__form__group__label セキュリティコード
+            %span.main__form__group__require 必須
+            = f.text_field :security_code, placeholder: 'カード背面4桁もしくは3桁の番号', class: "main__form__group__input-box"
+            %p.main__form__group__card-info
+              = link_to '/', class: 'link', target: '_blank' do
+                %i.fas.fa-question-circle
+              = 'カード裏面の番号とは？'
+              
+          = f.submit '次へ進む', class: 'main__form__submit-btn'      
 
     .footer
       %nav
