@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_050959) do
+ActiveRecord::Schema.define(version: 2019_12_27_094852) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "postal_code", null: false
+    t.string "prefectures", null: false
+    t.string "city", null: false
+    t.string "house_number", null: false
+    t.string "building", null: false
+    t.integer "phone_number", null: false
+    t.integer "type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "type", null: false
+    t.string "number", null: false
+    t.string "security_code", null: false
+    t.string "expiration_month", null: false
+    t.string "expiration_year", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_cards_on_user_id"
+  end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -50,9 +76,32 @@ ActiveRecord::Schema.define(version: 2019_12_24_050959) do
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
+  create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "uid", null: false
+    t.string "provider", null: false
+    t.string "token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "family_name", null: false
+    t.string "first_name", null: false
+    t.string "family_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "nickname", null: false
+    t.string "birthyear", null: false
+    t.string "birthmonth", null: false
+    t.string "birthday", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.integer "tel", null: false
+    t.string "image", null: false
+    t.integer "point", null: false
+    t.integer "sales", null: false
+    t.string "certification", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -62,8 +111,11 @@ ActiveRecord::Schema.define(version: 2019_12_24_050959) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "addresses", "users"
+  add_foreign_key "cards", "users"
   add_foreign_key "item_images", "items"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
+  add_foreign_key "sns_credentials", "users"
 end
