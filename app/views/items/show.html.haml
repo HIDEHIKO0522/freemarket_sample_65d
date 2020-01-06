@@ -5,8 +5,12 @@
         %p #{@item.name}
       .item-show-container__item__info
         .item-show-container__item__info__images
-          - @item.item_images.each do |item_image|
-            = image_tag item_image.image.url, width: "100"
+          .item-show-container__item__info__images__large
+            = image_tag @item.item_images[0].image.url
+          .item-show-container__item__info__images__thumbnails
+            - @item.item_images.each do |item_image|
+              .item-show-container__item__info__images__thumbnails__thumbnail
+                = image_tag item_image.image.url
         %table.item-show-container__item__info__table
           %tr
             %th 出品者
