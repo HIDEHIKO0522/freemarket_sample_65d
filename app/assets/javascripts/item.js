@@ -67,4 +67,8 @@ $(function() {
       $('#profit').text('-');
     }
   });
+
+  //商品詳細ページ 価格表示にカンマを付ける
+    var price = $('.item-show-container__item__price__price').text()
+    $('.item-show-container__item__price__price').text(separate(price));
 });
