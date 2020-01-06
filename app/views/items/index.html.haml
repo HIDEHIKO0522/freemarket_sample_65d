@@ -1,0 +1,104 @@
+= render partial: "layouts/header"
+
+.applicationintroduction
+  .applicationintroduction__image
+  .applicationintroduction__flame
+    .applicationintroduction__flame__block
+      .applicationintroduction__flame__block__top
+        スマホで かんたん
+        %br/
+        フリマアプリ
+      .applicationintroduction__flame__block__middle
+        メルカリはスマホカメラからすぐに出品できる
+        %br/
+        購入時も安心な独自システムのアプリです
+      .applicationintroduction__flame__block__under
+        = link_to image_tag("fmarket_logo_red.svg", width: '130'), ""
+        = link_to image_tag("fmarket_logo_red.svg", width: '130'), ""
+.categoryonintroduction
+  %h2.categoryonintroduction__title
+    人気のカテゴリー
+  .categoryonintroduction__details
+    %ul.categoryonintroduction__details__block
+      %li.categoryonintroduction__details__block__listgoods
+        レディース
+      %li.categoryonintroduction__details__block__listgoods
+        メンズ
+      %li.categoryonintroduction__details__block__listgoods
+        家電・スマホ・カメラ
+      %li.categoryonintroduction__details__block__listgoods
+        おもちゃ・ホビー・グッズ
+.imagebody
+  .imagebody__flame
+    .imagebody__flame__block
+      .imagebody__flame__block__sample
+        .imagebody__flame__block__sample__text
+          いろいろあります！
+        .imagebody__flame__block__sample__details
+          もっと見る！
+    .imagebody__flame__itemslists
+      %ul.imagebody__flame__itemslists__block
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+            
+.categoryonintroduction
+  %h2.categoryonintroduction__title
+    人気のブランド
+  .categoryonintroduction__details
+    %ul.categoryonintroduction__details__block
+      %li.categoryonintroduction__details__block__listgoods
+        シャネル
+      %li.categoryonintroduction__details__block__listgoods
+        ルイヴィトン
+      %li.categoryonintroduction__details__block__listgoods
+        シュプリーム
+      %li.categoryonintroduction__details__block__listgoods
+        ナイキ
+.imagebody
+  .imagebody__flame
+    .imagebody__flame__block
+      .imagebody__flame__block__sample
+        .imagebody__flame__block__sample__text
+          いろいろあります！
+        .imagebody__flame__block__sample__details
+          もっと見る！
+    .imagebody__flame__itemslists
+      %ul.imagebody__flame__itemslists__block
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+        %li.imagebody__flame__itemslists__block__eachdetails
+  
+%aside
+  .aside__flame
+    .aside__flame__left-block
+      .aside__flame__left-block__upper-row
+        スマホでかんたんフリマアプリ
+      .aside__flame__left-block__middle-row
+        今すぐ無料ダウンロード！
+      .aside__flame__left-block__under-row
+        = link_to image_tag("fmarket_logo_red.svg", width: '130'), ""
+    .aside__flame__right-block
+
+= render partial: "layouts/footer"

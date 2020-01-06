@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     delete 'destroy' => 'devise/sessions#destroy',as: :current_user_destroy
   end
 
-  root to: 'home#index'
+  root to: 'items#index'
   # get 'home/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
