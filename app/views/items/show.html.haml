@@ -113,51 +113,14 @@
     .item-show-items-container__head
       = link_to "#{@item.category.name} その他の商品", "#"
     .item-show-items-container__items
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
+      - if @category_items.length != 0
+        - @category_items.each do |category_item|
+          .item-show-items-container__items__item
+            = link_to "", item_path(category_item)
+            .item-show-items-container__items__item__image
+              = image_tag category_item.item_images[0].image.url
+            .item-show-items-container__items__item__info
+              .item-show-items-container__items__item__info__name
+                #{category_item.name}
+              .item-show-items-container__items__item__info__price
+                ¥#{category_item.price}

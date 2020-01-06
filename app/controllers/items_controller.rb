@@ -24,6 +24,7 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     @seller_items = Item.where.not(id: @item.id).where(seller_id: @item.seller_id).order(updated_at: :desc).limit(6)
+    @category_items = Item.where.not(id: @item.id).where(category_id: @item.category_id).order(updated_at: :desc).limit(6)
   end
 
   def category
