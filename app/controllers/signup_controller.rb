@@ -247,11 +247,7 @@ class SignupController < ApplicationController
     params.require(:address).permit(:postal_code, :prefectures, :city, :house_number, :building, :phone_number)
   end
 
-<<<<<<< HEAD
-  def card_params 
-=======
   def card_params
->>>>>>> d96174055963cfffe88092910f8b509b1085a934
     params.require(:card).permit(:number, :security_code, :expiration_month, :expiration_year)
   end 
 end
