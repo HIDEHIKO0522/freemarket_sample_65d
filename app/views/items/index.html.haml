@@ -37,17 +37,15 @@
         .imagebody__flame__block__sample__details
           もっと見る！
     .imagebody__flame__itemslists
-      %ul.imagebody__flame__itemslists__block
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
+      .imagebody__flame__itemslists__block
+        - @items.each do |item|
+          .imagebody__flame__itemslists__block__image
+            = image_tag item.item_images[0].image.url, class: "top-image"
+            .top-price
+              ¥
+              = item.price
+            .top-name
+              = item.name
             
 .categoryonintroduction
   %h2.categoryonintroduction__title
@@ -71,24 +69,15 @@
         .imagebody__flame__block__sample__details
           もっと見る！
     .imagebody__flame__itemslists
-      %ul.imagebody__flame__itemslists__block
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
-          = link_to image_tag("fmarket_logo_red.svg", width: '130'), "" , class: 'img:sample'
-        %li.imagebody__flame__itemslists__block__eachdetails
+      .imagebody__flame__itemslists__block
+        - @items.each do |item|
+          .imagebody__flame__itemslists__block__image
+            = image_tag item.item_images[0].image.url, class: "top-image"
+            .top-price
+              ¥
+              = item.price
+            .top-name
+              = item.name
   
 %aside
   .aside__flame
