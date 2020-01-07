@@ -34,14 +34,17 @@ Rails.application.routes.draw do
       get 'profile'
     end
   end
+
   get 'users/identification(/:id)', to: 'users#identification', as: :user_identification
   resources :items do
     collection do
       get 'category'
     end
   end
+
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
   resources :cards
 
+  
 
 end 
