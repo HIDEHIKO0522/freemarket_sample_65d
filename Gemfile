@@ -48,6 +48,10 @@ group :development, :test do
   gem 'rails-controller-testing'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -78,7 +82,6 @@ gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'fog-aws'
-
 gem 'haml-rails'
 gem 'erb2haml'
 gem 'active_hash'
@@ -86,3 +89,9 @@ gem 'pry-rails'
 gem "font-awesome-sass"
 gem 'twilio-ruby'
 gem 'dotenv-rails'
+
+gem 'ancestry'
+gem 'jquery-rails'
+gem 'active_hash'
+gem "font-awesome-sass"
+

@@ -1,0 +1,60 @@
+.container{
+  margin: 40px auto 0;
+  width: 1020px;
+  &__main{
+    background-color: white;
+    width: 700px;
+    float: right;
+    h2{
+      font-size: 24px;
+      padding: 8px 24px;
+      text-align: center;
+      border-bottom: 1px solid #f5f5f5;
+      font-weight: bold;
+    }
+    &__setting{
+      padding: 72px 16px 24px;
+      text-align: center;
+      background-image: url("profile-icon.jpg");
+      display: flex;
+      padding-left: 220px;    
+      .user-circle-icon{
+        display: inline-block;
+        font-size: 50px;
+      }
+      .profile-input{
+        width: 220px;
+        margin: 0 0 0 8px;
+        height: 48px;
+        padding: 10px 16px 8px;
+        border-radius: 4px;
+        border: 1px solid #eee;
+        background-color: white;
+        font-size: 16px;
+      }
+    }
+    &__content{
+      padding: 40px 16px;
+      .profile-textarea{
+        min-height: 216px;
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        padding: 10px;
+        border: 1px solid #eee;
+        background-color: white;
+        font-weight: 16px;
+      }
+      .profile-btn{
+        background-color: #ea352d;
+        width: 100%;
+        margin: 16px 0 0;
+        border: 1px solid #ea352d;
+        color: white;
+        display: block;
+        font-size: 14px;
+        height: 48px;
+      }
+    }
+  }
+}

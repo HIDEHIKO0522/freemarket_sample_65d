@@ -41,7 +41,6 @@
         ＿＿＿＿
 
 
-
     .main
       .main__text 支払い方法
       .main__form
@@ -65,7 +64,6 @@
                 .main__form__group__card__select-box--year         
                   = f.collection_select :expiration_year, Year.all, :id, :name, {prompt: "---"}, { required: 'required' }
                   %span.main__form__group__card__text 年
-
           .main__form__group
             %label.main__form__group__label セキュリティコード
             %span.main__form__group__require 必須
@@ -73,9 +71,9 @@
             %p.main__form__group__card-info
               = link_to '/', class: 'link', target: '_blank' do
                 %i.fas.fa-question-circle
-              = 'カード裏面の番号とは？'
-              
+              = 'カード裏面の番号とは？'     
           = f.submit '次へ進む', class: 'main__form__submit-btn'      
+
 
     .footer
       %nav
@@ -93,4 +91,5 @@
         = image_tag 'logo_gray.svg', alt: 'mercari', class: 'footer__logo--gray'
       %p.footer__text
         ©️ 2019 Fmarket
+
 

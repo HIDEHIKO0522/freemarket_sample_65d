@@ -1,0 +1,124 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title 会員情報入力 - メルカリ スマホでかんたん フリマアプリ
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+  .register
+    .header
+      %h1.haeder
+        = link_to '/' do
+          = image_tag 'fmarket_logo_red.svg', alt: 'mercari', class: 'header__h1__logo'
+      %nav
+        %ol
+          %li(style="color: red; font-weight: bold")
+            会員情報
+            %br/
+            %i.fas.fa-circle(style="color: red;")
+          %li
+            電話番号認証
+            %br/
+            %i.fas.fa-circle
+          %li
+            お届け先住所入力
+            %br/
+            %i.fas.fa-circle
+          %li
+            支払い方法
+            %br/
+            %i.fas.fa-circle
+          %li
+            完了
+            %br/
+            %i.fas.fa-circle
+      .horizontal-line(style="right: 10px")
+        ＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿＿
+
+    .main
+      .main__text
+        新規会員登録
+      .main__form
+        = form_for @user, url: user_registration_path, meghod: :post do |f|
+          .main__form__group
+            = f.label 'ニックネーム', class: 'main__form__group__label', for: "user_nickname"
+            %span.main__form__group__require 必須
+            = f.text_field :nickname, class: "main__form__group__input-box", placeholder: "例）山田太郎", autofocus: true, required: 'required', maxlength: "8"
+          .main__form__group
+            = f.label 'メールアドレス', class: 'main__form__group__label', for: "user_email"
+            %span.main__form__group__require 必須
+            = f.email_field :email, class: "main__form__group__input-box", placeholder: "PC・携帯どちらでも可", autofocus: true, required: 'required', autocomplete: "email"
+          .main__form__group
+            = f.label 'パスワード', class: 'main__form__group__label', for: "user_nickname"
+            %span.main__form__group__require 必須
+            = f.text_field :nickname, class: "main__form__group__input-box", placeholder: "例）山田太郎", autofocus: true, required: 'required', maxlength: "8"
+            .main__form__group__password-revelation
+              .main__form__group__password-revelation__checkbox
+                = f.check_box :password, {id: 'reveal-password', class: 'checkbox'}, true, false
+                = f.label :password, 'パスワードを表示する', for: "reveal-password"
+          .main__form__group
+            %h3(style="font-weight: bold") 本人確認
+            %p 安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
+          .main__form__group
+            = f.label 'お名前（全角）', class: 'main__form__group__label', for: "user_family_name_kanji"
+            %span.main__form__group__require 必須
+            .main__form__group__input-boxes
+              = f.text_field :family_name, class: "main__form__group__input-boxes--username-family", placeholder: "例）山田", required: 'required', pattern: '[^\x20-\x7E]*', maxlength: "32"
+              = f.text_field :first_name, class: "main__form__group__input-boxes--username-first", placeholder: "例）太郎", required: 'required', pattern: '[^\x20-\x7E]*', maxlength: "32"
+          .main__form__group
+            = f.label 'お名前カナ（全角）', class: 'main__form__group__label', for: "user_family_name_kana"
+            %span.main__form__group__require 必須
+            .main__form__group__input-boxes
+              = f.text_field :family_name_kana, class: "main__form__group__input-boxes--username-family", placeholder: "例）ヤマダ", required: 'required', pattern: '[\u30A1-\u30F6]*', maxlength: "32"
+              = f.text_field :first_name_kana, class: "main__form__group__input-boxes--username-first", placeholder: "例）タロウ", required: 'required', pattern: '[\u30A1-\u30F6]*', maxlength: "32"
+          .main__form__group
+            = f.label '生年月日', class: 'main__form__group__label', for: "user_birthday_year"
+            %span.main__form__group__require 必須
+            .main__form__group__birthday
+              .main__form__group__birthday__select
+                %select#select_birth_year.main__form__group__birthday__select--box{required: 'required', name: 'user[birthday_year]'}
+                  %option{value: ''} --
+              %span.main__form__group__birthday__text 年
+              .main__form__group__birthday__select
+                %select#select_birth_month.main__form__group__birthday__select--box{required: 'required', name: 'user[birthday_month]'}
+                  %option{value: ''} --
+              %span.main__form__group__birthday__text 月
+              .main__form__group__birthday__select
+                %select#select_birth_day.main__form__group__birthday__select--box{required: 'required', name: 'user[birthday_day]'}
+                  %option{value: ''} --
+              %span.main__form__group__birthday__text 日
+          %p.main__form__info ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          %p.main__form__consensus
+            「次へ進む」のボタンを押すことにより、
+            %a(href="/" target="_blank") 利用規約
+            に同意したものとみなします
+          = f.submit '次へ進む', class: 'main__form__submit-btn'
+          %p.main__form__personal-info
+            = link_to '/', class: 'link', target: '_blank' do
+              = '本人情報の登録について'
+              %i.fas.fa-chevron-right
+          .main__form__privacy
+            This site is protected by reCAPTCHA and the Google
+            %a{:href => "https://policies.google.com/privacy", :target => "_blank"} Privacy Policy
+            and
+            %a{:href => "https://policies.google.com/terms", :target => "_blank"} Terms of Service
+            apply.
+    .footer
+      %nav
+        %ul.clearfix
+          %li
+            = link_to '#' do
+              プライバシーポリシー
+          %li
+            = link_to '#' do
+              メルカリ利用規約
+          %li
+            = link_to '#' do
+              特定商取引に関する表記
+      .fotter__logo
+        = image_tag 'logo_gray.svg', alt: 'mercari', class: 'footer__logo--gray'
+      %p.footer__text
+        ©️ 2019 Fmarket

@@ -14,5 +14,4 @@ FactoryBot.define do
     birthday              {"15"}
     tel                   {"08011112222"}
   end
-
 end
