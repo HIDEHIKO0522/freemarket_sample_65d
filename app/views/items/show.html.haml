@@ -87,7 +87,7 @@
         .item-show-container__myitem__or
           or
         .item-show-container__myitem__delete.block-btn.block-btn-gray
-          =link_to "この商品を削除する", "#"
+          =link_to "この商品を削除する", item_path(@item), method: :delete
   .item-show-container
     .item-show-container__comment
       .item-show-container__comment__comments
