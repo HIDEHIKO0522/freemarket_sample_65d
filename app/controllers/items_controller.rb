@@ -1,6 +1,11 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :destroy]
-
+  
+  def index
+    @items = Item.limit(10)
+    
+  end
+  
   def new
     @item = Item.new
     @categorys = Category.where(ancestry: nil)
