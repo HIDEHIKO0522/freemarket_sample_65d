@@ -16,7 +16,7 @@
             %th 出品者
             %td
               .item-show-container__item__info__table__seller-name
-                = link_to "ユーザー名", "#"
+                = link_to @item.seller.nickname, "#"
               .item-show-container__item__info__table__seller-evaluation
           %tr
             %th カテゴリー
@@ -112,105 +112,31 @@
           %i.fab.fa-line.fa-3x.icon-line.item-show-container__media__icons__icon
   .item-show-items-container
     .item-show-items-container__head
-      = link_to "販売者さんのその他の出品", "#"
+      = link_to "#{@item.seller.nickname}さんのその他の出品", "#"
     .item-show-items-container__items
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
+      - if @seller_items.length != 0
+        - @seller_items.each do |seller_item|
+          .item-show-items-container__items__item
+            = link_to "", item_path(seller_item)
+            .item-show-items-container__items__item__image
+              = image_tag seller_item.item_images[0].image.url
+            .item-show-items-container__items__item__info
+              .item-show-items-container__items__item__info__name
+                #{seller_item.name}
+              .item-show-items-container__items__item__info__price
+                ¥#{seller_item.price}
   .item-show-items-container
     .item-show-items-container__head
       = link_to "#{@item.category.name} その他の商品", "#"
     .item-show-items-container__items
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
-      .item-show-items-container__items__item
-        = link_to "", "#"
-        .item-show-items-container__items__item__image
-        .item-show-items-container__items__item__info
-          .item-show-items-container__items__item__info__name
-            商品名
-          .item-show-items-container__items__item__info__price
-            ¥1,200
+      - if @category_items.length != 0
+        - @category_items.each do |category_item|
+          .item-show-items-container__items__item
+            = link_to "", item_path(category_item)
+            .item-show-items-container__items__item__image
+              = image_tag category_item.item_images[0].image.url
+            .item-show-items-container__items__item__info
+              .item-show-items-container__items__item__info__name
+                #{category_item.name}
+              .item-show-items-container__items__item__info__price
+                ¥#{category_item.price}

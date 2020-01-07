@@ -81,6 +81,42 @@ describe ItemsController do
 
     end
   end
+    
+  describe '#show' do
+
+    let(:another_user) { create(:user, email: "lll@gmail.com") }
+    let(:another_category) { create(:category, name: "メンズ") }
+    let(:created_item1) { create(:item, seller: user, category: category) }
+    let(:created_item2) { create(:item, seller: user, category: category) }
+    let(:created_item3) { create(:item, seller: user, category: category) }
+    let(:created_item4) { create(:item, seller: user, category: category) }
+    let(:created_item5) { create(:item, seller: user, category: category) }
+    let(:created_item6) { create(:item, seller: user, category: category) }
+    let(:created_item7) { create(:item, seller: another_user, category: category) }
+    let(:created_item8) { create(:item, seller: user, category: another_category) }
+
+    before do
+      get :show,
+      params: { id: created_item1.id }
+    end
+
+    it 'assigns @item' do
+      expect(assigns(:item)).to eq created_item1
+    end
+
+    it 'assigns @seller_items' do
+      expect(assigns(:seller_items)).to eq [created_item8, created_item6, created_item5, created_item4, created_item3, created_item2]
+    end
+
+    it 'assigns @category_items' do
+      expect(assigns(:category_items)).to eq [created_item7, created_item6, created_item5, created_item4, created_item3, created_item2]
+    end
+
+    it 'renders show' do
+      expect(response).to render_template :show
+    end
+
+  end
 
   describe '#destroy' do
     
@@ -114,9 +150,8 @@ describe ItemsController do
         delete :destroy, params: { id: delete_item.id }
         expect(response).to redirect_to redirect_to(user_path(user))
       end
-    
-    end
 
+    end
   end
 
 end
