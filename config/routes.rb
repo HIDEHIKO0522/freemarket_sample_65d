@@ -3,22 +3,22 @@ Rails.application.routes.draw do
   devise_for :users,skip: :all
   
   devise_scope :user do
-    get 'login' => 'devise/sessions#new', as: :new_user_session
-    post 'login' => 'devise/sessions#create', as: :user_session
-    delete 'destroy' => 'devise/sessions#destroy',as: :current_user_destroy
+    get 'login', to: 'devise/sessions#new', as: :new_user_session
+    post 'login', to: 'devise/sessions#create', as: :user_session
+    delete 'destroy', to: 'devise/sessions#destroy',as: :current_user_destroy
   end
 
   root to: "home#index"
   resources :signup ,only: [:index,:create] do
     collection do
       get 'registration'                               
-      post 'registration' => 'signup#profile_validation' 
+      post 'registration',  to: 'signup#profile_validation' 
       get 'sms_authentication' 
-      post 'sms_authentication' => 'signup#sms_post'
+      post 'sms_authentication',  to: 'signup#sms_post'
       get 'sms_confirmation'
-      post 'sms_confirmation' => 'signup#sms_check' 
+      post 'sms_confirmation', to: 'signup#sms_check' 
       get 'address' 
-      post 'address' => 'signup#address_validation' 
+      post 'address', to: 'signup#address_validation' 
       get 'card' 
       get 'done' 
     end
