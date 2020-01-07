@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
   // カテゴリー選択機能
   function buildHTML(params){
     var category_option = ''
@@ -69,6 +69,9 @@ $(function() {
   });
 
   //商品詳細ページ 価格表示にカンマを付ける
-    var price = $('.item-show-container__item__price__price').text()
-    $('.item-show-container__item__price__price').text(separate(price));
+  function commaPrice(price) {
+    value = $(price).text();
+    $(price).text(separate(value));
+  }
+  commaPrice('.item-show-container__item__price__price');
 });
