@@ -96,12 +96,6 @@ class SignupController < ApplicationController
       render "signup/sms_confirmation"
     end
   end
-  # def sms_validation
-  #   session[:tel] = user_params[:tel]
-
-  #   @user = User.new(tel: session[:tel])
-  #        redirect_to address_signup_index_path
-  # end
 
   def address
     @address = Address.new
@@ -244,8 +238,7 @@ class SignupController < ApplicationController
     params.require(:address).permit(:postal_code, :prefectures, :city, :house_number, :building, :phone_number)
   end
 
-  def card_params
-    
+  def card_params 
     params.require(:card).permit(:number, :security_code, :expiration_month, :expiration_year)
   end 
 end

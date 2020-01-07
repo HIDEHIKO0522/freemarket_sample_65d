@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content, to: "text/html; charset=UTF-8", "http-equiv", to: "Content-Type"}/
     %title お届け先住所入力 - メルカリ スマホでかんたん フリマアプリ
     = csrf_meta_tags
     = csp_meta_tag
@@ -45,16 +45,6 @@
       .main__text 住所入力
       .main__form
         = form_for @address,  url: "/signup/address", meghod: :post do |f|
-          -# .main__form__group
-          -#   = f.label 'お名前', class: 'main__form__group__label', for: "user_family_name"
-          -#   %span.main__form__group__require 必須
-          -#   = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）山田", required: 'required'
-          -#   = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）太郎", required: 'required'
-          -# .main__form__group
-          -#   = f.label 'お名前カナ', class: 'main__form__group__label', for: "user_family_name_kana"
-          -#   %span.main__form__group__require 必須
-          -#   = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）ヤマダ", required: 'required'
-          -#   = f.text_field :house_number, class: "main__form__group__input-box", placeholder: "例）タロウ", required: 'required'
           .main__form__group
             = f.label '郵便番号', class: 'main__form__group__label', for: "address_postal_code"
             %span.main__form__group__require 必須

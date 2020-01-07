@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:content, to: "text/html; charset=UTF-8", "http-equiv", to: "Content-Type"}/
     %title 電話番号認証 - メルカリ スマホでかんたん フリマアプリ
     = csrf_meta_tags
     = csp_meta_tag
@@ -47,7 +47,6 @@
           .main__form__group
             = f.label :sms_number, '認証番号', class: 'main__form__group__label', for: "user_tel"
             = f.telephone_field :tel, class: "main__form__group__input-box", placeholder: "6桁の認証番号を入力"
-            -# required: 'required', type: 'tel', pattern: '^0\d{10}'
           %p.main__form__info SMSで届いた認証番号を入力してください
           = f.submit '認証して終了', class: 'main__form__submit-btn'
           
