@@ -1,4 +1,10 @@
 class ItemsController < ApplicationController
+  
+  def index
+    @items = Item.limit(10)
+    
+  end
+  
   def new
     @item = Item.new
     @categorys = Category.where(ancestry: nil)

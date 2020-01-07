@@ -317,7 +317,7 @@ iconconnfig{
 //@商品実装(仮想)
 .imagebody{
   width: 100%;
-  // height: 300px;
+  height: 100%;
   margin: 0px auto;
   background-color: rgb(211, 50, 58);
 
@@ -331,7 +331,7 @@ iconconnfig{
         display: flex;
         -webkit-box-pack: justify;
         justify-content: space-between;
-        padding: 0 100px;
+        padding: 0 200px;
 
         &__text{
           font-size: 24px;
@@ -343,32 +343,54 @@ iconconnfig{
     }
 
     &__itemslists{
-      // display: flex;
       flex-wrap: wrap;
-      padding: 0 100px;
+      padding: 0 200px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
 
       &__block{
-
-        display: flex;
+        
         margin: -10px;
-        flex-wrap: wrap;
-      
+        margin-bottom: 20px;
 
-        &__eachdetails{
+        &__image{
+          width: 200px;
+          margin-bottom: 20px;
+          margin-right: 10px;
+          display: flex;
+          flex-wrap: wrap;
+          position: relative;
+          background-color: white;
 
 
-          @media screen and (min-width:0px){
-
-            width: 33.3333%;
-            padding: 3px;
-            
+          .top-image{
+            width: 200px;
+            height: 180px;
+            margin-bottom: 70px;
+          }
+        
+          .top-price{
+            position: absolute;
+            top: 140px;
+            padding-left: 20px;
+            background-color: gray;
+            flex-wrap: wrap;
+            color: white;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            border-top-right-radius: 20px;
+            border-bottom-right-radius: 20px;
           }
 
-          @media screen and (min-width:768px){
-            
-              width: 20%;
-              padding: 10px;
-            
+          .top-name{
+            position: absolute;
+            width: 187px;
+            top: 180px;
+            height: 70px;
+            padding: 10px;
           }
         }
 
