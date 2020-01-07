@@ -35,8 +35,9 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
+    user = item.seller
     item.destroy
-    redirect_to user_path(item.seller)
+    redirect_to user_path(user)
   end
 
 

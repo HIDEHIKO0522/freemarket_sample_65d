@@ -6,7 +6,6 @@
     .sell-item-index__item
       .sell-item-index__item_image
         = image_tag sell_item.item_images[0].image.url, height: '100'
-        #{}
       .sell-item-index__item_name
         = link_to sell_item.name, item_path(sell_item)
       .sell-item-index__item_price
