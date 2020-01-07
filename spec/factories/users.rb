@@ -12,6 +12,5 @@ FactoryBot.define do
     birthyear             {"2000"}
     birthmonth            {"05"}
     birthday              {"15"}
-    tel                   {"08011112222"}
   end
 end

@@ -24,6 +24,5 @@ class User < ApplicationRecord
   validates :birthyear,               presence: true, length: {maximum: 50}
   validates :birthmonth,              presence: true, length: {maximum: 50}
   validates :birthday,                presence: true, length: {maximum: 50}
-  validates :tel,                     presence: true, length: {maximum: 128},on: :sms_phone
 end
 

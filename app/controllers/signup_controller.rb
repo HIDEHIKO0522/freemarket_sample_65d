@@ -45,7 +45,6 @@ class SignupController < ApplicationController
     # 問題がなければsession[:through_profile_validation]を宣言して次のページへリダイレクト
       session[:through_profile_validation] = "through_profile_validation"
       redirect_to sms_authentication_signup_index_path
-
     end
   end
   
@@ -68,14 +67,12 @@ class SignupController < ApplicationController
     client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
     #送信失敗した場合必ずエラーが出るので、例外処理で挙動を分岐
     begin 
-      #生成した整数を文章にしたsms送信
+    #生成した整数を文章にしたsms送信
       client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: send_number, body: sms_number)
     rescue
-      #失敗した場合ここが動く
       render "signup/sms_authentication"
       return false
     end
-    #成功した場合、以下のコードが動き、smsの照合画面へと変遷する
     redirect_to sms_confirmation_signup_index_path
   end
 
@@ -124,7 +121,6 @@ class SignupController < ApplicationController
     check_address_valid = @address.valid?
     #アドレスのバリデーション判定
     unless check_address_valid
-      # verify_recaptcha(model: @address) && check_address_valid
       flash.now[:alert] = @address.errors.full_messages
       render 'signup/address' 
     else
@@ -217,7 +213,6 @@ class SignupController < ApplicationController
     end
     # deviseのメソッドを使ってログイン
     sign_in User.find(session[:id])
-
   end
 
 
@@ -251,4 +246,4 @@ class SignupController < ApplicationController
     params.require(:card).permit(:number, :security_code, :expiration_month, :expiration_year)
   end 
 end
-
+end

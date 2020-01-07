@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content, to: "text/html; charset=UTF-8", "http-equiv", to: "Content-Type"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title 会員情報入力 - メルカリ スマホでかんたん フリマアプリ
     = csrf_meta_tags
     = csp_meta_tag
@@ -206,14 +206,14 @@
             に同意したものとみなします
           = f.submit '次へ進む', class: 'main__form__submit-btn'
           %p.main__form__personal-info
-            = link_to '/', class: 'link', target: '_blank' do
+            = link_to root_path, class: 'link', target: '_blank' do
               = '本人情報の登録について'
               %i.fas.fa-chevron-right
           .main__form__privacy
             This site is protected by reCAPTCHA and the Google
-            %a{:href, to: "https://policies.google.com/privacy", :target, to: "_blank"} Privacy Policy
+            =link_to 'Privacy Policy', "https://policies.google.com/privacy", target: "_blank"
             and
-            %a{:href, to: "https://policies.google.com/terms", :target, to: "_blank"} Terms of Service
+            =link_to 'Terms of Service', "https://policies.google.com/terms", target: "_blank"
             apply.
     .footer
       %nav

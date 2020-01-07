@@ -27,16 +27,16 @@ Things you may want to cover:
 |name|string|null: false|
 |name_kana|string|null: false|
 |nickname|string|null: false|
-|birthyear|integer|null: false|  12/25追記（白岩）
-|birthmonth|integer|null: false|  12/25追記（白岩）
-|birthday|integer|null: false|  12/25追記（白岩）
-|email|string|null: false, default: ""| 12/30追記（白岩）
-|password|string|null: false, default: ""| 12/30追記（白岩）
+|birthyear|integer|null: false|
+|birthmonth|integer|null: false|
+|birthday|integer|null: false|
+|email|string|null: false, default: ""|
+|password|string|null: false, default: ""|
 |tel|string|null: false|
-|image|string|default: ""| 12/30修正（白岩）
-|point|integer|default: ""| 12/30修正（白岩）
-|sales|integer|default: ""| 12/30修正（白岩）
-|certification|string|default: ""| 12/30修正（白岩）
+|image|string|default: ""|
+|point|integer|default: ""|
+|sales|integer|default: ""|
+|certification|string|default: ""|
 ### Association
 - has_many :likes
 - has_many: evaluations
@@ -56,8 +56,8 @@ Things you may want to cover:
 |house_number|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |building|string||
-|phone_number|string|null: false, uniqueness: true| 12/26追記 白岩
-|address_div|integer|default: ""| 12/30修正 白岩
+|phone_number|string|null: false, uniqueness: true|
+|address_div|integer|default: ""|
 
 ### Association
 - belongs_to :user, optional: true
@@ -66,7 +66,7 @@ Things you may want to cover:
 ## cardテーブル
 |Column|Type|Options|
 |------|----|-------|
-|card_company|integer|default: ""| 12/30修正（白岩）
+|card_company|integer|default: ""|
 |number|string|null: false|
 |city|string|null: false|
 |security_code|string|null: false|

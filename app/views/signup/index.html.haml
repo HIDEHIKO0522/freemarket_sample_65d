@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %meta{:content, to: "text/html; charset=UTF-8", "http-equiv", to: "Content-Type"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title 会員情報入力 - メルカリ スマホでかんたん フリマアプリ
     = csrf_meta_tags
     = csp_meta_tag
@@ -10,7 +10,7 @@
   %body
     .sign-up
       .header
-        = link_to '/' do
+        = link_to root_path do
           = image_tag 'fmarket_logo_red.svg', alt: 'mercari', class: 'header__logo'
       .main
         .main__text
