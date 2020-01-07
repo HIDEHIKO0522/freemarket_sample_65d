@@ -39,11 +39,10 @@ class SignupController < ApplicationController
     check_user_valid = @user.valid?(context: :sms_phone)
     #ユーザー、プロフィールのバリデーション判定
     unless check_user_valid
-      # verify_recaptcha(model: @user) && check_user_valid
       flash.now[:alert] = @user.errors.full_messages
       render 'signup/registration' 
     else
-      # 問題がなければsession[:through_profile_validation]を宣言して次のページへリダイレクト
+    # 問題がなければsession[:through_profile_validation]を宣言して次のページへリダイレクト
       session[:through_profile_validation] = "through_profile_validation"
       redirect_to sms_authentication_signup_index_path
 
@@ -58,7 +57,7 @@ class SignupController < ApplicationController
   def sms_post
     @user = User.new
     #パラメータが飛んでなかった場合ここでrender
-    render sms_authentication_signup_index_path unless  user_params[:tel].present?
+    render sms_authentication_signup_index_path unless user_params[:tel].present?
     #電話番号を+81~の国際書式に書き換え（そうしないと送れない）
     send_number = user_params[:tel].sub(/\A./,'+81')
     #ランダムに6桁の整数を生成
@@ -87,7 +86,7 @@ class SignupController < ApplicationController
 
   def sms_check
     @user = User.new
-    render layout: false
+
     #送信された値を代入
     sms_number = user_params[:tel]
     #比較し、一致したら次の登録フォームへ
@@ -159,7 +158,7 @@ class SignupController < ApplicationController
       first_name: session[:first_name],
       family_name_kana: session[:family_name_kana],
       first_name_kana: session[:first_name_kana],
-      tel: session[:tel]
+      tel: session[:sms_number]
     )
     #万一ユーザーがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
     unless @user.save

@@ -84,3 +84,5 @@ gem 'erb2haml'
 gem 'active_hash'
 gem 'pry-rails'
 gem "font-awesome-sass"
+gem 'twilio-ruby'
+gem 'dotenv-rails'

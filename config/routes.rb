@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  #'registration' ,'sms_authentication' ,'address' ,'card' ,'done' のみルーティングをする
+  
   devise_for :users,skip: :all
   
   devise_scope :user do
@@ -14,7 +14,9 @@ Rails.application.routes.draw do
       get 'registration'                               
       post 'registration' => 'signup#profile_validation' 
       get 'sms_authentication' 
-      post 'sms_authentication' => 'signup#sms_validation' 
+      post 'sms_authentication' => 'signup#sms_post'
+      get 'sms_confirmation'
+      post 'sms_confirmation' => 'signup#sms_check' 
       get 'address' 
       post 'address' => 'signup#address_validation' 
       get 'card' 
