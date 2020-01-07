@@ -24,7 +24,21 @@ Rails.application.routes.draw do
     end
   end  
 
-
+  resources :signup ,only: [:index,:create] do
+    collection do
+      get 'registration'                               
+      post 'registration' => 'signup#profile_validation' 
+      get 'sms_authentication' 
+      post 'sms_authentication' => 'signup#sms_validation' 
+      # get 'sms_confirmation' 
+      # post 'sms_confirmation' => 'signup#sms_check'
+      get 'address' 
+      post 'address' => 'signup#address_validation' 
+      get 'card' 
+      post 'card' => 'signup#card_validation' 
+      get 'done' 
+    end
+  end  
 
   resources :users do
     collection do
@@ -33,7 +47,12 @@ Rails.application.routes.draw do
     end
   end
   get 'users/identification(/:id)', to: 'users#identification', as: :user_identification
-  resources :items
+  resources :items do
+    collection do
+      get 'category'
+    end
+  end
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
   resources :cards
 end 
+

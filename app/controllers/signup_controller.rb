@@ -138,6 +138,15 @@ class SignupController < ApplicationController
       session[:through_address_validation] = "through_address_validation"
       redirect_to card_signup_index_path
     end
+    
+  def sms_authentication
+   @sms = User.new
+   render layout: false
+  end
+
+  def address
+    @address = Address.new
+    render layout: false
   end
 
   def card
@@ -245,7 +254,7 @@ class SignupController < ApplicationController
   end
 
   def card_params
-    
     params.require(:card).permit(:number, :security_code, :expiration_month, :expiration_year)
   end 
 end
+

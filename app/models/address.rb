@@ -1,4 +1,5 @@
 class Address < ApplicationRecord
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to_active_hash :prefecture
 
@@ -16,5 +17,3 @@ class Address < ApplicationRecord
   validates :phone_number,            format: { with: PHONE_NUMBER }
   
 end
-
-
