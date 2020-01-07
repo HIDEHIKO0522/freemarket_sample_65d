@@ -37,15 +37,7 @@
         .imagebody__flame__block__sample__details
           もっと見る！
     .imagebody__flame__itemslists
-      .imagebody__flame__itemslists__block
-        - @items.each do |item|
-          .imagebody__flame__itemslists__block__image
-            = image_tag item.item_images[0].image.url, class: "top-image"
-            .top-price
-              ¥
-              = item.price
-            .top-name
-              = item.name
+      = render partial: "items/detail", collection: @items, as: :item
             
 .categoryonintroduction
   %h2.categoryonintroduction__title
@@ -69,16 +61,7 @@
         .imagebody__flame__block__sample__details
           もっと見る！
     .imagebody__flame__itemslists
-      .imagebody__flame__itemslists__block
-        - @items.each do |item|
-          .imagebody__flame__itemslists__block__image
-            = image_tag item.item_images[0].image.url, class: "top-image"
-            .top-price
-              ¥
-              = item.price
-            .top-name
-              = item.name
-  
+      = render partial: "items/detail", collection: @items, as: :item  
 %aside
   .aside__flame
     .aside__flame__left-block

@@ -346,14 +346,14 @@ iconconnfig{
       flex-wrap: wrap;
       padding: 0 200px;
       width: 100%;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
 
       &__block{
-
-        display: flex;
+        
         margin: -10px;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        display: flex;
+        margin-bottom: 20px;
 
         &__image{
           width: 200px;
