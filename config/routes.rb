@@ -8,7 +8,8 @@ Rails.application.routes.draw do
     delete 'destroy', to: 'devise/sessions#destroy',as: :current_user_destroy
   end
 
-  root to: "home#index"
+  
+  root to: 'items#index'
   resources :signup ,only: [:index,:create] do
     collection do
       get 'registration'                               
@@ -31,13 +32,20 @@ Rails.application.routes.draw do
       get 'profile'
     end
   end
+
   get 'users/identification(/:id)', to: 'users#identification', as: :user_identification
   resources :items do
     collection do
       get 'category'
     end
   end
+
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
   resources :cards
+end 
+
+  resources :brands, only: [:index]
+  resources :categorys, only: [:index]
+
 end 
 

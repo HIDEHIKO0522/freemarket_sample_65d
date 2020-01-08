@@ -95,4 +95,4 @@ gem 'jquery-rails'
 gem 'active_hash'
 gem "font-awesome-sass"
 gem 'gimei'
-
+gem 'gretel'

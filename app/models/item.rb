@@ -3,6 +3,6 @@ class Item < ApplicationRecord
   validates :price, numericality: { greater_than_or_equal_to: 300 }
   belongs_to :buyer, class_name: 'User', optional: true
   belongs_to :seller, class_name: 'User'
-  has_many :item_images
+  has_many :item_images, dependent: :destroy
   belongs_to :category
 end
