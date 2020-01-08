@@ -212,6 +212,7 @@ class SignupController < ApplicationController
       reset_session
       session[:id] = @user.id
       redirect_to done_signup_index_path
+      return
   end
 
   def done
