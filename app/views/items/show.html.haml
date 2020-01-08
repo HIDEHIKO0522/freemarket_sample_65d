@@ -77,7 +77,7 @@
     .item-show-container
       .item-show-container__myitem
         .item-show-container__myitem__edit.block-btn.block-btn-red
-          =link_to "商品の編集", "#"
+          =link_to "商品の編集", edit_item_path(@item)
         - if @item.status == "出品中"
           .item-show-container__myitem__stop.block-btn.block-btn-gray
             =link_to "出品を一旦停止する", "#"

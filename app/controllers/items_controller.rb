@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :destroy]
+  before_action :set_item, only: [:show, :destroy, :edit, :update]
   
   def index
     @items = Item.limit(10)
@@ -8,6 +8,7 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
+
     @categorys = Category.where(ancestry: nil)
     @prefectures = Prefecture.all
   end
@@ -46,6 +47,21 @@ class ItemsController < ApplicationController
       redirect_to user_path(current_user)
     else
       redirect_to item_path @item
+    end
+  end
+
+  def edit
+    @small_categorys = @item.category.siblings
+    @middle_categorys = @item.category.parent.siblings
+    @categorys = Category.where(ancestry: nil)
+    @prefectures = Prefecture.all
+  end
+
+  def update
+    if @item.update(item_params)
+      redirect_to item_path @item
+    else
+      render :edit
     end
   end
 
