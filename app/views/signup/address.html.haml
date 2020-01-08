@@ -44,7 +44,7 @@
     .main
       .main__text 住所入力
       .main__form
-        = form_for @address,  url: "/signup/address", meghod: :post do |f|
+        = form_for @address,  url: address_signup_index_path, meghod: :post do |f|
           .main__form__group
             = f.label '郵便番号', class: 'main__form__group__label', for: "address_postal_code"
             %span.main__form__group__require 必須

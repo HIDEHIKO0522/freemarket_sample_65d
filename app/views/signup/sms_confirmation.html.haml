@@ -43,7 +43,7 @@
       .main__text
         電話番号の確認
       .main__form
-        = form_for @user, url: "/signup/sms_confirmation", method: :post do |f|
+        = form_for @user, url: sms_confirmation_signup_index_path, method: :post do |f|
           .main__form__group
             = f.label :sms_number, '認証番号', class: 'main__form__group__label', for: "user_tel"
             = f.telephone_field :tel, class: "main__form__group__input-box", placeholder: "6桁の認証番号を入力"

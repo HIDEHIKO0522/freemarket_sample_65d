@@ -43,7 +43,7 @@
       .main__text
         電話番号の確認
       .main__form
-        = form_for @user, url: "/signup/sms_authentication", method: :post do |f|
+        = form_for @user, url:sms_authentication_signup_index_path, method: :post do |f|
           .main__form__group
             = f.label '携帯電話の番号（ハイフン不要）', class: 'main__form__group__label', for: "user_tel"
             = f.telephone_field :tel, class: "main__form__group__input-box", placeholder: "携帯電話番号を入力", required: 'required', type: 'tel', pattern: '^0\d{10}'
