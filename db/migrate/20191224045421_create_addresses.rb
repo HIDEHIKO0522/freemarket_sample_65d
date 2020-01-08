@@ -6,9 +6,9 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string  :prefectures,    null: false
       t.string  :city,           null: false
       t.string  :house_number,   null: false
-      t.string  :building,       null: false
-      t.integer :phone_number,   null: false, uniqueness: true
-      t.integer :type,           null: false    
+      t.string  :building,       default: ""
+      t.string  :phone_number,   default: ""
+      t.integer :address_div,    default: ""    
       t.timestamps
     end
   end

@@ -1,22 +1,17 @@
 FactoryBot.define do
 
-  factory :user, aliases: [:seller] do
-    nickname              {"aaa"}
+  factory :user do
+    nickname              {"Faker::JapaneseMedia::DragonBall.character"}
     email                 {"kkk@gmail.com"}
-    password              {"aaaa1111"}
-    password_confirmation {"aaaa1111"}
-    family_name           {"鈴木"}
-    first_name            {"太郎"}
-    family_name_kana      {"スズキ"}
-    first_name_kana       {"タロウ"}
-    birthyear             {"1900"}
-    birthmonth            {"12"}
-    birthday              {"25"}
-    tel                   {"1234567890"}
-    image                 {"user.jpg"}
-    point                 {"1234567890"}
-    sales                 {"1234567890"}
-    certification         {"id.jpg"}
+    password              {"0000000"}
+    password_confirmation {"0000000"}
+    family_name           {"Gimei.last.kanji"}
+    first_name            {"Gimei.first.kanji"}
+    family_name_kana      {"Gimei.last.katakana"}
+    first_name_kana       {"Gimei.first.katakana"}
+    birthyear             {"Faker::Number.between(from: 1960, to: 2019)"}
+    birthmonth            {"Faker::Number.between(from: 1, to: 12)"}
+    birthday              {"Faker::Number.between(from: 1, to: 31) "}
+    tel                   {"Faker::Number.leading_zero_number(digits: 11)"}
   end
-  
 end

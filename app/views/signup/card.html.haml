@@ -11,7 +11,7 @@
   .register
     .header
       %h1.haeder
-        = link_to '/' do
+        = link_to root_path do
           = image_tag 'fmarket_logo_red.svg', alt: 'mercari', class: 'header__h1__logo'
       %nav
         %ol
@@ -44,11 +44,12 @@
     .main
       .main__text 支払い方法
       .main__form
-        = form_tag(signup_index_path, method: :post, id: 'charge-form',  name: "inputForm") do
+        = form_for @card, url: "/signup",method: :post do |f|
           .main__form__group
             %label.main__form__group__label(for="card_number") カード番号
-            %span.main__form__group__require 必須
-            = text_field_tag "number", "", class: "main__form__group__input-box", placeholder: "半角数字のみ", maxlength: "16", type: "text", id: "card_number", required: 'required'
+            %span.main__form__group__require 必須   
+            -# = label :number, 'カード番号', class: 'signup-label'
+            = f.text_field :number, placeholder: '半角数字のみ',class: 'main__form__group__input-box'
             = image_tag 'creditcard_logos.png', class: 'main__form__group__logos'
             %br
           .main__form__group
@@ -56,47 +57,22 @@
             %span.main__form__group__require 必須
             .main__form__group__card
               .main__form__group__card__select-box
-                %select#expiration_month.main__form__group__card__select-box--month{name: "expiration_month", type: "text", required: 'required'}
-                  %option{value: ""} --
-                  %option{value: "01"} 01
-                  %option{value: "02"} 02
-                  %option{value: "03"} 03
-                  %option{value: "04"} 04
-                  %option{value: "05"} 05
-                  %option{value: "06"} 06
-                  %option{value: "07"} 07
-                  %option{value: "08"} 08
-                  %option{value: "09"} 09
-                  %option{value: "10"} 10
-                  %option{value: "11"} 11
-                  %option{value: "12"} 12
-                %span.main__form__group__card__text 月
+                .main__form__group__card__select-box--month
+                  = f.collection_select :expiration_month, Month.all, :id, :name, {prompt: "---"}, { required: 'required' }
+                  %span.main__form__group__card__text 月
               .main__form__group__card__select-box
-                %select#expiration_year.main__form__group__card__select-box--year{name: "expiration_year", type: "text", required: 'required'}
-                  %option{value: ""} --
-                  %option{value: "19"} 19
-                  %option{value: "20"} 20
-                  %option{value: "21"} 21
-                  %option{value: "22"} 22
-                  %option{value: "23"} 23
-                  %option{value: "24"} 24
-                  %option{value: "25"} 25
-                  %option{value: "26"} 26
-                  %option{value: "27"} 27
-                  %option{value: "28"} 28
-                  %option{value: "29"} 29
-                  %option{value: "30"} 30
-                %span.main__form__group__card__text 年
+                .main__form__group__card__select-box--year         
+                  = f.collection_select :expiration_year, Year.all, :id, :name, {prompt: "---"}, { required: 'required' }
+                  %span.main__form__group__card__text 年
           .main__form__group
             %label.main__form__group__label セキュリティコード
             %span.main__form__group__require 必須
-            = text_field_tag "security_code", "", class: "main__form__group__input-box", placeholder: "カード背面４桁もしくは３桁の番号", maxlength: "4", id: "securitiy_code", required: 'required'
+            = f.text_field :security_code, placeholder: 'カード背面4桁もしくは3桁の番号', class: "main__form__group__input-box"
             %p.main__form__group__card-info
               = link_to '/', class: 'link', target: '_blank' do
                 %i.fas.fa-question-circle
-                = 'カード裏面の番号とは？'
-          #card_token
-            = submit_tag "次へ進む", id: "token_submit", class: 'main__form__submit-btn'
+              = 'カード裏面の番号とは？'     
+          = f.submit '次へ進む', class: 'main__form__submit-btn'      
 
 
     .footer
@@ -115,3 +91,5 @@
         = image_tag 'logo_gray.svg', alt: 'mercari', class: 'footer__logo--gray'
       %p.footer__text
         ©️ 2019 Fmarket
+
+

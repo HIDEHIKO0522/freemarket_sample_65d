@@ -43,18 +43,13 @@
       .main__text
         電話番号の確認
       .main__form
-        = form_for @user, url:sms_authentication_signup_index_path, method: :post do |f|
+        = form_for @user, url: sms_confirmation_signup_index_path, method: :post do |f|
           .main__form__group
-            = f.label '携帯電話の番号（ハイフン不要）', class: 'main__form__group__label', for: "user_tel"
-            = f.telephone_field :tel, class: "main__form__group__input-box", placeholder: "携帯電話番号を入力", required: 'required', type: 'tel', pattern: '^0\d{10}'
-          %p.main__form__info 本人確認のため、携帯電話のSMS(ショートメッセージサービス)を利用して認証を行います。
-          = f.submit 'SMSを送信する', class: 'main__form__submit-btn'
-          %p.main__form__info ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
-          %p.main__form__personal-info
-            = link_to '/', class: 'link', target: '_blank' do
-              = '電話番号の確認が必要な理由'
-              %i.fas.fa-chevron-right
-
+            = f.label :sms_number, '認証番号', class: 'main__form__group__label', for: "user_tel"
+            = f.telephone_field :tel, class: "main__form__group__input-box", placeholder: "6桁の認証番号を入力"
+          %p.main__form__info SMSで届いた認証番号を入力してください
+          = f.submit '認証して終了', class: 'main__form__submit-btn'
+          
 
     .footer
       %nav
@@ -72,4 +67,3 @@
         = image_tag 'logo_gray.svg', alt: 'mercari', class: 'footer__logo--gray'
       %p.footer__text
         ©️ 2019 Fmarket
-

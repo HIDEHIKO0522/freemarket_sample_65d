@@ -9,16 +9,16 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.2]
       t.string :family_name_kana,   null: false
       t.string :first_name_kana,    null: false
       t.string :nickname,           null: false
-      t.string :birthyear,         null: false
-      t.string :birthmonth,        null: false
-      t.string :birthday,          null: false
+      t.string :birthyear,          null: false
+      t.string :birthmonth,         null: false
+      t.string :birthday,           null: false
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
-      t.integer :tel,               null: false
-      t.string :image,              null: false
-      t.integer :point,             null: false
-      t.integer :sales,             null: false
-      t.string :certification,      null: false
+      t.string :tel,                default: ""
+      t.string :image,              default: ""
+      t.integer :point,             default: ""
+      t.integer :sales,             default: ""
+      t.string :certification,      default: ""
 
       ## Recoverable
       t.string   :reset_password_token

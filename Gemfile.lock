@@ -110,6 +110,10 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    dotenv (2.7.5)
+    dotenv-rails (2.7.5)
+      dotenv (= 2.7.5)
+      railties (>= 3.2, < 6.1)
     erb2haml (0.1.5)
       html2haml
     erubi (1.9.0)
@@ -121,6 +125,10 @@ GEM
     factory_bot_rails (5.1.1)
       factory_bot (~> 5.1.0)
       railties (>= 4.2.0)
+    faker (2.8.1)
+      i18n (>= 1.6, < 1.8)
+    faraday (0.17.3)
+      multipart-post (>= 1.2, < 3)
     ffi (1.11.3)
     fog-aws (3.5.2)
       fog-core (~> 2.1)
@@ -141,6 +149,8 @@ GEM
     font-awesome-sass (5.12.0)
       sassc (>= 1.11)
     formatador (0.2.5)
+    gimei (0.4.0)
+      romaji
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     gretel (3.0.9)
@@ -172,6 +182,7 @@ GEM
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
+    jwt (2.2.1)
     kgio (2.11.2)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
@@ -195,6 +206,7 @@ GEM
     minitest (5.13.0)
     msgpack (1.3.1)
     multi_json (1.14.1)
+    multipart-post (2.1.1)
     mysql2 (0.5.3)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
@@ -250,6 +262,8 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    romaji (0.2.4)
+      rake (>= 0.8.0)
     rspec-core (3.9.0)
       rspec-support (~> 3.9.0)
     rspec-expectations (3.9.0)
@@ -311,6 +325,10 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
+    twilio-ruby (5.31.1)
+      faraday (~> 0.9)
+      jwt (>= 1.5, <= 2.5)
+      nokogiri (>= 1.6, < 2.0)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
     uglifier (4.2.0)
@@ -349,10 +367,13 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  dotenv-rails
   erb2haml
   factory_bot_rails
+  faker
   fog-aws
   font-awesome-sass
+  gimei
   gretel
   haml-rails
   jbuilder (~> 2.5)
@@ -370,6 +391,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
+  twilio-ruby
   tzinfo-data
   uglifier (>= 1.3.0)
   unicorn (= 5.4.1)
