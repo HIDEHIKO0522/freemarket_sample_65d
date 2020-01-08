@@ -6,6 +6,12 @@ Rails.application.routes.draw do
     delete 'destroy' => 'devise/sessions#destroy',as: :current_user_destroy
   end
 
+  # devise_scope :user do
+  #   get 'login', to: 'devise/sessions#new', as: :new_user_session
+  #   post 'login', to: 'devise/sessions#create', as: :user_session
+  #   delete 'destroy', to: 'devise/sessions#destroy',as: :current_user_destroy
+  # end
+
   root to: 'items#index'
   # get 'home/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -34,14 +40,18 @@ Rails.application.routes.draw do
       get 'profile'
     end
   end
+
   get 'users/identification(/:id)', to: 'users#identification', as: :user_identification
   resources :items do
     collection do
       get 'category'
     end
   end
+
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
   resources :cards
 
+  resources :brands, only: [:index]
+  resources :categorys, only: [:index]
 
 end 
