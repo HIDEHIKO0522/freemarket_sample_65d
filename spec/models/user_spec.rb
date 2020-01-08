@@ -26,11 +26,6 @@ describe User do
       expect(user.errors[:password]).to include("can't be blank")
     end
 
-    it "password,password_confirmationが7文字以上であれば登録できること" do
-      user = build(:user, password: "00000000", password_confirmation: "00000000")
-      user.valid?
-      expect(user).to be_valid
-    end
 
     it "password,password_confirmationが6文字以下であれば登録できないこと" do
       user = build(:user, password: "00000", password_confirmation: "00000")
@@ -90,12 +85,6 @@ describe User do
       user = build(:user, birthday: "")
       user.valid?
       expect(user.errors[:birthday]).to include("can't be blank")
-    end
-
-    it "telが空では登録できないこと" do
-      user = build(:user, tel: "")
-      user.valid?
-      expect(user.errors[:tel]).to include("can't be blank")
     end
 
     it "passwordが存在してもpassword_confirmationが空では登録できないこと" do

@@ -1,13 +1,13 @@
 FactoryBot.define do
 
   factory :address do
-    postal_code           {"1110022"}
-    prefectures           {"岩手県"}
-    city                  {"盛岡市中央"}
-    house_number          {"1-11-1"}
-    user_id               {"10"}
+    postal_code           {"Faker::Number.number(digits: 7)"}
+    prefectures           {"Faker::Number.between(from: 1, to: 48)"}
+    city                  {"Gimei.city.kanji"}
+    house_number          {"Gimei.town.kanji"}
+    user_id               {"1"}
     building              {"田中ビル"}
-    phone_number          {"08011111111"}
+    phone_number          {"Faker::Number.leading_zero_number(digits: 11)"}
   end
 
 end

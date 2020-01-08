@@ -1,11 +1,11 @@
 FactoryBot.define do
 
   factory :card do
-    number                  {"4444333322221111"}
-    security_code           {"1111"}
-    user_id                  {"10"}
-    expiration_month         {"11"}
-    expiration_year          {"21"}
+    number                  {"Faker::Number.number(digits: 15)"}
+    security_code           {"Faker::Number.within(range: 100..9999)"}
+    user_id                  {"1"}
+    expiration_month         {"Faker::Number.between(from: 1, to: 12)"}
+    expiration_year          {"Faker::Number.between(from: 19, to: 29)"}
   end
 
 end
