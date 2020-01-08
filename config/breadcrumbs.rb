@@ -2,7 +2,6 @@ crumb :root do
   link "メルカリ", root_path
 end
 
-
 # 商品関係
 crumb :category do
   link "カテゴリー一覧", categorys_path
@@ -15,11 +14,11 @@ crumb :brand do
 end
 
 
-# # マイページ
-# crumb :mypage do
-#   link "マイページ", users_path
-#   parent :root
-# end
+# マイページ
+crumb :mypage do
+  link "マイページ", users_path
+  parent :root
+end
 
 # crumb :notification do
 #   link "お知らせ", notification_users_path
