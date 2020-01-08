@@ -3,7 +3,9 @@ require 'rails_helper'
 describe ItemsController do
 
   let(:category) { create(:category) }
+  let(:another_category) { create(:category, name: "メンズ") }
   let(:user) { create(:user) }
+  let(:another_user) { create(:user, email: "lll@gmail.com") }
   let(:item) { build(:item) }
   let(:item_images) { build_list(:item_image, 2) }
   let(:params) {
@@ -81,11 +83,9 @@ describe ItemsController do
 
     end
   end
-
+    
   describe '#show' do
 
-    let(:another_user) { create(:user, email: "lll@gmail.com") }
-    let(:another_category) { create(:category, name: "メンズ") }
     let(:created_item1) { create(:item, seller: user, category: category) }
     let(:created_item2) { create(:item, seller: user, category: category) }
     let(:created_item3) { create(:item, seller: user, category: category) }
@@ -118,4 +118,71 @@ describe ItemsController do
 
   end
 
+  describe '#destroy' do
+    
+    context 'log in' do
+
+      before do
+        login user
+      end
+
+      context 'can delete' do
+        
+        it 'delete item' do
+          delete_item = create(:item, seller: user)
+          expect{
+            delete :destroy,
+            params: { id: delete_item.id }
+          }.to change(Item, :count).by(-1)
+        end
+
+        it 'delete item images' do
+          delete_item = create(:item, seller: user)
+          3.times do
+            create(:item_image, item: delete_item)
+          end
+          expect{
+            delete :destroy,
+            params: { id: delete_item.id }
+          }.to change(ItemImage, :count).by(-3)
+        end
+
+        it 'redirect to users#show' do
+          delete_item = create(:item, seller: user)
+          delete :destroy, params: { id: delete_item.id }
+          expect(response).to redirect_to redirect_to(user_path(user))
+        end
+      end
+
+      context 'can not delete' do
+        
+        it 'does not delete item' do
+          delete_item = create(:item, seller: another_user)
+          expect{
+            delete :destroy,
+            params: { id: delete_item }
+          }.to change(Item, :count).by(0)
+        end
+        
+        it 'does not delete item images' do
+          delete_item = create(:item, seller: another_user)
+          3.times do
+            create(:item_image, item: delete_item)
+          end
+          expect{
+            delete :destroy,
+            params: { id: delete_item.id }
+          }.to change(ItemImage, :count).by(0)
+        end
+
+        it 'redirect to show' do
+          delete_item = create(:item, seller: another_user)
+          delete :destroy, params: { id: delete_item.id }
+          expect(response).to redirect_to redirect_to(item_path(delete_item))
+        end
+
+      end
+
+    end
+  end
 end

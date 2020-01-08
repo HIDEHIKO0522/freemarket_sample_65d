@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :destroy]
   
   def index
     @items = Item.limit(10)
@@ -28,7 +29,6 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:id])
     @seller_items = Item.where.not(id: @item.id).where(seller_id: @item.seller_id).order(updated_at: :desc).limit(6)
     @category_items = Item.where.not(id: @item.id).where(category_id: @item.category_id).order(updated_at: :desc).limit(6)
   end
@@ -41,6 +41,14 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy
+    if current_user.id == @item.seller_id && @item.destroy
+      redirect_to user_path(current_user)
+    else
+      redirect_to item_path @item
+    end
+  end
+
 
   private
   def item_params
@@ -49,5 +57,9 @@ class ItemsController < ApplicationController
 
   def item_images
     params.require(:item).permit({item_images: []})
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
