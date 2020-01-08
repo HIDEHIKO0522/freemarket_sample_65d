@@ -80,10 +80,10 @@
           =link_to "商品の編集", edit_item_path(@item)
         - if @item.status == "出品中"
           .item-show-container__myitem__stop.block-btn.block-btn-gray
-            =link_to "出品を一旦停止する", "#"
-        - if @item.status == "停止中"
+            =link_to "出品を一旦停止する", update_status_item_path(@item), method: :post
+        - if @item.status == "公開停止中"
           .item-show-container__myitem__start.block-btn.block-btn-red
-            =link_to "出品を再開する", "#"
+            =link_to "出品を再開する", update_status_item_path(@item), method: :post
         .item-show-container__myitem__or
           or
         .item-show-container__myitem__delete.block-btn.block-btn-gray

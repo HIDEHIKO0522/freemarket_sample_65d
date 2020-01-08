@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :destroy, :edit, :update]
+  before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status]
   
   def index
     @items = Item.limit(10)
@@ -63,6 +63,16 @@ class ItemsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def update_status
+    if @item.status == "出品中"
+      @item.status = "公開停止中"
+    else @item.status == "公開停止中"
+      @item.status = "出品中"
+    end
+    @item.save
+    redirect_to item_path @item
   end
 
 
