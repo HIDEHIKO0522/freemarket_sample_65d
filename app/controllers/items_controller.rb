@@ -8,8 +8,7 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
-    @categorys = Category.where(ancestry: nil)
-    @prefectures = Prefecture.all
+    set_selections(@item)
   end
 
   def create
@@ -22,8 +21,7 @@ class ItemsController < ApplicationController
       end
       redirect_to item_path @item
     else
-      @categorys = Category.where(ancestry: nil)
-      @prefectures = Prefecture.all
+      set_selections(@item)
       render :new
     end
   end
@@ -50,10 +48,7 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @small_categorys = @item.category.siblings
-    @middle_categorys = @item.category.parent.siblings
-    @categorys = Category.where(ancestry: nil)
-    @prefectures = Prefecture.all
+    set_selections(@item)
   end
 
   def update
@@ -65,10 +60,7 @@ class ItemsController < ApplicationController
       end
       redirect_to item_path @item
     else
-      @small_categorys = @item.category.siblings
-      @middle_categorys = @item.category.parent.siblings
-      @categorys = Category.where(ancestry: nil)
-      @prefectures = Prefecture.all
+      set_selections(@item)
       render :edit
     end
   end
@@ -101,6 +93,13 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_selections(item)
+    @small_categorys = item.category.siblings if item.category.present?
+    @middle_categorys = item.category.parent.siblings if item.category.present?
+    @categorys = Category.where(ancestry: nil)
+    @prefectures = Prefecture.all
   end
 
 end
