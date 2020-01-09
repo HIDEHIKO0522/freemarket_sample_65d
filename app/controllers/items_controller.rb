@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.status = "出品中"
-    if @item.valid? && item_images[:item_images] != nil && item_images[:item_images].length <= 10
+    if @item.valid? && item_has_1_to_10_images?(@item)
       @item.save
       item_images[:item_images].each do |image|
         @item_image = ItemImage.create(image: image, item_id: @item.id)
@@ -52,7 +52,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params) && ( @item.item_images.length != 0 || item_images[:item_images] != nil ) && @item.item_images.length + item_images[:item_images].length <= 10
+    if @item.update(item_params) && item_has_1_to_10_images?(@item)
       if item_images[:item_images] != nil
         item_images[:item_images].each do |image|
           @item_image = ItemImage.create(image: image, item_id: @item.id)
@@ -105,6 +105,20 @@ class ItemsController < ApplicationController
     @middle_categorys = item.category.parent.siblings if item.category.present?
     @categorys = Category.where(ancestry: nil)
     @prefectures = Prefecture.all
+  end
+
+  def item_has_1_to_10_images?(item)
+    result = false
+    if item_images[:item_images].present?
+      if item.item_images.present?
+        result = true if item_images[:item_images].length + item.item_images.length <= 10
+      else
+        result = true if item_images[:item_images].length <= 10
+      end
+    else
+      result = true if item.item_images.present?
+    end
+    return result
   end
 
 end
