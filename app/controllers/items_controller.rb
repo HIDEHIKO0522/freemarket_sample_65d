@@ -8,7 +8,6 @@ class ItemsController < ApplicationController
   
   def new
     @item = Item.new
-
     @categorys = Category.where(ancestry: nil)
     @prefectures = Prefecture.all
   end
@@ -16,7 +15,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     @item.status = "出品中"
-    if @item.valid? && item_images[:item_images] != nil
+    if @item.valid? && item_images[:item_images] != nil && item_images[:item_images].length <= 10
       @item.save
       item_images[:item_images].each do |image|
         @item_image = ItemImage.create(image: image, item_id: @item.id)
@@ -58,7 +57,7 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params) && ( @item.item_images.length != 0 || item_images[:item_images] != nil )
+    if @item.update(item_params) && ( @item.item_images.length != 0 || item_images[:item_images] != nil ) && @item.item_images.length + item_images[:item_images].length <= 10
       if item_images[:item_images] != nil
         item_images[:item_images].each do |image|
           @item_image = ItemImage.create(image: image, item_id: @item.id)
