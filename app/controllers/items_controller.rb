@@ -101,8 +101,14 @@ class ItemsController < ApplicationController
   end
 
   def set_selections(item)
-    @small_categorys = item.category.siblings if item.category.present?
-    @middle_categorys = item.category.parent.siblings if item.category.present?
+    if item.category.present?
+      if item.category.has_grand_parent?
+        @small_categorys = item.category.siblings
+        @middle_categorys = item.category.parent.siblings
+      elsif item.category.has_parent?
+        @middle_categorys = item.category.siblings
+      end
+    end
     @categorys = Category.where(ancestry: nil)
     @prefectures = Prefecture.all
   end
