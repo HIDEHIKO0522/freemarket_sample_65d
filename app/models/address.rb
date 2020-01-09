@@ -13,7 +13,7 @@ class Address < ApplicationRecord
   validates :prefectures,             presence: true, length: {maximum: 100}
   validates :city,                    presence: true, length: {maximum: 50}
   validates :house_number,            presence: true, length: {maximum: 100}
-  validates :building,                length: {maximum: 50}
-  validates :phone_number,            format: { with: PHONE_NUMBER }
+  # validates :building,                length: {maximum: 50}
+  # validates :phone_number,            format: { with: PHONE_NUMBER }
   
 end
