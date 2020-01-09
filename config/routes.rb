@@ -32,6 +32,7 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
       get 'profile'
+      get 'mypage'
     end
   end
   get 'users/identification(/:id)', to: 'users#identification', as: :user_identification

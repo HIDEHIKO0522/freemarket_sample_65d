@@ -1,0 +1,95 @@
+.container__mypage{
+  width: 700px;
+  float: right;
+  height: 100%;
+  &__user{
+    height: 200px;
+    width: 700px;
+    padding: 20px;
+    text-align: center;
+    background-image: url("profile-icon.jpg");
+    &__icon{
+      margin-top: 20px;
+      .user-circle-icon{
+        display: inline-block;
+        font-size: 50px;
+      }
+    }
+    &__name{
+      font-size: 14px;
+      margin: 8px 0 0;
+      font-weight: 600;
+    }
+    &__number{
+      font-size: 14px;
+      position: relative;
+      &__evaluate{
+        position: absolute;
+        top: 20px;
+        left: 270px;
+      }
+      &__exhibit{
+        position: absolute;
+        top: 20px;
+        left: 330px;
+      }
+    }
+  }
+  &__notification-todo{
+    margin: 0;
+    background-color: #fff;
+    .mypage-tabs{
+      display: flex;
+      text-align: center;
+      height: 74px;
+      line-height: 74px;
+      .notification{
+        width: 50%;
+        border-top: 2px solid red;
+        h2{
+          font-weight: bold;
+        }
+      }
+      .todo{
+        width: 50%;
+        background-color: #eee;
+        h2{
+          font-weight: bold;
+        }
+      }
+      .user-notification-submit{
+        text-align: center;
+        padding: 16px;
+        }
+        button{
+          border: none;
+          background-color: #eee;
+          width: 100%;
+          font-size: 14px;
+          height: 55px;
+        }
+    }
+  }
+}
+
+.container__mypage__buy-item{
+  margin-top: 40px;
+  .mypage-head{
+    padding: 0 16px;
+    height: 72px;
+    line-height: 72px;
+    font-weight: bold;
+    background-color: white;
+  }
+  &__content{
+    height: 250px;
+    background-color: white;
+    line-height: 250px;
+    text-align: center;
+    h2{
+      font-weight: bold;
+      color: #888;
+      font-size: 16px;
+    }
+  }
+}
