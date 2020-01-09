@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
       get 'profile'
+      get 'card_registration'
+      get 'card_show'
     end
   end
 
@@ -41,7 +43,7 @@ Rails.application.routes.draw do
   end
 
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
-  resources :cards
+  # resources :cards
 
 
   resources :brands, only: [:index]
