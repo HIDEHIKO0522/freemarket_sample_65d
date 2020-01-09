@@ -58,9 +58,16 @@ class ItemsController < ApplicationController
   end
 
   def update
-    if @item.update(item_params)
+    if @item.update(item_params) && ( @item.item_images.length != 0 || item_images[:item_images] != nil )
+      if item_images[:item_images] != nil
+        item_images[:item_images].each do |image|
+          @item_image = ItemImage.create(image: image, item_id: @item.id)
+        end
+      end
       redirect_to item_path @item
     else
+      @categorys = Category.where(ancestry: nil)
+      @prefectures = Prefecture.all
       render :edit
     end
   end
@@ -93,4 +100,5 @@ class ItemsController < ApplicationController
   def set_item
     @item = Item.find(params[:id])
   end
+
 end

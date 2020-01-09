@@ -77,7 +77,6 @@ $(document).on('turbolinks:load', function() {
 
   //商品画像削除
   $('.sell-form__upload__thumbnails__thumbnail__btn__delete').click(function(){
-    id = this.getAttribute("data-image-id")
     thumbnail = $(this).parent().parent();
     $(thumbnail).remove();
   });
