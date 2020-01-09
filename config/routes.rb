@@ -39,7 +39,10 @@ Rails.application.routes.draw do
     collection do
       get 'category'
     end
-    post 'update_status', on: :member
+    member do
+      post 'update_status'
+      delete 'destroy_image'
+    end
   end
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
   resources :cards

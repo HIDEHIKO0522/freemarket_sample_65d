@@ -15,6 +15,14 @@
                   %h6 必須
                 .sell-form__upload__comment
                   %p 最大10枚までアップロードできます
+                .sell-form__upload__thumbnails
+                  - if item.item_images.length != 0
+                    - item.item_images.each do |image|
+                      .sell-form__upload__thumbnails__thumbnail
+                        .sell-form__upload__thumbnails__thumbnail__image
+                          = image_tag image.image.url
+                        .sell-form__upload__thumbnails__thumbnail__btn
+                          = link_to "削除", destroy_image_item_path(image), method: :delete, remote: true , class: "sell-form__upload__thumbnails__thumbnail__btn__delete"
                 = f.label :item_images, class: "sell-form__upload__label" do
                   .sell-form__upload__label__files
                     %p クリックしてファイルをアップロード

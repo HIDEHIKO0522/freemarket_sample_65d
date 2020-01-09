@@ -75,6 +75,11 @@ class ItemsController < ApplicationController
     redirect_to item_path @item
   end
 
+  def destroy_image
+    @image = ItemImage.find(params[:id])
+    @image.destroy
+  end
+
 
   private
   def item_params
