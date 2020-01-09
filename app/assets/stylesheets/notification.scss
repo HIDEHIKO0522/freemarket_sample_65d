@@ -10,38 +10,37 @@
     :hover{
       background-color: #eee9e6;
       }
-    .user-notification__logo{
+    &__logo{
       overflow: hidden;
       float: left;
       width: 48px;
       height: 48px;
     }
-    .user-notification__body{
+    &__body{
       width: 90%;  
       &__text{
         font-size: 14px;
       }
+      &__time{
+        display: flex;
+        color: #888;
+        .notification-icon-clock{
+          margin: 2px 8px 0 0;
+        }
+        h3{
+          font-size: 14px;
+        }
+      }
+      &__arrow{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        }
+        .notification-icon-arrow{
+          font-size: 30px;
+        }
+      }
     }
-    .user-notification__body__time{
-      display: flex;
-      color: #888;
-      }
-      .notification-icon-clock{
-        margin: 2px 8px 0 0;
-      }
-      h3{
-        font-size: 14px;
-      }
-    .user-notification__body__arrow{
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      }
-      .notification-icon-arrow{
-        font-size: 30px;
-      }
-    }
-
 .user-notification-submit{
   text-align: center;
   padding: 8px;
