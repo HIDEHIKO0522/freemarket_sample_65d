@@ -13,3 +13,11 @@ men = Category.create(name: "メンズ")
   men_jacket = men.children.create(name: "ジャケット/アウター")
     men_tailored_jacket = men_jacket.children.create(name: "テーラードジャケット")
     men_leather_jacket = men_jacket.children.create(name: "レザージャケット")
+
+
+   
+    
+  
+
+
+    

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_27_094852) do
+ActiveRecord::Schema.define(version: 2019_12_24_064738) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 2019_12_27_094852) do
     t.string "prefectures", null: false
     t.string "city", null: false
     t.string "house_number", null: false
-    t.string "building", null: false
-    t.integer "phone_number", null: false
-    t.integer "type", null: false
+    t.string "building", default: ""
+    t.string "phone_number", default: ""
+    t.integer "address_div"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_addresses_on_user_id"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 2019_12_27_094852) do
 
   create_table "cards", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
-    t.integer "type", null: false
+    t.integer "card_company"
     t.string "number", null: false
     t.string "security_code", null: false
     t.string "expiration_month", null: false
@@ -97,18 +97,16 @@ ActiveRecord::Schema.define(version: 2019_12_27_094852) do
     t.string "birthday", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
-    t.integer "tel", null: false
-    t.string "image", null: false
-    t.integer "point", null: false
-    t.integer "sales", null: false
-    t.string "certification", null: false
+    t.string "tel", default: ""
+    t.string "image", default: ""
+    t.integer "point"
+    t.integer "sales"
+    t.string "certification", default: ""
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "addresses", "users"
