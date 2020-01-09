@@ -66,6 +66,8 @@ class ItemsController < ApplicationController
       end
       redirect_to item_path @item
     else
+      @small_categorys = @item.category.siblings
+      @middle_categorys = @item.category.parent.siblings
       @categorys = Category.where(ancestry: nil)
       @prefectures = Prefecture.all
       render :edit
@@ -84,7 +86,8 @@ class ItemsController < ApplicationController
 
   def destroy_image
     @image = ItemImage.find(params[:id])
-    @image.destroy
+    item = Item.find(@image.item_id)
+    @image.destroy if current_user.id == item.seller_id
   end
 
 
