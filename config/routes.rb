@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: 'items#index'
   
   devise_for :users,
   controllers: {
@@ -6,15 +7,13 @@ Rails.application.routes.draw do
     registrations: "users/registrations",
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
-  
-  devise_scope :user do
-    get 'login', to: 'devise/sessions#new', as: :new_user_session
-    post 'login', to: 'devise/sessions#create', as: :user_session
-    delete 'destroy', to: 'devise/sessions#destroy',as: :current_user_destroy
-  end
 
-  
-  root to: 'items#index'
+  # devise_scope :user do
+  #   get 'login', to: 'devise/sessions#new', as: :new_user_session
+  #   post 'login', to: 'devise/sessions#create', as: :user_session
+  #   delete 'destroy', to: 'devise/sessions#destroy',as: :current_user_destroy
+  # end
+
   resources :signup ,only: [:index,:create] do
     collection do
       get 'registration'                               
