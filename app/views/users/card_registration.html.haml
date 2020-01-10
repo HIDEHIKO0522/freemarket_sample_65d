@@ -1,0 +1,36 @@
+= render partial: "layouts/header"
+
+.content_info
+  .content_info__first
+    ="メルカリ"
+  .content_info__second
+    = " 〉"
+  .content_info__third
+    ="マイページ"
+  .content_info__foreth
+    = " 〉"
+  .content_info__fifth
+    = "支払い方法"    
+ 
+.container
+  .container__side
+  = render "shared/side_bar"
+ 
+.container__card_registration
+  .container__card_registration__upper
+    %label.main__form__group__label 支払い方法
+  .container__card_registration__middle
+    .container__card_registration__middle__name
+      %label.main__form__group__label クレジットカード一覧
+    .container__card_registration__middle__box
+      .container__card_registration__middle__box__card-registration-btn
+        .container__card_registration__middle__box__card-registration-btn__image 
+          = image_tag 'icons8-credit.png'
+        .container__card_registration__middle__box__card-registration-btn__text
+          = "クレジットカードを追加する"  
+  .container__card_registration__lower
+    %p.container__card_registration__lower__personal-info
+      = link_to root_path, class: 'link', target: '_blank' do
+        = '支払方法について'
+        %i.fas.fa-chevron-right
+

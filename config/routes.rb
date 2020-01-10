@@ -30,6 +30,8 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
       get 'profile'
+      get 'card_registration'
+      get 'card_show'
       get 'mypage'
     end
   end
