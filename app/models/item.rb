@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  validates :name, :comment, :condition, :size, :price, :arrival_date, :charge, :location, :delivery, presence: true
+  validates :name, :comment, :condition, :size, :price, :arrival_date, :charge, :location, :delivery, :status, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 300 }
   validate :check_category
   belongs_to :buyer, class_name: 'User', optional: true

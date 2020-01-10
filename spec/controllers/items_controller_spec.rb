@@ -7,7 +7,19 @@ describe ItemsController do
   let(:user) { create(:user) }
   let(:another_user) { create(:user, email: "lll@gmail.com") }
   let(:item) { build(:item) }
-  let(:item_images) { build_list(:item_image, 2) }
+  let(:image1) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image2) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image3) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image4) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image5) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image6) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image7) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image8) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image9) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image10) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:image11) { Rack::Test::UploadedFile.new(File.join(Rails.root, 'public/images/test_image.jpg')) }
+  let(:item_images_2) { [image1, image2] }
+  let(:item_images_11) { [image1, image2, image3, image4, image5, image6, image7, image8, image9, image10, image11] }
   let(:params) {
     { seller_id: user.id,
       item: {
@@ -21,7 +33,7 @@ describe ItemsController do
         location: item.location,
         delivery: item.delivery,
         category_id: category.id,
-        item_images: item_images
+        item_images: item_images_2
       }
     }
   }
@@ -38,10 +50,14 @@ describe ItemsController do
         location: item.location,
         delivery: item.delivery,
         category_id: category.id,
-        item_images: item_images
+        item_images: item_images_2
       }
     }
   }
+  let(:created_item) { create(:item, seller: user, category: category) }
+  let(:created_item_image) { create(:item_image, item: created_item) }
+  let(:another_seller_item) { create(:item, seller: another_user, category: category) }
+  let(:another_seller_item_image) { create(:item_image, item: another_seller_item) }
 
   describe '#create' do
 
@@ -59,6 +75,10 @@ describe ItemsController do
           expect{ subject }.to change(Item, :count).by(1)
         end
 
+        it 'count up item image' do
+          expect{ subject }.to change(ItemImage, :count).by(2)
+        end
+
         it 'redirects to item_path' do
           subject
           item = Item.order(updated_at: :desc).limit(1)[0]
@@ -73,6 +93,49 @@ describe ItemsController do
         }
         it 'does not count up' do
           expect{ subject }.not_to change(Item, :count)
+        end
+
+        it 'does not count up without item_images' do
+          expect{
+            post :create,
+            params: {
+              seller_id: user.id,
+              item: {
+                name: item.name,
+                comment: item.comment,
+                condition: item.condition,
+                size: item.size,
+                price: item.price,
+                arrival_date: item.arrival_date,
+                charge: item.charge,
+                location: item.location,
+                delivery: item.delivery,
+                category_id: category.id,
+              }
+            }
+          }.not_to change(Item, :count)
+        end
+
+        it 'does not count up with more than ten item_images' do
+          expect{
+            post :create,
+            params: {
+              seller_id: user.id,
+              item: {
+                name: item.name,
+                comment: item.comment,
+                condition: item.condition,
+                size: item.size,
+                price: item.price,
+                arrival_date: item.arrival_date,
+                charge: item.charge,
+                location: item.location,
+                delivery: item.delivery,
+                category_id: category.id,
+                item_images: item_images_11
+              }
+            }
+          }.not_to change(Item, :count)
         end
 
         it 'renders new' do
@@ -161,7 +224,7 @@ describe ItemsController do
           expect{
             delete :destroy,
             params: { id: delete_item }
-          }.to change(Item, :count).by(0)
+          }.not_to change(Item, :count)
         end
         
         it 'does not delete item images' do
@@ -172,7 +235,7 @@ describe ItemsController do
           expect{
             delete :destroy,
             params: { id: delete_item.id }
-          }.to change(ItemImage, :count).by(0)
+          }.not_to change(ItemImage, :count)
         end
 
         it 'redirect to show' do
@@ -185,4 +248,176 @@ describe ItemsController do
 
     end
   end
+
+  describe '#update' do
+
+    context 'log in' do
+
+      before do
+        login user
+      end
+
+      context 'can update' do
+
+        subject {
+          patch :update,
+          params: {
+            id: created_item.id,
+            seller_id: user.id,
+            item: {
+              name: "updated_item_name",
+              item_images: item_images_2
+            }
+          }
+        }
+
+        it 'update item' do
+          subject
+          expect(created_item.reload.name).to eq "updated_item_name"
+        end
+
+        it 'update item images' do
+          expect{ subject }.to change(ItemImage, :count).by(2)
+        end
+
+        it 'redirects to show' do
+          subject
+          expect(response).to redirect_to(item_path(created_item))
+        end
+
+      end
+
+      context 'can not update' do
+        subject {
+          patch :update,
+          params: {
+            id: created_item.id,
+            seller_id: user.id,
+            item: {
+              name: nil
+            }
+          }
+        }
+
+        it 'does not update item' do
+          subject
+          expect(created_item.reload.name).to eq "ニットワンピース"
+        end
+
+        it 'does not count up with more than ten item_images' do
+          expect{
+            post :create,
+            params: {
+              seller_id: user.id,
+              item: {
+                name: item.name,
+                comment: item.comment,
+                condition: item.condition,
+                size: item.size,
+                price: item.price,
+                arrival_date: item.arrival_date,
+                charge: item.charge,
+                location: item.location,
+                delivery: item.delivery,
+                category_id: category.id,
+                item_images: item_images_11
+              }
+            }
+          }.not_to change(Item, :count)
+        end
+
+        it 'render to show' do
+          subject
+          expect(response).to render_template :edit
+        end
+        
+      end
+    end
+
+  end
+
+  describe '#update_status' do
+
+    context 'log in' do
+      before do
+        login user
+      end
+
+      context 'can update' do
+
+        subject {
+          patch :update_status,
+          params: { id: created_item.id }
+        }
+
+        it 'update item status' do
+          subject
+          expect(created_item.reload.status).to eq "公開停止中"
+        end
+
+        it 'redirects to show' do
+          subject
+          expect(response).to redirect_to(item_path(created_item))
+        end
+
+      end
+
+      context 'can not update' do
+
+        subject {
+          patch :update_status,
+          params: { id: another_seller_item.id }
+        }
+
+        it 'does not update item status' do
+          subject
+          expect(another_seller_item.reload.status).to eq "出品中"
+        end
+
+      end
+
+    end
+
+  end
+
+  describe '#destroy_image' do
+
+    context 'log in' do
+      before do
+        login user
+      end
+
+      context 'can delete' do
+
+        it 'delete item image' do
+          delete_item_image = create(:item_image, item: created_item)
+          expect{
+            delete :destroy_image,
+            params: { id: delete_item_image.id }
+          }.to change(ItemImage, :count).by(-1)
+        end
+  
+        it 'render to edit' do
+          delete_item_image = create(:item_image, item: created_item)
+          delete :destroy_image, params: { id: delete_item_image.id }
+          expect(response).to render_template :edit
+        end
+
+      end
+
+      context 'can not delete' do
+
+        it 'does not delete item image' do
+          delete_item_image = create(:item_image, item: another_seller_item)
+          expect{
+            delete :destroy_image,
+            params: { id: delete_item_image.id }
+          }.not_to change(ItemImage, :count)
+        end
+
+      end
+
+    end
+  end
+
 end

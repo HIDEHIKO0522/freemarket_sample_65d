@@ -10,6 +10,7 @@ FactoryBot.define do
     charge            {"送料込み(出品者負担)"}
     location          {"北海道"}
     delivery          {"らくらくメルカリ便"}
+    status            {"出品中"}
     seller
     category
   end

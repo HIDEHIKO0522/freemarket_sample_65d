@@ -71,11 +71,8 @@ class ItemsController < ApplicationController
     else @item.status == "公開停止中"
       @item.status = "出品中"
     end
-    if @item.save
-      redirect_to item_path @item
-    else
-      render :show
-    end
+    @item.save if current_user.id == @item.seller_id
+    redirect_to item_path @item
   end
 
   def destroy_image
