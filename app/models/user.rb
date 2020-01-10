@@ -4,7 +4,8 @@ class User < ApplicationRecord
   # extend ActiveHash::Associations::ActiveRecordExtensions
   # belongs_to_active_hash :birthyear
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :omniauthable, omniauth_providers: %i[facebook google_oauth2]
   
   has_many :sns_credentials       
   has_one :address
