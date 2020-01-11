@@ -13,7 +13,6 @@
   text-align: center;
     
   @media screen and (min-width: 768px){
-    // display: inline-block;
       margin: 40px 0 0;
       height: 128px;
   }
@@ -112,14 +111,10 @@
         height: 80px;
         width: 80px;
         min-width: 80px;
-        // display: -webkit-box;
-        // display: -ms-flexbox;
         display: flex;
         -webkit-box-pack: center;
-        // -ms-flex-pack: center;
         justify-content: center;
         -webkit-box-align: center;
-        // -ms-flex-align: center;
         align-items: center;
       }
 
@@ -145,10 +140,8 @@
 
       //3段目
       &__buy-price-table {
-        // display: table;
         border-collapse: collapse;
         width: 100%;
-        // display: table-row;
       }
 
       &__buy-you-pay {
@@ -167,7 +160,6 @@
       }
 
       &__buy-price-cell {
-        // display: table-cell;
         padding: 0;
         text-align: right;
       }
