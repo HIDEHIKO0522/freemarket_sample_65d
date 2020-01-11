@@ -42,10 +42,10 @@ Rails.application.routes.draw do
 
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
   resources :cards
-end 
 
   resources :brands, only: [:index]
   resources :categorys, only: [:index]
-
+  resources :buysample, only: [:index]
 end 
 
+  
