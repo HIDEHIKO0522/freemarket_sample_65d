@@ -2,4 +2,7 @@
   .container__side
     = render "shared/side_bar"
   .container__logout
-    %input{type: "submit", value: "ログアウト", class: "logout-btn"}
+    = link_to current_user_destroy_path, method: :delete do
+      .logout-btn
+        = "ログアウト"
+    -# %input{type: "submit",value: "ログアウト", current_user_destroy_path, method: :delete ,class: "logout-btn"
