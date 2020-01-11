@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   
   devise_scope :user do
     get 'login', to: 'devise/sessions#new', as: :new_user_session
-    post 'login', to: 'devise/sessions#create', as: :user_session
+    post 'login', to: 'devise/sessions#create', as: :user_session   
     delete 'destroy', to: 'devise/sessions#destroy',as: :current_user_destroy
   end
 
@@ -15,9 +15,9 @@ Rails.application.routes.draw do
       get 'registration'                               
       post 'registration',  to: 'signup#profile_validation' 
       get 'sms_authentication' 
-      post 'sms_authentication',  to: 'signup#sms_post'
-      get 'sms_confirmation'
-      post 'sms_confirmation', to: 'signup#sms_check' 
+      post 'sms_authentication',  to: 'signup#sms_validation'
+      # get 'sms_confirmation'
+      # post 'sms_confirmation', to: 'signup#sms_check' 
       get 'address' 
       post 'address', to: 'signup#address_validation' 
       get 'card' 
@@ -26,10 +26,13 @@ Rails.application.routes.draw do
   end  
 
 
-  resources :users do
+  resources :users do 
     collection do
       get 'logout'
       get 'profile'
+      get 'card_registration'
+      get 'card_information'
+      get 'mypage'
     end
   end
 
@@ -42,6 +45,7 @@ Rails.application.routes.draw do
 
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
   resources :cards
+
 
   resources :brands, only: [:index]
   resources :categorys, only: [:index]
