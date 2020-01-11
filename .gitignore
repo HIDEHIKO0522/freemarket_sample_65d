@@ -30,3 +30,4 @@
 /.env
 public/
 
+app/.ENV

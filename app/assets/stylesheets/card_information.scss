@@ -1,0 +1,88 @@
+.content_info {
+  height: 50px;
+  weight: 100%;
+  background-color: white;
+  font-size: 14px;
+  line-height: 20px;
+  border-top: solid, gray;
+  border-bottom: inset;
+  padding-top: 15px;
+  padding-left: 210px;
+  margin-bottom: 30px;
+
+    &__first{
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      margin-right: 12px;
+      color: black;
+      float: left;
+    } 
+    &__second{
+      font-size: 12px;
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__third{
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__foreth{
+      font-size: 12px;
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__fifth{
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__sixth{
+      font-size: 12px;
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__seventh{
+      weight: 50px;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+      float: left;
+    }
+}   
+
+.container__card_information{
+  padding: 0px;
+  background-color: white;
+  float: left;
+  width: 700px;
+
+    &__upper{
+    height: 60px;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border: solid 1px #eeeeee;
+    }
+}
+
