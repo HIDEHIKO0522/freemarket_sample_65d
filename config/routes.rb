@@ -26,12 +26,12 @@ Rails.application.routes.draw do
   end  
 
 
-  resources :users do
+  resources :users do 
     collection do
-      # get 'logout'
+      get 'logout'
       get 'profile'
       get 'card_registration'
-      get 'card_show'
+      get 'card_information'
       get 'mypage'
     end
   end

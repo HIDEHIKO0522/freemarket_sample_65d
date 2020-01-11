@@ -23,11 +23,12 @@
     .container__card_registration__middle__name
       %label.main__form__group__label クレジットカード一覧
     .container__card_registration__middle__box
-      .container__card_registration__middle__box__card-registration-btn
-        .container__card_registration__middle__box__card-registration-btn__image 
-          = image_tag 'icons8-credit.png'
-        .container__card_registration__middle__box__card-registration-btn__text
-          = "クレジットカードを追加する"  
+      = link_to card_information_users_path, method: :get do
+        .container__card_registration__middle__box__card-registration-btn
+          .container__card_registration__middle__box__card-registration-btn__image 
+            = image_tag 'icons8-credit.png'
+          .container__card_registration__middle__box__card-registration-btn__text
+            = "クレジットカードを追加する"  
   .container__card_registration__lower
     %p.container__card_registration__lower__personal-info
       = link_to root_path, class: 'link', target: '_blank' do
