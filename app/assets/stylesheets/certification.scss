@@ -149,7 +149,7 @@
           border-radius: 4px;
           font-size: 16px;
           line-height: 45px;
-          padding-left: 20px;       
+          padding-left: 7px;       
           &__text{
             text-align: left;      
           }
@@ -158,24 +158,15 @@
       &__prefectures {
         margin-bottom: 40px;
         &__box {
+          background-color: white;
+          color: #808080;
           height: 48px;
+          width: 598px;
           border: 1px solid  #ccc;
           border-radius: 4px;
           font-size: 16px;
           line-height: 45px;
-          padding-left: 20px;
-          padding-right: 20px;
-          display: flex; 
-          justify-content: space-between;
-          &__text{
-            width: 500px; 
-            text-align: left; 
-            // position: left     
-          }
-          &__angle_image{
-            width: 50px;    
-          }
-
+          padding-left: 7px;
         }
       }      
       &__city {
@@ -188,7 +179,7 @@
           border-radius: 4px;
           font-size: 16px;
           line-height: 45px;
-          padding-left: 20px;                
+          padding-left: 7px;                
           &__text{
             text-align: left;      
           }
@@ -204,7 +195,7 @@
           border-radius: 4px;
           font-size: 16px;
           line-height: 45px;
-          padding-left: 20px;       
+          padding-left: 7px;       
           &__text{
             text-align: left;      
           }
@@ -220,7 +211,7 @@
           border-radius: 4px;
           font-size: 16px;
           line-height: 45px;
-          padding-left: 20px;       
+          padding-left: 7px;       
           &__text{
             text-align: left;      
           }
