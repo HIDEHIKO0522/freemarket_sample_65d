@@ -1,0 +1,252 @@
+.content_info{
+  height: 50px;
+  weight: 100%;
+  background-color: white;
+  font-size: 14px;
+  line-height: 20px;
+  border-top: solid, gray;
+  border-bottom: inset;
+  padding-top: 15px;
+  padding-left: 210px;
+  margin-bottom: 30px;
+
+    &__first{
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      margin-right: 12px;
+      color: black;
+      float: left;
+    } 
+    &__second{
+      font-size: 12px;
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__third{
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__foreth{
+      font-size: 12px;
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__fifth{
+      weight: 50px;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+      float: left;
+    }
+}   
+
+.container__user_registration{
+  padding: 0px;
+  background-color: white;
+  float: left;
+  width: 700px;
+
+    &__upper{
+    height: 60px;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border: solid 1px #eeeeee;
+    }
+    &__lower{
+    height: 1150px;
+    font-size: 14px;
+    font-weight: normal;
+    padding-top: 70px;
+    padding-bottom: 5px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border: solid 1px #eeeeee;
+    
+      &__label{      
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      &__optional{
+        background-color: #ccc;
+        margin: 0 0 0 8px;
+        padding: 2px 4px;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 12px;
+        vertical-align: top;
+      }
+      &__input{
+        box-sizing: border-box;
+        height: 48px;
+        width: 598px;
+        border: 1px solid  #ccc;
+        border-radius: 4px;
+        font-size: 16px;
+        line-height: 45px;
+        padding-left: 20px;   
+      }
+      &__comment {
+        font-weight: normal;
+        margin-bottom: 10px;
+      }
+      &__upload {
+        font-weight: normal;
+        text-align: right;
+        color: #0099E8; 
+        margin-right: 10px; 
+        margin-bottom: 50px;
+      }
+        &__info {
+          padding: 0 15px;
+          margin-bottom: 50px;
+        }    
+      &__name {
+        margin-bottom: 30px;
+        &__box {
+          text-align: left;
+          color: white;
+          margin-left: 20px;
+        }
+      }      
+      &__name_kana {
+        margin-bottom: 30px;
+        &__box {
+          text-align: left;
+          color: white;
+          margin-left: 20px;
+        }
+      }      
+      &__birthday {
+        margin-bottom: 30px;
+        &__box {
+          text-align: left;
+          font-weight: normal;
+          color: white;
+        }    
+      } 
+      &__postal_code {
+        margin-bottom: 40px;
+        &__box {
+          box-sizing: border-box;
+          height: 48px;
+          width: 598px;
+          border: 1px solid  #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+          line-height: 45px;
+          padding-left: 20px;       
+          &__text{
+            text-align: left;      
+          }
+        }
+      }            
+      &__prefectures {
+        margin-bottom: 40px;
+        &__box {
+          height: 48px;
+          border: 1px solid  #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+          line-height: 45px;
+          padding-left: 20px;
+          padding-right: 20px;
+          display: flex; 
+          justify-content: space-between;
+          &__text{
+            width: 500px; 
+            text-align: left; 
+            // position: left     
+          }
+          &__angle_image{
+            width: 50px;    
+          }
+
+        }
+      }      
+      &__city {
+        margin-bottom: 40px;
+        &__box {
+          box-sizing: border-box;
+          height: 48px;
+          width: 598px;
+          border: 1px solid  #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+          line-height: 45px;
+          padding-left: 20px;                
+          &__text{
+            text-align: left;      
+          }
+        }
+      }      
+      &__address {
+        margin-bottom: 40px;
+        &__box {
+          box-sizing: border-box;
+          height: 48px;
+          width: 598px;
+          border: 1px solid  #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+          line-height: 45px;
+          padding-left: 20px;       
+          &__text{
+            text-align: left;      
+          }
+        }
+      }      
+      &__building {
+        margin-bottom: 40px;
+        &__box {
+          box-sizing: border-box;
+          height: 48px;
+          width: 598px;
+          border: 1px solid  #ccc;
+          border-radius: 4px;
+          font-size: 16px;
+          line-height: 45px;
+          padding-left: 20px;       
+          &__text{
+            text-align: left;      
+          }
+        }
+      }      
+      
+      &__box {         
+        color: white; 
+        margin-bottom: 40px;     
+        &__user-registration-btn {
+          background-color: #ea352d;
+          font-weight: normal;
+          border: 1px splid #ea352d;
+          display: block;
+          font-size: 14px;
+          height: 50px;
+          margin: 0 auto;        
+          &__text{
+            padding-top: 15px;
+            text-align: center;          
+          }
+        } 
+      } 
+      &__registration-info{
+        color: #0099E8; 
+        text-align: right;
+      }
+    }
+}  

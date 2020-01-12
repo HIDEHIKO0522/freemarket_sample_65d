@@ -15,4 +15,6 @@ class UsersController < ApplicationController
   def card_information
   end  
 
+  def certification
+  end
 end
