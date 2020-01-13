@@ -70,4 +70,7 @@
           = link_to image_tag("fmarket_logo_red.svg", width: '130'), ""
           © Mercari, Inc.
     .exhibitioncamera
-      = link_to image_tag("丸枠付きのカメラのアイコン素材 2.svg", width: '128')
+      - if user_signed_in?  
+        = link_to image_tag("丸枠付きのカメラのアイコン素材 2.svg", width: '128'), new_item_path
+      - else  
+        = link_to image_tag("丸枠付きのカメラのアイコン素材 2.svg", width: '128'),new_user_session_path
