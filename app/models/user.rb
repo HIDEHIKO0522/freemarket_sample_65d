@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
+         
   has_many :sns_credentials       
   has_one :address
   has_one :card      
@@ -15,14 +16,16 @@ class User < ApplicationRecord
 
   validates :nickname,                presence: true, length: {maximum: 50}
   validates :email,                   presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
-  validates :password,                presence: true, length: {minimum: 6, maximum: 128},format: { with: PASSWORD_VALIDATION }
-  validates :password_confirmation,   presence: true, length: {minimum: 6, maximum: 128}
-  validates :family_name,             presence: true, length: {maximum: 10}
-  validates :first_name,              presence: true, length: {maximum: 10}
-  validates :family_name_kana,        presence: true, length: {maximum: 10}
-  validates :first_name_kana,         presence: true, length: {maximum: 10}
-  validates :birthyear,               presence: true, length: {maximum: 4}
-  validates :birthmonth,              presence: true, length: {maximum: 2}
-  validates :birthday,                presence: true, length: {maximum: 2}
-  validates :tel,                     presence: true, length: {maximum: 12}
+  validates :password,                presence: true, length: {minimum: 7, maximum: 128},format: { with: PASSWORD_VALIDATION }
+  validates :password_confirmation,   presence: true, length: {minimum: 7, maximum: 128}
+  validates :family_name,             presence: true, length: {maximum: 50}
+  validates :first_name,              presence: true, length: {maximum: 50}
+  validates :family_name_kana,        presence: true, length: {maximum: 50}
+  validates :first_name_kana,         presence: true, length: {maximum: 50}
+  validates :birthyear,               presence: true, length: {maximum: 50}
+  validates :birthmonth,              presence: true, length: {maximum: 50}
+  validates :birthday,                presence: true, length: {maximum: 50}
+  validates :tel,                     presence: true, length: {maximum: 100},on: :sms_phone
+
 end
+

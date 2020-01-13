@@ -1,17 +1,85 @@
-%h2 Log in
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-  .field
-    = f.label :email
-    %br/
-    = f.email_field :email, autofocus: true, autocomplete: "email"
-  .field
-    = f.label :password
-    %br/
-    = f.password_field :password, autocomplete: "current-password"
-  - if devise_mapping.rememberable?
-    .field
-      = f.check_box :remember_me
-      = f.label :remember_me
-  .actions
-    = f.submit "Log in"
-= render "devise/shared/links"
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title 会員情報入力 - メルカリ スマホでかんたん フリマアプリ
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+  .register
+    .header
+      %h1.haeder
+        = link_to '/' do
+          = image_tag 'fmarket_logo_red.svg', alt: 'mercari', class: 'header__h1__logo'
+
+  .main   
+    .main__to-signup
+      %p アカウントをお持ちでない方はこちら
+      = link_to registration_signup_index_path do
+        .main__to-signup--btn 
+          = "新規登録会員"
+    .main__login
+      .main__login__facebook
+        = link_to '#' do
+          .main__login__facebook--btn
+            %i.fab.fa-facebook-square
+            = "Facebookでログイン"  
+      .main__login__google
+        = link_to '#' do
+          .main__login__google--btn
+            %i.fab.fa-google
+            = "Googleでログイン"            
+    .main__form
+      = form_for @user, url: user_session_path, method: :post do |f|
+        .main__form__group
+          = f.email_field :email, class: "main__form__group__input-box", placeholder: "メールアドレス", autofocus: true, required: 'required', autocomplete: "email"
+        .main__form__group
+          = f.password_field :password, class: "main__form__group__input-box", placeholder: "パスワード", autocomplete: "current-password"
+        .main__form__group
+          = f.password_field :password_confirmation, class: "main__form__group__input-box", placeholder: "パスワード（確認）", autocomplete: "current-password"
+        = f.submit 'ログイン', class: 'main__form__submit-btn'
+        %p.main__form__personal-info
+          = link_to root_path, class: 'link', target: '_blank' do
+            = 'パスワードをお忘れの方'
+            %i.fas.fa-chevron-right
+ 
+  .footer
+    %nav
+      %ul.clearfix
+        %li
+          = link_to '#' do
+            プライバシーポリシー
+        %li
+          = link_to '#' do
+            メルカリ利用規約
+        %li
+          = link_to '#' do
+            特定商取引に関する表記
+    .fotter__logo
+      = image_tag 'logo_gray.svg', alt: 'mercari', class: 'footer__logo--gray'
+    %p.footer__text
+      ©️ 2019 Fmarket
+
+-# .contents.row
+-#   .container
+-#     %h1
+-#     %p#red ログイン
+-#     = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
+-#       .field
+-#         = f.label :email
+-#         %br/
+-#         = f.email_field :email, autofocus: true
+-#       .field
+-#         = f.label :password
+-#         %br/
+-#         = f.password_field :password, autocomplete: "off"
+-#       - if devise_mapping.rememberable?
+-#         .field
+-#           = f.label :remember_me
+-#           %br/
+-#           = f.check_box :remember_me
+-#       .actions
+-#         = f.submit "Log in"
+

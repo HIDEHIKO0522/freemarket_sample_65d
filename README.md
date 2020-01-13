@@ -27,16 +27,16 @@ Things you may want to cover:
 |name|string|null: false|
 |name_kana|string|null: false|
 |nickname|string|null: false|
-|sex|integer|null: false|
+|birthyear|integer|null: false|
+|birthmonth|integer|null: false|
 |birthday|integer|null: false|
-|email|string|null: false|
-|password|string|null: false|
-|tel|integer|null: false|
-|identification|string|null: false|
-|image|string|null: false|
-|point|integer|
-|sales|integer|
-|certification|string|null: false|
+|email|string|null: false, default: ""|
+|password|string|null: false, default: ""|
+|tel|string|null: false|
+|image|string|default: ""|
+|point|integer|default: ""|
+|sales|integer|default: ""|
+|certification|string|default: ""|
 ### Association
 - has_many :likes
 - has_many: evaluations
@@ -55,7 +55,10 @@ Things you may want to cover:
 |city|string|null: false|
 |house_number|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
-|type|integer|null: false|
+|building|string||
+|phone_number|string|null: false, uniqueness: true|
+|address_div|integer|default: ""|
+
 ### Association
 - belongs_to :user, optional: true
 
@@ -63,7 +66,7 @@ Things you may want to cover:
 ## cardテーブル
 |Column|Type|Options|
 |------|----|-------|
-|type|integer|null: false|
+|card_company|integer|default: ""|
 |number|string|null: false|
 |city|string|null: false|
 |security_code|string|null: false|
