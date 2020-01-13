@@ -49,6 +49,7 @@ Rails.application.routes.draw do
 
   resources :brands, only: [:index]
   resources :categorys, only: [:index]
-
+  resources :buysample, only: [:index]
 end 
 
+  
