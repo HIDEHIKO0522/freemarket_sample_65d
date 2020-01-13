@@ -1,10 +1,10 @@
 FactoryBot.define do
 
-  factory :user do
+  factory :user, aliases: [:seller] do
     nickname              {"Faker::JapaneseMedia::DragonBall.character"}
     email                 {"kkk@gmail.com"}
-    password              {"0000000"}
-    password_confirmation {"0000000"}
+    password              {"0000aaaa"}
+    password_confirmation {"0000aaaa"}
     family_name           {"Gimei.last.kanji"}
     first_name            {"Gimei.first.kanji"}
     family_name_kana      {"Gimei.last.katakana"}

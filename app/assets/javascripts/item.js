@@ -74,4 +74,10 @@ $(document).on('turbolinks:load', function() {
     $(price).text(separate(value));
   }
   commaPrice('.item-show-container__item__price__price');
+
+  //商品画像削除
+  $('.sell-form__upload__thumbnails__thumbnail__btn__delete').click(function(){
+    thumbnail = $(this).parent().parent();
+    $(thumbnail).remove();
+  });
 });

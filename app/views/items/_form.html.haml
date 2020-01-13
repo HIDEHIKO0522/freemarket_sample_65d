@@ -1,20 +1,28 @@
-= render "form", item: @item, categorys: @categorys, middle_categorys: nil, small_categorys: nil, prefectures: @prefectures
 .single-container
   .single-header
-    = link_to image_tag("fmarket_logo_red.svg", class: "fmarket-logo"), root_path
+    = link_to image_tag("fmarket_logo_red.svg", class: "fmarket-logo")
+    
   .single-main
     .single-main__buy-item-container
       .sell-container
         .sell-container__inner
           %h2 商品の情報を入力
           .sell-form
-            = form_for @item do |f|
+            = form_for item do |f|
               .sell-form__upload
                 .sell-form__upload__title
                   %h3 出品画像
                   %h6 必須
                 .sell-form__upload__comment
                   %p 最大10枚までアップロードできます
+                .sell-form__upload__thumbnails
+                  - if item.item_images.length != 0
+                    - item.item_images.each do |image|
+                      .sell-form__upload__thumbnails__thumbnail
+                        .sell-form__upload__thumbnails__thumbnail__image
+                          = image_tag image.image.url
+                        .sell-form__upload__thumbnails__thumbnail__btn
+                          = link_to "削除", destroy_image_item_path(image), method: :delete, remote: true , class: "sell-form__upload__thumbnails__thumbnail__btn__delete"
                 = f.label :item_images, class: "sell-form__upload__label" do
                   .sell-form__upload__label__files
                     %p クリックしてファイルをアップロード
@@ -40,9 +48,13 @@
                   .sell-form__detail__selection__select
                     .categorys
                       #large-category.categorys-select
-                        = f.select :category_id, options_for_select(@categorys.map{|c|[c[:name], c[:id]]}), prompt: "---"
+                        = f.select :category_id, options_for_select(categorys.map{|c|[c[:name], c[:id]]}), prompt: "---"
                       #middle-category.categorys-select
+                        - if middle_categorys != nil
+                          = f.select :category_id, options_for_select(middle_categorys.map{|c|[c[:name], c[:id]]}), prompt: "---"
                       #small-category.categorys-select
+                        - if small_categorys != nil
+                          = f.select :category_id, options_for_select(small_categorys.map{|c|[c[:name], c[:id]]}), prompt: "---"
                   .sell-form__detail__selection__category
                     %label サイズ
                     %h6 必須
@@ -76,7 +88,7 @@
                     %label 発送元の地域
                     %h6 必須
                   .sell-form__detail__selection__select
-                    = f.select :location, options_for_select(@prefectures.map{|c|[c[:name], c[:name]]}), prompt: "---"
+                    = f.select :location, options_for_select(prefectures.map{|c|[c[:name], c[:name]]}), prompt: "---"
                   .sell-form__detail__selection__status
                     %label 発送までの日数
                     %h6 必須
