@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
   has_many :sns_credentials, dependent: :destroy  
   has_one :address
-  has_one :card      
+  has_one :card
 
   def self.without_sns_data(auth)
     user = User.where(email: auth.info.email).first
