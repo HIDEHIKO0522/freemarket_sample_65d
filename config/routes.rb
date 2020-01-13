@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'login', to: 'devise/sessions#new', as: :new_user_session
     post 'login', to: 'devise/sessions#create', as: :user_session   
     delete 'destroy', to: 'devise/sessions#destroy',as: :current_user_destroy
+    
   end
 
   
