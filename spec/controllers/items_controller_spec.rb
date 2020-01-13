@@ -330,6 +330,33 @@ describe ItemsController do
           subject
           expect(response).to render_template :edit
         end
+
+        it 'render to show without item images' do
+          no_update_item = create(:item, seller: user)
+          patch :update,
+          params: {
+            id: no_update_item.id,
+            seller_id: user.id,
+            item: {
+              name: "updated_item_name",
+            }
+          }
+          expect(response).to render_template :edit
+        end
+
+        it 'render to show with more than 10 item images' do
+          no_update_item = create(:item, seller: user)
+          patch :update,
+          params: {
+            id: no_update_item.id,
+            seller_id: user.id,
+            item: {
+              name: "updated_item_name",
+              item_images: item_images_11
+            }
+          }
+          expect(response).to render_template :edit
+        end
         
       end
     end
