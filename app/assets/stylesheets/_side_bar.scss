@@ -2,28 +2,43 @@
   margin: 0 40px 0 0;
   float: left;
   width: 280px;
-  ul{
-    list-style: none;
-    li{
-      position: relative;
-      display: block;
-      min-height: 48px;
-      padding: 16px;
+  overflow: scroll; 
+  transition: all 2s;
+
+    &__box{
+      box-sizing: border-box;
+      height: 52px;
+      width: 280px;
+      line-height: 52px;
       background-color: white;
-      font-size: 14px;
-      color: black;
-      border-top: 1px solid #eee;
-      &:hover{
-        background-color: #eee;
+      border: 1px solid #eee;
+      padding-left: 18px;
+      padding-right: 18px;
+      margin-left: -14px;
+      display: flex;
+      justify-content: space-between;
+        :hover {
+          background-color: #eee;
+          font-weight: bold;
+        }
+      &__item{
+        width: 250px;
+        font-size: 14px;
+        font-weight: normal;
+        color:#333333;
+        float: left;
+        padding-top: 2px;
       }
-    .icon-angle-right{
-      float: right;
-      padding-top: 2px;
-      }
-    }
-  }
-  h3{
-    margin: 40px 0 0;
-    font-weight: bold;
-  }
+      &__logo{
+        width: 10px;
+        color:#C0C0C0;
+        float: right;
+        padding-top: 2px;
+      } 
+    }  
+    &__head{
+      height: 60px;
+      padding-top: 40px;
+      font-weight: bold;
+    } 
 }
