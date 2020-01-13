@@ -2,7 +2,7 @@
   .header__flame
     .header__flame__upper
       .header__flame__upper__logo
-        = link_to image_tag("fmarket_logo_red.svg", width: '130'), ""      
+        = link_to image_tag("fmarket_logo_red.svg", width: '130'), root_path
       .header__flame__upper__search
         = form_tag('/search', method: :get, class: 'search-form') do
           %input.header__flame__upper__search__form-textbox{name: "keyword", placeholder: "何かお探しですか？", type: "text", value: ""}
@@ -20,25 +20,31 @@
             = link_to image_tag("bxs-spreadsheet.svg", width: '24')
           .header__flame__lower__left-block__brand__text
             = link_to "ブランドから探す", brands_path, class: "disablelinklinecolor"
-                
-      %ul.header__flame__lower__right-block
-        %lu.header__flame__lower__right-block__eachblock
-          %iconconnfig.header__flame__lower__right-block__eachblock__category
-            = link_to image_tag("bxs-spreadsheet.svg", width: '24')
-          .header__flame__lower__right-block__eachblock__category
-            = link_to "いいね！一覧", "", class: "disablelinklinecolor"
-        %lu.header__flame__lower__right-block__eachblock
-          %iconconnfig.header__flame__lower__right-block__eachblock__category
-            = link_to image_tag("bxs-spreadsheet.svg", width: '24')
-          .header__flame__lower__right-block__eachblock__category
-            = link_to "お知らせ", "", class: "disablelinklinecolor"
-        %lu.header__flame__lower__right-block__eachblock
-          %iconconnfig.header__flame__lower__right-block__eachblock__category
-            = link_to image_tag("bxs-spreadsheet.svg", width: '24')
-          .header__flame__lower__right-block__eachblock__category
-            = link_to "やることリスト", "", class: "disablelinklinecolor"
-        %lu.header__flame__lower__right-block__eachblock
-          %iconconnfig.header__flame__lower__right-block__eachblock__category
-            = link_to image_tag("bxs-spreadsheet.svg", width: '24')
-          .header__flame__lower__right-block__eachblock__category
-            = link_to "マイページ", "", class: "disablelinklinecolor"
+
+      - if user_signed_in?          
+        %ul.header__flame__lower__right-block
+          %lu.header__flame__lower__right-block__eachblock
+            %iconconnfig.header__flame__lower__right-block__eachblock__category
+              = link_to image_tag("bxs-spreadsheet.svg", width: '24')
+            .header__flame__lower__right-block__eachblock__category
+              = link_to "いいね！一覧", "", class: "disablelinklinecolor"
+          %lu.header__flame__lower__right-block__eachblock
+            %iconconnfig.header__flame__lower__right-block__eachblock__category
+              = link_to image_tag("bxs-spreadsheet.svg", width: '24')
+            .header__flame__lower__right-block__eachblock__category
+              = link_to "お知らせ", "", class: "disablelinklinecolor"
+          %lu.header__flame__lower__right-block__eachblock
+            %iconconnfig.header__flame__lower__right-block__eachblock__category
+              = link_to image_tag("bxs-spreadsheet.svg", width: '24')
+            .header__flame__lower__right-block__eachblock__category
+              = link_to "やることリスト", "", class: "disablelinklinecolor"
+          %lu.header__flame__lower__right-block__eachblock
+            %iconconnfig.header__flame__lower__right-block__eachblock__category
+              = link_to image_tag("bxs-spreadsheet.svg", width: '24')
+            .header__flame__lower__right-block__eachblock__category
+              = link_to "マイページ", mypage_users_path, method: :get, class: "disablelinklinecolor" 
+      - else      
+        .header__flame__lower__right-block__eachblock__signup
+          = link_to "新規会員登録", signup_index_path, class: "btn_signup"
+        .header__flame__lower__right-block__eachblock__login
+          = link_to "ログイン", new_user_session_path, method: :post, class: "btn_login"

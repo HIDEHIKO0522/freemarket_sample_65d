@@ -18,7 +18,7 @@
         = icon('fas', 'angle-right')
     %li.mypage-nav__list__item
       出品する
-      = link_to "#", class: "icon-angle-right" do
+      = link_to new_item_path, class: "icon-angle-right" do
         = icon('fas', 'angle-right')
     %li.mypage-nav__list__item
       出品した商品 - 出品中
@@ -68,7 +68,7 @@
   %ul.mypage-nav__list
     %li.mypage-nav__list__item
       プロフィール
-      = link_to "#", class: "icon-angle-right" do
+      = link_to profile_users_path, class: "icon-angle-right" do
         = icon('fas', 'angle-right')
     %li.mypage-nav__list__item
       発送元・お届け先住所変更
@@ -76,7 +76,7 @@
         = icon('fas', 'angle-right')
     %li.mypage-nav__list__item
       支払い方法
-      = link_to "#", class: "icon-angle-right" do
+      = link_to card_registration_users_path, class: "icon-angle-right" do
         = icon('fas', 'angle-right')
     %li.mypage-nav__list__item
       メール/パスワード
@@ -84,7 +84,7 @@
         = icon('fas', 'angle-right')
     %li.mypage-nav__list__item
       本人確認
-      = link_to "#", class: "icon-angle-right" do
+      = link_to certification_users_path, class: "icon-angle-right" do
         = icon('fas', 'angle-right')
     %li.mypage-nav__list__item
       電話番号の確認
@@ -92,5 +92,5 @@
         = icon('fas', 'angle-right')
     %li.mypage-nav__list__item
       ログアウト
-      = link_to "#", class: "icon-angle-right" do
+      = link_to logout_users_path, class: "icon-angle-right" do
         = icon('fas', 'angle-right')

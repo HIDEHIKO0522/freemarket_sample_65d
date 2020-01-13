@@ -1,0 +1,37 @@
+= render "layouts/header"
+
+.container
+  .container__side
+    = render "shared/side_bar"
+  .container__mypage
+    .container__mypage__user
+      .container__mypage__user__icon
+        = icon("fas","user-circle", class: "user-circle-icon")
+      .container__mypage__user__name
+        名前
+      .container__mypage__user__number
+        .container__mypage__user__number__evaluate
+          %p 評価 10
+        .container__mypage__user__number__exhibit
+          %p 出品数 10
+    .container__mypage__notification-todo
+      %ul.mypage-tabs
+        %li.notification
+          %h2 お知らせ
+        %li.todo
+          %h2 やることリスト
+      .container__mypage__notification-todo__content
+        = render "notification"
+        .user-notification-submit
+          %button 一覧を見る
+        %ul#user-todo
+    .container__mypage__buy-item
+      %h2.mypage-head 購入した商品
+      .container__mypage__notification-todo
+        %ul.mypage-tabs
+          %li.notification
+            %h2 取引中
+          %li.todo
+            %h2 過去の取引
+      .container__mypage__buy-item__content
+        %h2 取引中の商品がありません
