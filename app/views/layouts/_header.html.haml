@@ -2,7 +2,6 @@
   .header__flame
     .header__flame__upper
       .header__flame__upper__logo
-        -# = link_to root_pathimage_tag("fmarket_logo_red.svg", width: '130')
         = link_to image_tag("fmarket_logo_red.svg", width: '130'), root_path
       .header__flame__upper__search
         = form_tag('/search', method: :get, class: 'search-form') do
