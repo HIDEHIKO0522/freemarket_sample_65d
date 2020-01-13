@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
       get 'profile'
+      get 'certification'
       get 'card_registration'
       get 'card_information'
       get 'mypage'
