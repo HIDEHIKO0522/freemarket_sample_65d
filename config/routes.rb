@@ -1,17 +1,24 @@
 Rails.application.routes.draw do
   root to: 'items#index'
   
-  devise_for :users,
-  controllers: {
+  devise_for :users, skip: :all
+
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
     sessions: 'users/sessions',
-    registrations: "users/registrations",
     omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
+  devise_scope :user do
+    get 'login', to: 'devise/sessions#new'
+    post 'login', to: 'devise/sessions#create'
+    delete 'destroy', to: 'devise/sessions#destroy'
+  end
+
   # devise_scope :user do
   #   get 'login', to: 'devise/sessions#new', as: :new_user_session
-  #   post 'login', to: 'devise/sessions#create', as: :user_session
-  #   delete 'destroy', to: 'devise/sessions#destroy',as: :current_user_destroy
+  #   post 'login', to: 'devise/sessions#create', as: :user_session   
+  #   delete 'destroy', to: 'devise/sessions#destroy', as: :current_user_destroy
   # end
 
   resources :signup ,only: [:index,:create] do
@@ -19,9 +26,9 @@ Rails.application.routes.draw do
       get 'registration'                               
       post 'registration',  to: 'signup#profile_validation' 
       get 'sms_authentication' 
-      post 'sms_authentication',  to: 'signup#sms_post'
-      get 'sms_confirmation'
-      post 'sms_confirmation', to: 'signup#sms_check' 
+      post 'sms_authentication',  to: 'signup#sms_validation'
+      # get 'sms_confirmation'
+      # post 'sms_confirmation', to: 'signup#sms_check' 
       get 'address' 
       post 'address', to: 'signup#address_validation' 
       get 'card' 
@@ -34,6 +41,10 @@ Rails.application.routes.draw do
     collection do
       get 'logout'
       get 'profile'
+      get 'certification'
+      get 'card_registration'
+      get 'card_information'
+      get 'mypage'
     end
   end
 
