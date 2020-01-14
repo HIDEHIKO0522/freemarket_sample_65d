@@ -52,8 +52,15 @@
         %span.item-show-container__item__price__tax> （税込）
         %span.item-show-container__item__price__charge> 送料込み
       - if current_user.id != @item.seller.id
-        .item-show-container__item__buy.block-btn.block-btn-red
-          =link_to "購入画面に進む", buy_item_path(@item)
+        - if @item.status == "出品中"
+          .item-show-container__item__buy.block-btn.block-btn-red
+            = link_to "購入画面に進む", buy_item_path(@item)
+        - elsif @item.status == "公開停止中"
+          .item-show-container__item__buy.block-btn.block-btn-gray
+            = link_to "公開停止中", "#"
+        - else
+          .item-show-container__item__buy.block-btn.block-btn-gray
+            = link_to "売り切れました", "#"
       .item-show-container__item__comment
         = simple_format(@item.comment)
       - if current_user.id != @item.seller.id
