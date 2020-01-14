@@ -7,9 +7,9 @@
     = " 〉"
   .content_info__third
     ="マイページ"
-- if flash[:notice]
+- if flash[:del]
   .flash-message.time-limit
-    = flash[:notice]
+    = flash[:del]
 .container
   .container__side
     = render "shared/side_bar"
