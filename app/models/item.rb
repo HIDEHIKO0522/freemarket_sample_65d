@@ -6,6 +6,7 @@ class Item < ApplicationRecord
   belongs_to :seller, class_name: 'User'
   has_many :item_images, dependent: :destroy
   belongs_to :category
+  belongs_to :user
 
   def check_category
     unless category.present? && category.has_grand_parent?
