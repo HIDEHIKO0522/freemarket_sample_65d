@@ -45,6 +45,8 @@ Rails.application.routes.draw do
     member do
       post 'update_status'
       delete 'destroy_image'
+      get 'buy'
+      post 'pay'
     end
   end
 
@@ -54,7 +56,6 @@ Rails.application.routes.draw do
 
   resources :brands, only: [:index]
   resources :categorys, only: [:index]
-  resources :buysample, only: [:index]
 end 
 
   
