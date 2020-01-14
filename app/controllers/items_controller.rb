@@ -88,20 +88,23 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    @item.status = "売却済み"
-    @seller = User.find(@item.seller.id)
-    if @seller.sales.blank?
-      sales = @item.price
-    else
-      sales = @seller.sales + @item.price
-    end
-    binding.pry
-    if @item.save && @seller.update(sales: sales)
-      redirect_to root_path
+    if @item.status = "出品中"
+      @item.status = "売却済み"
+      sale = Sale.find(@item.seller.sale.id)
+      sale.sales += @item.price
+      if @item.valid? && sale.valid?
+        @item.save
+        sale.save
+        redirect_to root_path
+      else
+        @prefecture = Prefecture.find(current_user.address.prefectures)
+        render :buy
+      end
     else
       @prefecture = Prefecture.find(current_user.address.prefectures)
       render :buy
     end
+    
   end
 
 
