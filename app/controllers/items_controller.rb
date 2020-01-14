@@ -49,7 +49,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    set_selections(@item)
+    if current_user.id == @item.seller_id 
+      set_selections(@item)
+    else
+      redirect_to action: 'show'
+    end
   end
 
   def update
