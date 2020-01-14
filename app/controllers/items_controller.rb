@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status]
+  before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status, :buy, :pay]
   
   def index
     @items = Item.limit(10)
@@ -81,6 +81,27 @@ class ItemsController < ApplicationController
     @image.destroy if current_user.id == @item.seller_id
     set_selections(@item)
     render :edit
+  end
+
+  def buy
+    @prefecture = Prefecture.find(current_user.address.prefectures)
+  end
+
+  def pay
+    @item.status = "売却済み"
+    @seller = User.find(@item.seller.id)
+    if @seller.sales.blank?
+      sales = @item.price
+    else
+      sales = @seller.sales + @item.price
+    end
+    binding.pry
+    if @item.save && @seller.update(sales: sales)
+      redirect_to root_path
+    else
+      @prefecture = Prefecture.find(current_user.address.prefectures)
+      render :buy
+    end
   end
 
 

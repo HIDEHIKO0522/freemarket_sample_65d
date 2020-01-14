@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :sns_credentials       
   has_one :address
   has_one :card      
+  has_one :sale
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   PASSWORD_VALIDATION = /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{7,128}+\z/i  
