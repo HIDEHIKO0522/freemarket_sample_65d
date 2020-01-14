@@ -216,6 +216,9 @@ class SignupController < ApplicationController
       return
     end
 
+    #売上、ポイントデータ作成
+    Sale.create(user_id: @user.id)
+
     @address = Address.new(
       user: @user,
       postal_code: session[:postal_code],
