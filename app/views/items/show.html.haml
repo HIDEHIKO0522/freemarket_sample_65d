@@ -1,3 +1,5 @@
+= render partial: "layouts/header"
+
 .item-show-wrapper
   .item-show-container
     .item-show-container__item
@@ -51,51 +53,63 @@
         %span.item-show-container__item__price__price> ¥#{@item.price}
         %span.item-show-container__item__price__tax> （税込）
         %span.item-show-container__item__price__charge> 送料込み
-      - if current_user.id != @item.seller.id
+
+      - if user_signed_in? 
+        - if current_user.id != @item.seller.id
+          .item-show-container__item__buy.block-btn.block-btn-red
+            =link_to "購入画面に進む", buysample_index_path
+      - else
         .item-show-container__item__buy.block-btn.block-btn-red
-          =link_to "購入画面に進む", "#"
+          =link_to "購入画面に進む", new_user_session_path
+            
       .item-show-container__item__comment
         = simple_format(@item.comment)
-      - if current_user.id != @item.seller.id
-        .item-show-container__item__button
-          .item-show-container__item__button__left
-            .item-show-container__item__button__left__icon-btn
-              %i.far.fa-heart
-              %span.item-show-container__item__button__left__icon-btn__span> いいね!
-              %span.item-show-container__item__button__left__icon-btn__span> 5
-              = link_to "", "#", class: "item-show-container__item__button__left__icon-btn__link"
-            .item-show-container__item__button__left__icon-btn
-              %i.far.fa-flag
-              %span.item-show-container__item__button__left__icon-btn__span> 不適切な商品の報告
-              = link_to "", "#", class: "item-show-container__item__button__left__icon-btn__link"
-          .item-show-container__item__button__right
-            .item-show-container__item__button__right__icon-btn
-              %i.fas.fa-unlock-alt
-              %span.item-show-container__item__button__right__icon-btn__span> あんしん・あんぜんへの取り組み
-              = link_to "", "#", class: "item-show-container__item__button__right__icon-btn__link"
-  - if current_user.id == @item.seller.id
+      - if user_signed_in? 
+        - if current_user.id != @item.seller.id
+          .item-show-container__item__button
+            .item-show-container__item__button__left
+              .item-show-container__item__button__left__icon-btn
+                %i.far.fa-heart
+                %span.item-show-container__item__button__left__icon-btn__span> いいね!
+                %span.item-show-container__item__button__left__icon-btn__span> 5
+                = link_to "", "#", class: "item-show-container__item__button__left__icon-btn__link"
+              .item-show-container__item__button__left__icon-btn
+                %i.far.fa-flag
+                %span.item-show-container__item__button__left__icon-btn__span> 不適切な商品の報告
+                = link_to "", "#", class: "item-show-container__item__button__left__icon-btn__link"
+            .item-show-container__item__button__right
+              .item-show-container__item__button__right__icon-btn
+                %i.fas.fa-unlock-alt
+                %span.item-show-container__item__button__right__icon-btn__span> あんしん・あんぜんへの取り組み
+                = link_to "", "#", class: "item-show-container__item__button__right__icon-btn__link"
+  - if user_signed_in? 
+    - if current_user.id == @item.seller.id
+      .item-show-container
+        .item-show-container__myitem
+          .item-show-container__myitem__edit.block-btn.block-btn-red
+            = link_to "商品の編集", edit_item_path(@item)
+          - if @item.status == "出品中"
+            .item-show-container__myitem__stop.block-btn.block-btn-gray
+              =link_to "出品を一旦停止する", update_status_item_path(@item), method: :post
+          - if @item.status == "公開停止中"
+            .item-show-container__myitem__start.block-btn.block-btn-red
+              =link_to "出品を再開する", update_status_item_path(@item), method: :post
+          .item-show-container__myitem__or
+            or
+          .item-show-container__myitem__delete.block-btn.block-btn-gray
+            =link_to "この商品を削除する", item_path(@item), method: :delete
+  - else 
+  - if user_signed_in? 
     .item-show-container
-      .item-show-container__myitem
-        .item-show-container__myitem__edit.block-btn.block-btn-red
-          =link_to "商品の編集", "#"
-        - if @item.status == "出品中"
-          .item-show-container__myitem__stop.block-btn.block-btn-gray
-            =link_to "出品を一旦停止する", "#"
-        - if @item.status == "停止中"
-          .item-show-container__myitem__start.block-btn.block-btn-red
-            =link_to "出品を再開する", "#"
-        .item-show-container__myitem__or
-          or
-        .item-show-container__myitem__delete.block-btn.block-btn-gray
-          =link_to "この商品を削除する", item_path(@item), method: :delete
-  .item-show-container
-    .item-show-container__comment
-      .item-show-container__comment__comments
-      .item-show-container__comment__notice
-        相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
-      %textarea{rows: 3, class: "item-show-container__comment__text"}
-      .item-show-container__comment__submit.block-btn.block-btn-gray
-        = link_to "コメントする", "#"
+      .item-show-container__comment
+        .item-show-container__comment__comments
+        .item-show-container__comment__notice
+          相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+        %textarea{rows: 3, class: "item-show-container__comment__text"}
+        .item-show-container__comment__submit.block-btn.block-btn-gray
+          = link_to "コメントする", "#"
+  - else
+  
   .item-show-link
     .item-show-link__left
       = link_to "< 前の商品", "#"

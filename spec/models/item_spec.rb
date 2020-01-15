@@ -73,6 +73,13 @@ describe Item do
         item.valid?
         expect(item.errors[:delivery]).to include("can't be blank")
       end
+
+      it "is invalid with a category which does not have a grand parent" do
+        item = build(:item)
+        item.category_id = item.category.parent.parent.id
+        item.valid?
+        expect(item.errors[:category]).to include("を選択してください")
+      end
     end
   end
 end

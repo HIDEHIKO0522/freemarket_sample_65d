@@ -1,0 +1,81 @@
+= render partial: "layouts/header"
+
+.content_info
+  .content_info__first
+    ="メルカリ"
+  .content_info__second
+    = " 〉"
+  .content_info__third
+    ="マイページ"
+  .content_info__foreth
+    = " 〉"
+  .content_info__fifth
+    = "本人情報の登録"    
+ 
+.container
+  .container__side
+  = render "shared/side_bar"
+ 
+  .container__user_registration
+    .container__user_registration__upper
+      %label.main__form__group__label 本人情報の登録
+    .container__user_registration__lower
+      .container__user_registration__lower__comment  
+        ="お客さまの本人情報をご登録ください。"
+        %br
+        ="登録されたお名前・生年月日を変更する場合、本人確認書類の提出が必要になります。"
+      .container__user_registration__lower__upload
+        %p.container__user_registration__lower__upload-info
+          = link_to root_path, class: 'container__user_registration__lower__upload', target: '_blank' do
+            = '本人確認書類のアップロードについて'
+            %i.fas.fa-chevron-right
+      .container__user_registration__lower__name    
+        %label.container__user_registration__lower__label お名前
+        .container__user_registration__lower__name_box
+          = "#{current_user.family_name} #{current_user.first_name}"
+
+      .container__user_registration__lower__name_kana    
+        %label.container__user_registration__lower__label お名前カナ
+        .container__user_registration__lower__name_kana_box
+          = "#{current_user.family_name_kana} #{current_user.first_name_kana}"
+
+      .container__user_registration__lower__birthday    
+        %label.container__user_registration__lower__label 生年月日
+        .container__user_registration__lower__birthday_box
+          = "#{current_user.birthyear}/#{current_user.birthmonth}/#{current_user.birthday}"
+
+      .container__user_registration__lower__postal_code    
+        %label.container__user_registration__lower__label 郵便番号
+        %span.container__user_registration__lower__optional 任意
+        %input.container__user_registration__lower__postal_code__box{:placeholder => "#{current_user.address.postal_code}"}/
+
+      .container__user_registration__lower__prefectures   
+        %label.container__user_registration__lower__label 都道府県
+        %span.container__user_registration__lower__optional 任意
+        .container__user_registration__lower__prefectures__select
+          .container__user_registration__lower__prefectures__box
+            = collection_select :address,:prefecture_id,Prefecture.all,:id,:name,{prompt: "---"},{class: "container__user_registration__lower__prefectures__box"}
+      .container__user_registration__lower__city   
+        %label.container__user_registration__lower__label 市区町村
+        %span.container__user_registration__lower__optional 任意
+        %input.container__user_registration__lower__city__box{:placeholder => "#{current_user.address.city}"}/        
+
+      .container__user_registration__lower__address    
+        %label.container__user_registration__lower__label 番地
+        %span.container__user_registration__lower__optional 任意
+        %input.container__user_registration__lower__address__box{:placeholder => "#{current_user.address.house_number}"}/              
+
+      .container__user_registration__lower__building    
+        %label.container__user_registration__lower__label 建物名
+        %span.container__user_registration__lower__optional 任意
+        %input.container__user_registration__lower__building__box{:placeholder => "#{current_user.address.building}"}/  
+
+      .container__user_registration__lower__box   
+        .container__user_registration__lower__box__user-registration-btn         
+          .container__user_registration__lower__box__user-registration-btn__text
+            = "登録する"  
+      .container__user_registration__lower__registration-info
+        %p.container__user_registration__lower__registratiomn-info
+          = link_to root_path, class:"container__user_registration__lower__registration-info" , target: '_blank' do
+            = '本人情報の登録について'
+            %i.fas.fa-chevron-right

@@ -16,12 +16,12 @@ describe SignupController do
     end 
   end
 
-  describe 'GET #sms_confirmation' do
-    it "renders the :sms_confirmation template" do
-      get :sms_confirmation
-      expect(response).to render_template :sms_confirmation
-    end 
-  end
+  # describe 'GET #sms_confirmation' do
+  #   it "renders the :sms_confirmation template" do
+  #     get :sms_confirmation
+  #     expect(response).to render_template :sms_confirmation
+  #   end 
+  # end
 
   describe 'GET #address' do
     it "renders the :address template" do

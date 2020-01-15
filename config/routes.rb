@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   end  
 
 
-  resources :users do
+  resources :users do 
     collection do
       get 'logout'
       get 'profile'
@@ -47,6 +47,10 @@ Rails.application.routes.draw do
     collection do
       get 'category'
     end
+    member do
+      post 'update_status'
+      delete 'destroy_image'
+    end
   end
 
   get 'items/confirm(/:id)', to: 'items#confirm', as: :items_confirm
@@ -55,6 +59,7 @@ Rails.application.routes.draw do
 
   resources :brands, only: [:index]
   resources :categorys, only: [:index]
-
+  resources :buysample, only: [:index]
 end 
 
+  

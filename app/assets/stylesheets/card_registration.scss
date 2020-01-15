@@ -1,0 +1,133 @@
+.content_info{
+  height: 50px;
+  weight: 100%;
+  background-color: white;
+  font-size: 14px;
+  line-height: 20px;
+  border-top: solid, gray;
+  border-bottom: inset;
+  padding-top: 15px;
+  padding-left: 210px;
+  margin-bottom: 30px;
+
+    &__first{
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      margin-right: 12px;
+      color: black;
+      float: left;
+    } 
+    &__second{
+      font-size: 12px;
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__third{
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__foreth{
+      font-size: 12px;
+      weight: 50px;
+      text-align: center;
+      font-weight: normal;
+      color: black;
+      margin-right: 12px;
+      float: left;
+    }
+    &__fifth{
+      weight: 50px;
+      text-align: center;
+      font-weight: bold;
+      color: black;
+      float: left;
+    }
+}   
+
+.container__card_registration{
+  padding: 0px;
+  background-color: white;
+  float: left;
+  width: 700px;
+
+    &__upper{
+    height: 60px;
+    font-size: 25px;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    border: solid 1px #eeeeee;
+    }
+    &__middle{
+    height: 200px;
+    font-size: 17px;
+    font-weight: bold;
+    padding-top: 70px;
+    padding-bottom: 5px;
+    padding-left: 175px;
+    padding-right: 175px;
+    border: solid 1px #eeeeee;
+    
+     &__name {
+      height: 20px;
+      font-size: 17px;
+      font-weight: bold;
+      margin-bottom: 20px;
+     }
+      &__box {
+        text-align: center;
+        color: white;
+
+        &__card-registration-btn {
+          background-color: #ea352d;
+          width: 350px;
+          font-weight: normal;
+          border: 1px splid #ea352d;
+          color: white;
+          display: block;
+          font-size: 14px;
+          height: 50px;
+          margin: 0 auto;
+          display: flex;
+          
+          &__image {
+             margin-right: 20px;
+             margin-left: 50px; 
+             width:10px;
+             margin-top: 13px; 
+             position: left;
+          }
+          &__text{
+             width: 200px;
+             margin-top: 15px;
+             position: right; 
+          }
+        }
+      } 
+    } 
+    &__lower{
+    height: 120px;
+    font-size: 15px; 
+    padding-top: 30px; 
+    padding-left: 70px;
+    padding-right: 70px;   
+    
+      &__personal-info{
+        padding: 0 15px;
+        text-align: right;
+
+        a, a:visited {
+          color : #0099E8;
+        }  
+      }
+    }  
+}

@@ -1,8 +1,9 @@
 .imagebody__flame__itemslists__block
   .imagebody__flame__itemslists__block__image
-    = image_tag item.item_images[0].image.url, class: "top-image"
-    .top-price
-      ¥
-      = item.price
-    .top-name
-      = item.name
+    =link_to "/items/#{item.id}",class: "imagebody__flame__itemslists__block__image" do 
+      = image_tag item.item_images[0].image.url, class: "top-image"
+      .top-price
+        ¥
+        = item.price
+      .top-name
+        = item.name

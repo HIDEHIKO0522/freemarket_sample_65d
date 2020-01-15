@@ -139,6 +139,10 @@ iconspace-rightslide{
           display: flex;
           padding-right:10px;
 
+
+
+
+          
           &_icon {
             
             
@@ -186,10 +190,41 @@ iconspace-rightslide{
             display: flex;
             font-size: 14px;
             height: 32px;
-
-          
+          }  
+          &__signup{
+            -webkit-box-align: center;
+            background-color: red;
+            align-items: center;
+            display: right;
+            font-size: 14px;
+            width: 100px;
+            height: 32px;
+            border: solid 1px red;
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 10px;
+            margin-left:470px;
+             .btn_signup{
+              color: white;
+             }
+          }  
+            &__login{
+            -webkit-box-align: center;
+            align-items: center;
+            display: left;
+            font-size: 14px;
+            height: 32px;
+            border: solid 1px skyblue;
+            padding-top: 5px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 10px;
+            .btn_login{
+              color: skyblue;
+             }
           }
-        }
+        }   
       }
     }
   }
@@ -458,7 +493,7 @@ aside{
 
     height: 260px;
     width: 300px;
-    background-color: rgb(49, 207, 160);
+    text-align: center;
   }
 
 
@@ -488,6 +523,7 @@ footer{
       {
         flex-wrap: wrap;
         display: flex;
+        
         &__upperleft-block
         {
           display: inline-block;
@@ -545,13 +581,18 @@ footer{
   
       }
   
+      &__logo{
+  
+        margin: 30px auto 20px;
+  
+      }
     }
     
 
     @media screen and (min-width:1068px){
             
       width: 1020px;
-      // margin: 0px auto;
+      margin: auto;
     
       &__style-heading
       {
@@ -561,6 +602,7 @@ footer{
         margin: 0;
         padding: 0;
         display: flex;
+        justify-content: center;
      
         &__upperleft-block
         {
@@ -619,24 +661,23 @@ footer{
   
       }
   
+      &__logo{
+        width: 1020px;
+        text-align: center; /* 文章を右寄せする */
+        margin: 30px 0px 20px 50px;
   
+      }
 
 
 
     }
-
-
-    &__logo{
-  
-      margin: 30px auto 20px;
-
-    }
-
-
   }
 
-
 }
+
+
+
+
 
 //@カメラ
 .exhibitioncamera
