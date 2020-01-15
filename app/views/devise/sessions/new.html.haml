@@ -22,15 +22,15 @@
           = "新規登録会員"
     .main__login
       .main__login__facebook
-        = link_to '#' do
+        = link_to user_facebook_omniauth_authorize_path, method: :post do
           .main__login__facebook--btn
             %i.fab.fa-facebook-square
-            = "Facebookでログイン"  
+            = "Facebookでログイン"
       .main__login__google
-        = link_to '#' do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
           .main__login__google--btn
             %i.fab.fa-google
-            = "Googleでログイン"            
+            = "Googleでログイン"
     .main__form
       = form_for @user, url: user_session_path, method: :post do |f|
         .main__form__group
