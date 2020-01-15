@@ -523,6 +523,7 @@ footer{
       {
         flex-wrap: wrap;
         display: flex;
+        
         &__upperleft-block
         {
           display: inline-block;
@@ -580,13 +581,18 @@ footer{
   
       }
   
+      &__logo{
+  
+        margin: 30px auto 20px;
+  
+      }
     }
     
 
     @media screen and (min-width:1068px){
             
       width: 1020px;
-      // margin: 0px auto;
+      margin: auto;
     
       &__style-heading
       {
@@ -596,6 +602,7 @@ footer{
         margin: 0;
         padding: 0;
         display: flex;
+        justify-content: center;
      
         &__upperleft-block
         {
@@ -654,24 +661,23 @@ footer{
   
       }
   
+      &__logo{
+        width: 1020px;
+        text-align: center; /* 文章を右寄せする */
+        margin: 30px 0px 20px 50px;
   
+      }
 
 
 
     }
-
-
-    &__logo{
-  
-      margin: 30px auto 20px;
-
-    }
-
-
   }
 
-
 }
+
+
+
+
 
 //@カメラ
 .exhibitioncamera
