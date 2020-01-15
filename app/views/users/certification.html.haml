@@ -53,8 +53,7 @@
         %label.container__user_registration__lower__label 都道府県
         %span.container__user_registration__lower__optional 任意
         .container__user_registration__lower__prefectures__select
-          .container__user_registration__lower__prefectures__box
-            = collection_select :address,:prefecture_id,Prefecture.all,:id,:name,{prompt: "---"},{class: "container__user_registration__lower__prefectures__box"}
+          = collection_select :address,:prefecture_id,Prefecture.all,:name, :name,{prompt: "#{current_user.address.prefectures}"},{class: "container__user_registration__lower__prefectures__select"}
       .container__user_registration__lower__city   
         %label.container__user_registration__lower__label 市区町村
         %span.container__user_registration__lower__optional 任意
