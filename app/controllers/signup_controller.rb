@@ -1,4 +1,6 @@
 class SignupController < ApplicationController
+  require 'payjp'
+  Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
 
   def index
     render layout: false
@@ -239,7 +241,7 @@ class SignupController < ApplicationController
     session[:security_code] = card_params[:security_code]
     session[:expiration_month] = card_params[:expiration_month]
     session[:expiration_year] = card_params[:expiration_year]
-    session[:token] = card_token_params[:token]
+    session[:token] = set_payjp_customer_id(@user)
     @card = Card.new(
       user: @user,
       number: session[:number],
@@ -303,6 +305,11 @@ class SignupController < ApplicationController
 
   def card_token_params
     params.permit(:token)
+  end
+
+  def set_payjp_customer_id(user)
+    customer = Payjp::Customer.create(email: user.email, card: card_token_params[:token])
+    return customer[:id]
   end
 
 end

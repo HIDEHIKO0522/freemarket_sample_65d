@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   require 'payjp'
+  Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
   before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status, :buy, :pay]
   
   def index
@@ -93,9 +94,10 @@ class ItemsController < ApplicationController
       @item.status = "売却済み"
       sale = Sale.find(@item.seller.sale.id)
       sale.sales += @item.price
-      if @item.valid? && sale.valid? && card_token(current_user).present?
+      if @item.valid? && sale.valid?
         @item.save
         sale.save
+        payjp_charge(@item, current_user)
         redirect_to root_path
       else
         @prefecture = Prefecture.find(current_user.address.prefectures)
@@ -149,25 +151,12 @@ class ItemsController < ApplicationController
     return result
   end
 
-  def card_token(user)
-    if user.card.token.blank?
-      month = Month.find(user.card.expiration_month)
-      year = Year.find(user.card.expiration_year)
-      Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
-      payjp_response = Payjp::Token.create({
-        card: {
-          number: user.card.number,
-          cvc: user.card.security_code,
-          exp_month: month.id,
-          exp_year: year.value
-        }},
-        {
-          'X-Payjp-Direct-Token-Generate': 'true'
-        } 
-      )
-      user.card.update(token: payjp_response[:card][:id]) if payjp_response[:card][:id].present?
-    end
-    return user.card.token
+  def payjp_charge(item, user)
+    charge = Payjp::Charge.create(
+      amount: item.price,
+      customer: user.card.token,
+      currency: 'jpy',
+    )
   end
 
 end
