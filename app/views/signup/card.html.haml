@@ -3,6 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title お支払い方法 - メルカリ スマホでかんたん フリマアプリ
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -72,7 +73,9 @@
               = link_to '/', class: 'link', target: '_blank' do
                 %i.fas.fa-question-circle
               = 'カード裏面の番号とは？'     
-          = f.submit '次へ進む', class: 'main__form__submit-btn'      
+          = f.submit '次へ進む', class: 'main__form__submit-btn', id: 'card-submit-button'
+          .test-btn
+            テストボタン
 
 
     .footer

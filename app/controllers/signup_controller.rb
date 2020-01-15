@@ -239,12 +239,14 @@ class SignupController < ApplicationController
     session[:security_code] = card_params[:security_code]
     session[:expiration_month] = card_params[:expiration_month]
     session[:expiration_year] = card_params[:expiration_year]
+    session[:token] = card_token_params[:token]
     @card = Card.new(
       user: @user,
       number: session[:number],
       security_code: session[:security_code],
       expiration_month: session[:expiration_month],
-      expiration_year: session[:expiration_year]
+      expiration_year: session[:expiration_year],
+      token: session[:token]
     )
    #万一カードがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
     unless @card.save 
@@ -296,7 +298,11 @@ class SignupController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:number, :security_code, :expiration_month, :expiration_year)
+    params.require(:card).permit(:number, :security_code, :expiration_month, :expiration_year, :token)
   end 
+
+  def card_token_params
+    params.permit(:token)
+  end
 
 end
