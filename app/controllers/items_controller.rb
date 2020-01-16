@@ -94,7 +94,7 @@ class ItemsController < ApplicationController
       @item.status = "売却済み"
       sale = Sale.find(@item.seller.sale.id)
       sale.sales += @item.price
-      if @item.valid? && sale.valid?
+      if @item.valid? && sale.valid? && current_user.card.token.present? && @items.seller_id != currency.id
         @item.save
         sale.save
         payjp_charge(@item, current_user)
@@ -155,7 +155,7 @@ class ItemsController < ApplicationController
     charge = Payjp::Charge.create(
       amount: item.price,
       customer: user.card.token,
-      currency: 'jpy',
+      currency: 'jpy'
     )
   end
 
