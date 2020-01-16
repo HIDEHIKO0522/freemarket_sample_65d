@@ -10,5 +10,6 @@ class Card < ApplicationRecord
   validates :security_code,           presence: true, length: {maximum: 4} 
   validates :expiration_month,        presence: true, length: {maximum: 2}
   validates :expiration_year,         presence: true, length: {maximum: 4}
+  validates :token,                   presence: true
 end
 

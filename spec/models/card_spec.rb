@@ -27,5 +27,11 @@ describe Card do
       expect(card.errors[:expiration_year]).to include("can't be blank")
     end
 
+    it "tokenが空では登録できないこと " do
+      card = build(:card, token: "")
+      card.valid?
+      expect(card.errors[:token]).to include("can't be blank")
+    end
+
   end
 end
