@@ -44,14 +44,19 @@ class ItemsController < ApplicationController
 
   def destroy
     if current_user.id == @item.seller_id && @item.destroy
-      redirect_to user_path(current_user)
+       flash[:del] = "商品を削除しました"
+       redirect_to mypage_users_path 
     else
       redirect_to item_path @item
     end
   end
 
   def edit
-    set_selections(@item)
+    if current_user.id == @item.seller_id 
+      set_selections(@item)
+    else
+      redirect_to action: 'show'
+    end
   end
 
   def update

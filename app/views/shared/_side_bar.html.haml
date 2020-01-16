@@ -1,99 +1,173 @@
 .mypage-nav
-  %ul.mypage-nav__list
-    %li.mypage-nav__list__item
-      マイページ
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      お知らせ
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      やることリスト
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      いいね！一覧
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      出品する
-      = link_to new_item_path, class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      出品した商品 - 出品中
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      出品した商品 - 取引中
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      出品した商品 - 売却済み
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      購入した商品 - 取引中
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      ニュース一覧
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      評価一覧
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      ガイド
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      お問い合わせ
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-  %h3.mypage-nav__head
-    メルペイ
-  %ul.mypage-nav__list
-    %li.mypage-nav__list__item
-      売上・振込申請
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      ポイント  
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-  %h3.mypage-nav__head
-    設定
-  %ul.mypage-nav__list
-    %li.mypage-nav__list__item
-      プロフィール
-      = link_to profile_users_path, class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      発送元・お届け先住所変更
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      支払い方法
-      = link_to card_registration_users_path, class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      メール/パスワード
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      本人確認
-      = link_to certification_users_path, class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      電話番号の確認
-      = link_to "#", class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
-    %li.mypage-nav__list__item
-      ログアウト
-      = link_to logout_users_path, class: "icon-angle-right" do
-        = icon('fas', 'angle-right')
+
+  .mypage-nav
+    .mypage-nav__box
+      = link_to mypage_users_path, class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "マイページ"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "お知らせ"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "やることリスト"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "いいね！一覧"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to new_item_path, class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "出品する"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "出品した商品 - 出品中"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right') 
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "出品した商品 - 取引中"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "出品した商品 - 売却済み"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right') 
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "購入した商品 - 取引中"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "購入した商品 - 過去の取引"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')          
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "ニュース一覧"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "評価一覧"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')   
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "ガイド"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')   
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "お問い合わせ"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')             
+  .mypage-nav
+    .mypage-nav__head
+      メルペイ
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "売上・振込申請"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "ポイント"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')           
+
+  .mypage-nav
+    .mypage-nav__head
+      設定
+  .mypage-nav
+    .mypage-nav__box
+      = link_to profile_users_path, class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "プロフィール"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')                             
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "発送元・お届け先住所変更"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')         
+  .mypage-nav
+    .mypage-nav__box
+      = link_to card_registration_users_path, class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "支払い方法"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right') 
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "メール/パスワード"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right') 
+  .mypage-nav
+    .mypage-nav__box
+      = link_to certification_users_path, class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "本人確認"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right') 
+  .mypage-nav
+    .mypage-nav__box
+      = link_to "#", class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "電話番号の確認"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right') 
+  .mypage-nav
+    .mypage-nav__box
+      = link_to logout_users_path, class: "mypage-nav__box" do
+        .mypage-nav__box__item
+          = "ログアウト"
+        .mypage-nav__box__logo 
+          = icon('fas', 'angle-right')            
       
       
   

@@ -157,18 +157,23 @@
       }            
       &__prefectures {
         margin-bottom: 40px;
-        &__box {
+        &__select {
+          box-sizing: border-box;
           background-color: white;
           color: #808080;
           height: 48px;
           width: 598px;
-          border: 1px solid  #ccc;
           border-radius: 4px;
           font-size: 16px;
           line-height: 45px;
           padding-left: 7px;
-        }
-      }      
+          margin-left: -4px;
+          margin-top: 1px;
+          position:left;
+          }  
+        }  
+      
+    
       &__city {
         margin-bottom: 40px;
         &__box {

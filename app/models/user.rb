@@ -5,8 +5,7 @@ class User < ApplicationRecord
   # belongs_to_active_hash :birthyear
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  
-         
+       
   has_many :sns_credentials       
   has_one :address
   has_one :card      
