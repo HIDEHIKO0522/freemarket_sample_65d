@@ -210,10 +210,10 @@ describe ItemsController do
           }.to change(ItemImage, :count).by(-3)
         end
 
-        it 'redirect to users#show' do
+        it 'redirect to mypage' do
           delete_item = create(:item, seller: user)
           delete :destroy, params: { id: delete_item.id }
-          expect(response).to redirect_to redirect_to(user_path(user))
+          expect(response).to redirect_to redirect_to(mypage_users_path)
         end
       end
 
