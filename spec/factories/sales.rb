@@ -1,7 +1,9 @@
 FactoryBot.define do
+
   factory :sale do
-    user { nil }
-    sales { 1 }
-    point { 1 }
+    user
+    sales             { 0 }
+    point             { 0 }
   end
+
 end
