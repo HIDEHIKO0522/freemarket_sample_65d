@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   require 'payjp'
   Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
   before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status, :buy, :pay]
+  before_action :move_to_sign_in, only: [:buy]
   
   def index
     @items = Item.limit(10)
@@ -157,6 +158,12 @@ class ItemsController < ApplicationController
       customer: user.card.token,
       currency: 'jpy'
     )
+  end
+
+  def move_to_sign_in
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
   end
 
 end
