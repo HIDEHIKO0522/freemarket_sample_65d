@@ -1,5 +1,15 @@
 = render "layouts/header"
 
+.content_info
+  .content_info__first
+    ="メルカリ"
+  .content_info__second
+    = " 〉"
+  .content_info__third
+    ="マイページ"
+- if flash[:del]
+  .flash-message.time-limit
+    = flash[:del]
 .container
   .container__side
     = render "shared/side_bar"
@@ -8,7 +18,7 @@
       .container__mypage__user__icon
         = icon("fas","user-circle", class: "user-circle-icon")
       .container__mypage__user__name
-        名前
+        = current_user.nickname
       .container__mypage__user__number
         .container__mypage__user__number__evaluate
           %p 評価 10
