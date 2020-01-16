@@ -84,6 +84,21 @@
               = link_to "", "#", class: "item-show-container__item__button__right__icon-btn__link"
   - if current_user_is_seller?(@item)
     .item-show-container
+      .item-show-container__myitem
+        .item-show-container__myitem__edit.block-btn.block-btn-red
+          = link_to "商品の編集", edit_item_path(@item)
+        - if @item.status == "出品中"
+          .item-show-container__myitem__stop.block-btn.block-btn-gray
+            =link_to "出品を一旦停止する", update_status_item_path(@item), method: :post
+        - if @item.status == "公開停止中"
+          .item-show-container__myitem__start.block-btn.block-btn-red
+            =link_to "出品を再開する", update_status_item_path(@item), method: :post
+        .item-show-container__myitem__or
+          or
+        .item-show-container__myitem__delete.block-btn.block-btn-gray
+          =link_to "この商品を削除する", item_path(@item), method: :delete
+  - if user_signed_in?
+    .item-show-container
       .item-show-container__comment
         .item-show-container__comment__comments
         .item-show-container__comment__notice
@@ -91,8 +106,6 @@
         %textarea{rows: 3, class: "item-show-container__comment__text"}
         .item-show-container__comment__submit.block-btn.block-btn-gray
           = link_to "コメントする", "#"
-  - else
-  
   .item-show-link
     .item-show-link__left
       = link_to "< 前の商品", "#"
