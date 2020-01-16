@@ -447,4 +447,101 @@ describe ItemsController do
     end
   end
 
+  describe '#pay' do
+
+    context 'log in' do
+      before do
+        login user
+      end
+
+      context 'can buy' do
+
+        it 'change item status' do
+          create(:card, user: user)
+          seller = create(:user, email: "seller@gmail.com")
+          seller_item = create(:item, seller: seller, category: category)
+          create(:sale, user: seller)
+          post :pay, params: { id: seller_item.id }
+          expect(seller_item.reload.status).to eq "売却済み"
+        end
+
+        it 'update seller sales' do
+          create(:card, user: user)
+          seller = create(:user, email: "seller@gmail.com")
+          seller_item = create(:item, seller: seller, category: category)
+          seller_sale = create(:sale, user: seller)
+          post :pay, params: { id: seller_item.id }
+          expect(seller_sale.reload.sales).to eq seller_item.price
+        end
+
+        it 'redirects to root' do
+          create(:card, user: user)
+          seller = create(:user, email: "seller@gmail.com")
+          seller_item = create(:item, seller: seller, category: category)
+          seller_sale = create(:sale, user: seller)
+          post :pay, params: { id: seller_item.id }
+          expect(response).to redirect_to(root_path)
+        end
+
+      end
+
+      context 'can not buy by seller' do
+
+        it 'does not update item status' do
+          create(:card, user: user)
+          create(:address, user_id: user.id)
+          user_item = create(:item, seller: user, category: category)
+          create(:sale, user: user)
+          post :pay, params: { id: user_item.id }
+          expect(user_item.reload.status).to eq "出品中"
+        end
+        
+        it 'does not update seller sales' do
+          create(:card, user: user)
+          create(:address, user_id: user.id)
+          user_item = create(:item, seller: user, category: category)
+          user_sale = create(:sale, user: user)
+          post :pay, params: { id: user_item.id }
+          expect(user_sale.reload.sales).to eq 0
+        end
+
+        it 'render to buy' do
+          create(:card, user: user)
+          create(:address, user_id: user.id)
+          user_item = create(:item, seller: user, category: category)
+          create(:sale, user: user)
+          post :pay, params: { id: user_item.id }
+          expect(response).to render_template :buy
+        end
+
+      end
+
+      context 'can not buy sold out item' do
+        
+        it 'does not update seller sales' do
+          create(:card, user: user)
+          create(:address, user_id: user.id)
+          seller = create(:user, email: "seller@gmail.com")
+          seller_item = create(:item, seller: seller, category: category, status: "売却済み")
+          seller_sale = create(:sale, user: seller)
+          post :pay, params: { id: seller_item.id }
+          expect(seller_sale.reload.sales).to eq 0
+        end
+
+        it 'render to buy' do
+          create(:card, user: user)
+          create(:address, user_id: user.id)
+          seller = create(:user, email: "seller@gmail.com")
+          seller_item = create(:item, seller: seller, category: category, status: "売却済み")
+          seller_sale = create(:sale, user: seller)
+          pre_sales = seller_sale.sales
+          post :pay, params: { id: seller_item.id }
+          expect(response).to render_template :buy
+        end
+
+      end
+
+    end
+  end
+
 end

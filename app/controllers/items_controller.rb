@@ -90,11 +90,11 @@ class ItemsController < ApplicationController
   end
 
   def pay
-    if @item.status = "出品中"
+    if @item.status == "出品中"
       @item.status = "売却済み"
       sale = Sale.find(@item.seller.sale.id)
       sale.sales += @item.price
-      if @item.valid? && sale.valid? && current_user.card.token.present? && @items.seller_id != currency.id
+      if @item.valid? && sale.valid? && current_user.card.token.present? && @item.seller_id != current_user.id
         @item.save
         sale.save
         payjp_charge(@item, current_user)
