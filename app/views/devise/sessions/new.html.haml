@@ -22,15 +22,15 @@
           = "新規登録会員"
     .main__login
       .main__login__facebook
-        = link_to '#' do
+        = link_to user_facebook_omniauth_authorize_path, method: :post do
           .main__login__facebook--btn
             %i.fab.fa-facebook-square
-            = "Facebookでログイン"  
+            = "Facebookでログイン"
       .main__login__google
-        = link_to '#' do
+        = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
           .main__login__google--btn
             %i.fab.fa-google
-            = "Googleでログイン"            
+            = "Googleでログイン"
     .main__form
       = form_for @user, url: user_session_path, method: :post do |f|
         .main__form__group
@@ -61,25 +61,3 @@
       = image_tag 'logo_gray.svg', alt: 'mercari', class: 'footer__logo--gray'
     %p.footer__text
       ©️ 2019 Fmarket
-
--# .contents.row
--#   .container
--#     %h1
--#     %p#red ログイン
--#     = form_with model: @user, url: user_session_path, id: 'new_user', class: 'new_user', local: true do |f|
--#       .field
--#         = f.label :email
--#         %br/
--#         = f.email_field :email, autofocus: true
--#       .field
--#         = f.label :password
--#         %br/
--#         = f.password_field :password, autocomplete: "off"
--#       - if devise_mapping.rememberable?
--#         .field
--#           = f.label :remember_me
--#           %br/
--#           = f.check_box :remember_me
--#       .actions
--#         = f.submit "Log in"
-

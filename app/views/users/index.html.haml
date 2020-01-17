@@ -22,12 +22,12 @@
                 = icon 'far', 'envelope'
                 = "メールアドレスで登録する"
           .main__login__facebook
-            = link_to '#' do
+            = link_to user_facebook_omniauth_authorize_path, method: :post do
               .main__login__facebook--btn
                 = icon 'fab', 'facebook-square'
                 = "Facebookで登録する"
           .main__login__google
-            = link_to '#' do
+            = link_to user_google_oauth2_omniauth_authorize_path, method: :post do
               .main__login__google--btn
                 = "Googleで登録する"
                 = icon 'fab', 'google'

@@ -96,46 +96,6 @@ class SignupController < ApplicationController
   # def sms_check
   #   @user = User.new
 
-
- #下記はsms認証するため、仮置き
-   def sms_validation
-     session[:tel] = user_params[:tel]
- 
-     @user = User.new(tel: session[:tel])
-          redirect_to address_signup_index_path
-   end
- 
-  # def sms_post
-  #   @user = User.new
-  #   #パラメータが飛んでなかった場合ここでrender
-  #   render sms_authentication_signup_index_path unless user_params[:tel].present?
-  #   #電話番号を+81~の国際書式に書き換え（そうしないと送れない）
-  #   send_number = user_params[:tel].sub(/\A./,'+81')
-  #   #ランダムに6桁の整数を生成
-  #   sms_number = rand(100000..999999)
-  #   #後の認証用にsessionに預ける
-  #   session[:sms_number] = sms_number
-  #   #環境変数を使ってsms送信準備 
-  #   client = Twilio::REST::Client.new(ENV["TWILLIO_SID"],ENV["TWILLIO_TOKEN"])
-  #   #送信失敗した場合必ずエラーが出るので、例外処理で挙動を分岐
-  #   begin 
-  #   #生成した整数を文章にしたsms送信
-  #     client.api.account.messages.create(from: ENV["TWILLIO_NUMBER"], to: send_number, body: sms_number)
-  #   rescue
-  #     render "signup/sms_authentication"
-  #     return false
-  #   end
-  #   redirect_to sms_confirmation_signup_index_path
-  # end
-
-  # def sms_confirmation
-  #   @user = User.new
-  #   render layout: false
-  # end
-
-  # def sms_check
-  #   @user = User.new
-
   #   #送信された値を代入
   #   sms_number = user_params[:tel]
   #   #比較し、一致したら次の登録フォームへ
