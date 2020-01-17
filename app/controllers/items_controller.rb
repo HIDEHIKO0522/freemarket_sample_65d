@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
   # Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_ACCESS_KEY]
   before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status, :buy, :pay]
   before_action :move_to_sign_in, only: [:buy]
+  before_action :item_sold_out?, only: [:buy]
   
   def index
     @items = Item.limit(10)
@@ -173,6 +174,11 @@ class ItemsController < ApplicationController
     unless user_signed_in?
       redirect_to new_user_session_path
     end
+  end
+
+  def item_sold_out?
+    item = Item.find(params[:id])
+    redirect_to item_path @item if item.status == "売却済み"
   end
 
 end
