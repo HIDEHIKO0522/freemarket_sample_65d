@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function() {
   var form = $("#new_card");
   $('#new_card').on("click", "#card-submit-button", function() {
-    Payjp.setPublicKey('pk_test_fb1ae90bf0b9bcca1ba9f8db');
+    Payjp.setPublicKey('pk_live_e82602930bd77f637ea45913');
     form.find("input[type=submit]").prop("disabled", true);
     var number = form.find('input[name="card[number]"]'),
       cvc = form.find('input[name="card[security_code]"]'),
