@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @prefecture = Prefecture.find(current_user.address.prefectures)
+    
   end
 
   def pay

@@ -45,7 +45,7 @@
             .PImain__l-single-container__buy-content-inner
               %h3 配送先
               %p 〒#{current_user.address.postal_code}
-              %p #{@prefecture.name}#{current_user.address.city}#{current_user.address.house_number}#{current_user.address.building}
+              %p #{current_user.address.prefectures}#{current_user.address.city}#{current_user.address.house_number}#{current_user.address.building}
               %p #{current_user.family_name} #{current_user.first_name}
           %section.PImain__l-single-container__buy-user-info
             .PImain__l-single-container__buy-content-inner
