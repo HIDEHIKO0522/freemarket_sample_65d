@@ -1,6 +1,8 @@
 class SignupController < ApplicationController
-  require 'payjp'
-  Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
+  # # 本番環境でしか使用しないのでコメントアウト
+  # # コメントアウトを外せばローカルで使用可能
+  # require 'payjp'
+  # Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
 
   def index
     render layout: false
@@ -308,8 +310,11 @@ class SignupController < ApplicationController
   end
 
   def set_payjp_customer_id(user)
-    customer = Payjp::Customer.create(email: user.email, card: card_token_params[:token])
-    return customer[:id]
+    # # 本番環境でしか使用しないのでコメントアウト
+    # # コメントアウトを外せばローカルで使用可能
+    # customer = Payjp::Customer.create(email: user.email, card: card_token_params[:token])
+    # return customer[:id]
+    return "token" # 本番用
   end
 
 end
