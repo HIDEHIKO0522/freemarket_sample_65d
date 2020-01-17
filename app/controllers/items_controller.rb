@@ -92,7 +92,7 @@ class ItemsController < ApplicationController
   end
 
   def buy
-    @prefecture = Prefecture.find(current_user.address.prefectures)
+
   end
 
   def pay
@@ -106,11 +106,9 @@ class ItemsController < ApplicationController
         payjp_charge(@item, current_user)
         redirect_to root_path
       else
-        @prefecture = Prefecture.find(current_user.address.prefectures)
         render :buy
       end
     else
-      @prefecture = Prefecture.find(current_user.address.prefectures)
       render :buy
     end
     
