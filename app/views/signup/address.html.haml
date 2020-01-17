@@ -3,6 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title お届け先住所入力 - メルカリ スマホでかんたん フリマアプリ
+    %script{src: "https://js.pay.jp/", type: "text/javascript"}
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -53,7 +54,7 @@
             = f.label '都道府県', class: 'main__form__group__label', for: "address_prefectures"
             %span.main__form__group__require 必須
             .main__form__group__select
-              = f.collection_select :prefectures, Prefecture.all, :id, :name, {prompt: "---"}, { required: 'required' }
+              = f.collection_select :prefectures, Prefecture.all, :name, :name,{prompt: "---"}, { required: 'required' }
           .main__form__group
             = f.label '市区町村', class: 'main__form__group__label', for: "address_city"
             %span.main__form__group__require 必須

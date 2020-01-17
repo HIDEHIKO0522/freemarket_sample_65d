@@ -1,5 +1,11 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status]
+  # 本番環境でしか使用しないのでコメントアウト
+  # コメントアウトを外せばローカルで使用可能
+  # require 'payjp'
+  # Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_ACCESS_KEY]
+  before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status, :buy, :pay]
+  before_action :move_to_sign_in, only: [:buy]
+  before_action :item_sold_out?, only: [:buy]
   
   def index
     @items = Item.limit(10)
@@ -88,6 +94,31 @@ class ItemsController < ApplicationController
     render :edit
   end
 
+  def buy
+
+  end
+
+  def pay
+    if @item.status == "出品中"
+      @item.status = "売却済み"
+      sale = Sale.find(@item.seller.sale.id)
+      sale.sales += @item.price
+      if @item.valid? && sale.valid? && current_user.card.token.present? && @item.seller_id != current_user.id
+        @item.save
+        sale.save
+        # # 本番環境でしか使用しないのでコメントアウト
+        # # コメントアウトを外せばローカルで使用可能
+        # payjp_charge(@item, current_user)
+        redirect_to root_path
+      else
+        render :buy
+      end
+    else
+      render :buy
+    end
+    
+  end
+
 
   private
   def item_params
@@ -127,6 +158,27 @@ class ItemsController < ApplicationController
       result = true if item.item_images.present?
     end
     return result
+  end
+
+  # # 本番環境でしか使用しないのでコメントアウト
+  # # コメントアウトを外せばローカルで使用可能
+  # def payjp_charge(item, user)
+  #   charge = Payjp::Charge.create(
+  #     amount: item.price,
+  #     customer: user.card.token,
+  #     currency: 'jpy'
+  #   )
+  # end
+
+  def move_to_sign_in
+    unless user_signed_in?
+      redirect_to new_user_session_path
+    end
+  end
+
+  def item_sold_out?
+    item = Item.find(params[:id])
+    redirect_to item_path @item if item.status == "売却済み"
   end
 
 end

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :sns_credentials
   has_one :address
   has_one :card
+  has_one :sale
 
   def self.without_sns_data(auth)
     user = User.where(email: auth.info.email).first
@@ -58,7 +59,6 @@ class User < ApplicationRecord
     end
     return { user: user ,sns: sns}
   end
-
 
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i

@@ -9,15 +9,19 @@
       .PImain__l-single-container__buy-content-inner
         .PImain__l-single-container__buy-item-box
           %h3.PImain__l-single-container__buy-item-image
-            = link_to image_tag("丸枠付きのカメラのアイコン素材 2.svg", width: '80')
+            = image_tag @item.item_images[0].image.url, height: "100", width: "100"
           .PImain__l-single-container__buy-item-detail
             %p.PImain__l-single-container__buy-item-name
-              【値下げ】伝説の書 III 勇者ヨシヒコと導かれし七人
+              #{@item.name}
             %p.PImain__l-single-container__buy-price-ja
               %span
-                ¥980
+                ¥#{@item.price}
               %span
-                （税込）送料込み
+                （税込）
+                - if @item.charge == "送料込み(出品者負担)"
+                  送料込み
+                - else
+                  送料別
     %section.PImain__l-single-container__buy-content.PImain__l-single-container__buy-item
       .PImain__l-single-container__buy-content-inner
         %form.action
@@ -27,28 +31,26 @@
                 支払い金額
               .PImain__l-single-container__buy-price-cell
                 %span.PImain__l-single-container__buy-you-pay
-                  ¥980
+                  ¥#{@item.price}
           %ul.PImain__l-single-container__buy-accordion
             %lu.PImain__l-single-container__buy-use-point
               ポイントを使用 (所持ポイント: P0)
           %section.PImain__l-single-container__buy-user-info
             .PImain__l-single-container__buy-content-inner
-              %h3
-                支払い方法
-              %p
-                登録してください
+              %h3 支払い方法
+              %p クレジットカード
+              %p #{current_user.card.number}
+              %p 有効期限 #{current_user.card.expiration_month}/#{current_user.card.expiration_year}
           %section.PImain__l-single-container__buy-user-info
             .PImain__l-single-container__buy-content-inner
-              %h3
-                配送先
-              %p
-                登録してください
+              %h3 配送先
+              %p 〒#{current_user.address.postal_code}
+              %p #{current_user.address.prefectures}#{current_user.address.city}#{current_user.address.house_number}#{current_user.address.building}
+              %p #{current_user.family_name} #{current_user.first_name}
           %section.PImain__l-single-container__buy-user-info
             .PImain__l-single-container__buy-content-inner
               %p.PImain__l-single-container__buy-form.PImain__l-single-container__has-error-text
-                この商品はゆうゆうメルカリ便を利用しているため、アプリからのみ購入できます。
-              %button.PImain__l-single-container__btn-default
-                購入する
+              = link_to "購入する", pay_item_path(@item), method: :pots, class: "PImain__l-single-container__btn-default"
               %p.PImain__l-single-container__buy-form.PImain__l-single-container__not-have-app-text
                 アプリをお持ちでない方は以下よりインストールしてご利用いただけます。
               .PImain__l-single-container__buy-store-logos
