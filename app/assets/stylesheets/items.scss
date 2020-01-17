@@ -704,3 +704,236 @@
   background-color: #aaa;
 }
 
+//@全てに適用
+* {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+  margin: 0;
+  padding: 0;
+}
+
+
+//header
+.PIheader{
+  
+  text-align: center;
+    
+  @media screen and (min-width: 768px){
+      margin: 40px 0 0;
+      height: 128px;
+  }
+
+
+}
+
+
+//footer
+
+.PIfooter{
+
+  width: 456px;
+  height: 220px;
+  margin: 0 auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  padding: 40px 0;
+  text-align: center;
+
+}
+
+.PIfooter lu {
+  font-size: 12px;
+}
+
+.spacer{
+  margin: 0 0 0 16px;
+}
+
+.PIfooter-logo {
+
+  width: 80px;
+  height: 65px;
+  margin: 40px auto 0;
+
+}
+
+.PIfooter p {
+  margin: 8px 0 0;
+}
+
+.PIfooter small {
+  font-size: 13px;
+}
+
+
+
+
+
+//body
+.PImain{
+
+    width: 700px;
+    margin: 0 auto;
+    
+    &__l-single-container{
+      background: #fff;
+
+      // 1段目
+      &__l-single-head {
+        padding: 32px 16px;
+        font-size: 22px;
+        line-height: 1.5;
+        text-align: center;
+      }
+
+      &__buy-head {
+        font-size: 22px;
+        padding: 32px;
+      }
+
+      // 2段目
+      &__buy-content{
+        padding: 32px 16px;
+        border-top: 1px solid #f5f5f5;
+      }
+
+      &__buy-item {
+        text-align: center;
+      }
+
+      &__buy-content-inner {
+        max-width: 343px;
+        margin: 0 auto;
+      }
+      
+      &__buy-item-box {
+        display: -webkit-box;
+        display: flex;
+      }
+
+      &__buy-item-image{
+        height: 80px;
+        width: 80px;
+        min-width: 80px;
+        display: flex;
+        -webkit-box-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        align-items: center;
+      }
+
+      &__buy-item-detail{
+        margin-left: 16px;
+      }
+
+      &__buy-item-name {
+        font-size: 14px;
+        margin: 0;
+        padding: 0 0 8px;
+        line-height: 1.5;
+        text-align: left;
+      }
+
+
+      &__buy-price-ja {
+        margin: 0;
+        text-align: left;
+        font-size: 15px;
+      }
+
+
+      //3段目
+      &__buy-price-table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      &__buy-you-pay {
+        font-size: 30px;
+      }
+
+
+      &__item-shipping-fee{
+        font-size: 12px;
+      }
+
+      &__buy-price-cell-label {
+        font-size: 18px;
+        text-align: left;
+        float: left;
+      }
+
+      &__buy-price-cell {
+        padding: 0;
+        text-align: right;
+      }
+
+      &__buy-accordion {
+        margin: 24px 0 32px;
+        text-align: left;
+      }
+
+      // 4段目
+      &__buy-user-info {
+        padding: 32px 0;
+        border-top: 1px solid #f5f5f5;
+        font-size: 14px;
+        text-align: left;
+      }
+
+      &__buy-user-info-text {
+        text-align: left;
+        margin: 8px 0 0;
+        font-size: 14px;
+        line-height: 1.4;
+
+      }
+
+      //5段目
+
+      &__has-error-text {
+        padding-bottom: 24px;
+        color: #ea352d;
+        font-size: 14px;
+      }
+
+      &__buy-form {
+        line-height: 1.5;
+      }
+
+      &__btn-default{
+
+        border: 1px solid #888;
+        background: #888;
+        color: #fff;
+      
+        display: block;
+        width: 100%;
+        line-height: 48px;
+        font-size: 14px;
+        transition: all ease-out .3s;
+        text-align: center;
+      }
+
+      &__not-have-app-text {
+        margin-top: 40px;
+      }
+
+      &__buy-store-logos {
+        text-align: center;
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+
+
+      &__rightspacer24{
+        margin-right: 24px;
+      }
+
+    }
+
+}

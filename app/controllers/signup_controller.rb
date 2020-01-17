@@ -1,4 +1,6 @@
 class SignupController < ApplicationController
+  require 'payjp'
+  Payjp.api_key = ENV['PAYJP_ACCESS_KEY']
 
   def index
     render layout: false
@@ -216,6 +218,9 @@ class SignupController < ApplicationController
       return
     end
 
+    #売上、ポイントデータ作成
+    Sale.create(user_id: @user.id)
+
     @address = Address.new(
       user: @user,
       postal_code: session[:postal_code],
@@ -236,12 +241,14 @@ class SignupController < ApplicationController
     session[:security_code] = card_params[:security_code]
     session[:expiration_month] = card_params[:expiration_month]
     session[:expiration_year] = card_params[:expiration_year]
+    session[:token] = set_payjp_customer_id(@user)
     @card = Card.new(
       user: @user,
       number: session[:number],
       security_code: session[:security_code],
       expiration_month: session[:expiration_month],
-      expiration_year: session[:expiration_year]
+      expiration_year: session[:expiration_year],
+      token: session[:token]
     )
    #万一カードがcreateできなかった場合、全sessionをリセットして登録ページトップへリダイレクト
     unless @card.save 
@@ -293,7 +300,16 @@ class SignupController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:number, :security_code, :expiration_month, :expiration_year)
+    params.require(:card).permit(:number, :security_code, :expiration_month, :expiration_year, :token)
   end 
+
+  def card_token_params
+    params.permit(:token)
+  end
+
+  def set_payjp_customer_id(user)
+    customer = Payjp::Customer.create(email: user.email, card: card_token_params[:token])
+    return customer[:id]
+  end
 
 end

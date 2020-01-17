@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_24_064738) do
+ActiveRecord::Schema.define(version: 2020_01_14_062109) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2019_12_24_064738) do
     t.string "expiration_year", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
@@ -76,6 +77,15 @@ ActiveRecord::Schema.define(version: 2019_12_24_064738) do
     t.index ["seller_id"], name: "index_items_on_seller_id"
   end
 
+  create_table "sales", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.integer "sales", default: 0
+    t.integer "point", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_sales_on_user_id"
+  end
+
   create_table "sns_credentials", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.string "uid", null: false
@@ -99,14 +109,14 @@ ActiveRecord::Schema.define(version: 2019_12_24_064738) do
     t.string "encrypted_password", default: "", null: false
     t.string "tel", default: ""
     t.string "image", default: ""
-    t.integer "point"
-    t.integer "sales"
     t.string "certification", default: ""
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "addresses", "users"
@@ -115,5 +125,6 @@ ActiveRecord::Schema.define(version: 2019_12_24_064738) do
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users", column: "buyer_id"
   add_foreign_key "items", "users", column: "seller_id"
+  add_foreign_key "sales", "users"
   add_foreign_key "sns_credentials", "users"
 end
