@@ -7,7 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :omniauthable, omniauth_providers: %i[facebook google_oauth2]
   
-  has_many :items
   has_many :sns_credentials
   has_one :address
   has_one :card

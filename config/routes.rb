@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
-    omniauth_callbacks: 'users/omniauth_callbacks'
+    # omniauth_callbacks: 'users/omniauth_callbacks'
   }
 
   devise_scope :user do
@@ -20,9 +20,9 @@ Rails.application.routes.draw do
       get 'registration'                               
       post 'registration',  to: 'signup#profile_validation' 
       get 'sms_authentication' 
-      post 'sms_authentication',  to: 'signup#sms_validation'
-      # get 'sms_confirmation'
-      # post 'sms_confirmation', to: 'signup#sms_check' 
+      post 'sms_authentication',  to: 'signup#sms_post'
+      get 'sms_confirmation'
+      post 'sms_confirmation', to: 'signup#sms_check' 
       get 'address' 
       post 'address', to: 'signup#address_validation' 
       get 'card' 

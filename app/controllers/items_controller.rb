@@ -1,8 +1,8 @@
 class ItemsController < ApplicationController
   # 本番環境でしか使用しないのでコメントアウト
   # コメントアウトを外せばローカルで使用可能
-  # require 'payjp'
-  # Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_ACCESS_KEY]
+  require 'payjp'
+  Payjp.api_key = Rails.application.credentials[:payjp][:PAYJP_ACCESS_KEY]
   before_action :set_item, only: [:show, :destroy, :edit, :update, :update_status, :buy, :pay]
   before_action :move_to_sign_in, only: [:buy]
   before_action :item_sold_out?, only: [:buy]
@@ -108,7 +108,7 @@ class ItemsController < ApplicationController
         sale.save
         # # 本番環境でしか使用しないのでコメントアウト
         # # コメントアウトを外せばローカルで使用可能
-        # payjp_charge(@item, current_user)
+        payjp_charge(@item, current_user)
         redirect_to root_path
       else
         render :buy
@@ -162,13 +162,13 @@ class ItemsController < ApplicationController
 
   # # 本番環境でしか使用しないのでコメントアウト
   # # コメントアウトを外せばローカルで使用可能
-  # def payjp_charge(item, user)
-  #   charge = Payjp::Charge.create(
-  #     amount: item.price,
-  #     customer: user.card.token,
-  #     currency: 'jpy'
-  #   )
-  # end
+  def payjp_charge(item, user)
+    charge = Payjp::Charge.create(
+      amount: item.price,
+      customer: user.card.token,
+      currency: 'jpy'
+    )
+  end
 
   def move_to_sign_in
     unless user_signed_in?
